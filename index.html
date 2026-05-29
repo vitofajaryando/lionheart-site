@@ -324,6 +324,9 @@ nav a:hover,nav a.active{color:var(--gold);border-bottom-color:var(--gold);}
   transition:var(--transition);
 }
 .company-card:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(201,168,76,0.1);}
+.company-card.clickable{cursor:pointer;}
+.company-card .drill-hint{font-family:var(--font-ui);font-size:0.65rem;letter-spacing:0.15em;color:var(--gold-dim);margin-top:0.8rem;transition:color var(--transition);}
+.company-card.clickable:hover .drill-hint{color:var(--gold);}
 .company-card h4{
   font-family:var(--font-display);font-size:0.95rem;
   color:var(--gold);margin-bottom:0.5rem;letter-spacing:0.05em;
@@ -496,6 +499,106 @@ nav a:hover,nav a.active{color:var(--gold);border-bottom-color:var(--gold);}
 .modal-desc{
   font-size:0.9rem;color:var(--text-mid);line-height:1.8;
 }
+
+/* ═══ MODAL ACTION BUTTONS ═══ */
+.modal-actions{
+  display:flex;gap:10px;padding:1rem 2rem;
+  border-top:1px solid var(--border);
+  background:rgba(9,9,15,0.6);
+  position:sticky;bottom:0;
+}
+.btn-edit{
+  flex:1;padding:10px 0;font-family:var(--font-ui);font-size:0.72rem;
+  letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;
+  border-radius:var(--radius);transition:var(--transition);border:1px solid;
+  background:rgba(201,168,76,0.1);border-color:var(--gold-dim);color:var(--gold);
+}
+.btn-edit:hover{background:rgba(201,168,76,0.22);border-color:var(--gold);}
+.btn-delete{
+  padding:10px 18px;font-family:var(--font-ui);font-size:0.72rem;
+  letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;
+  border-radius:var(--radius);transition:var(--transition);border:1px solid;
+  background:rgba(139,26,26,0.15);border-color:#5A1A1A;color:#c87070;
+}
+.btn-delete:hover{background:rgba(139,26,26,0.35);border-color:#8B1A1A;}
+.btn-save{
+  flex:1;padding:10px 0;font-family:var(--font-ui);font-size:0.72rem;
+  letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;
+  border-radius:var(--radius);transition:var(--transition);border:1px solid;
+  background:rgba(42,122,74,0.2);border-color:#2A7A4A;color:#7AEC9A;
+}
+.btn-save:hover{background:rgba(42,122,74,0.38);border-color:#3AB06A;}
+.btn-cancel{
+  padding:10px 18px;font-family:var(--font-ui);font-size:0.72rem;
+  letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;
+  border-radius:var(--radius);transition:var(--transition);border:1px solid;
+  background:rgba(60,60,80,0.2);border-color:rgba(100,100,130,0.4);color:var(--text-dim);
+}
+.btn-cancel:hover{border-color:var(--text-dim);color:var(--text-mid);}
+
+/* ═══ EDIT FORM ═══ */
+.edit-form{padding:1.5rem 2rem 0.5rem;}
+.edit-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.edit-form-full{grid-column:1/-1;}
+.form-group{display:flex;flex-direction:column;gap:4px;}
+.form-group label{
+  font-family:var(--font-ui);font-size:0.65rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--gold-dim);
+}
+.form-group input,.form-group textarea,.form-group select{
+  background:var(--bg-card2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:8px 12px;
+  color:var(--text-light);font-family:var(--font-ui);font-size:0.8rem;
+  outline:none;transition:border-color var(--transition);
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold);}
+.form-group textarea{resize:vertical;min-height:60px;line-height:1.5;}
+.edit-section-title{
+  font-family:var(--font-display);font-size:0.75rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--gold-dim);
+  padding:0.6rem 0 0.4rem;border-bottom:1px solid var(--border);
+  grid-column:1/-1;margin-top:0.5rem;
+}
+
+/* ═══ ADD MEMBER BUTTON ═══ */
+.add-member-btn{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--gold);
+  background:rgba(201,168,76,0.08);border:1px dashed var(--gold-dim);
+  border-radius:var(--radius);padding:10px 18px;cursor:pointer;
+  transition:var(--transition);margin-bottom:1rem;
+}
+.add-member-btn:hover{background:rgba(201,168,76,0.16);border-color:var(--gold);}
+
+/* ═══ TABLE ROW ACTIONS ═══ */
+.row-actions{display:flex;gap:6px;flex-wrap:nowrap;}
+.row-btn{
+  font-family:var(--font-ui);font-size:0.6rem;letter-spacing:0.1em;
+  text-transform:uppercase;cursor:pointer;padding:3px 8px;
+  border-radius:2px;border:1px solid;transition:var(--transition);white-space:nowrap;
+}
+.row-btn-edit{background:rgba(201,168,76,0.08);border-color:var(--gold-dim);color:var(--gold-dim);}
+.row-btn-edit:hover{background:rgba(201,168,76,0.2);border-color:var(--gold);color:var(--gold);}
+.row-btn-delete{background:rgba(139,26,26,0.1);border-color:#5A1A1A;color:#c87070;}
+.row-btn-delete:hover{background:rgba(139,26,26,0.25);border-color:#8B1A1A;}
+.row-btn-add{background:rgba(42,122,74,0.1);border-color:#2A7A4A;color:#7AEC9A;}
+.row-btn-add:hover{background:rgba(42,122,74,0.25);border-color:#3AB06A;}
+
+/* ═══ CONFIRM DIALOG ═══ */
+.confirm-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  z-index:2001;display:none;align-items:center;justify-content:center;
+}
+.confirm-overlay.open{display:flex;}
+.confirm-box{
+  background:var(--bg-card);border:1px solid var(--border-strong);
+  border-radius:var(--radius);padding:2rem;max-width:380px;width:90%;
+  text-align:center;
+}
+.confirm-box h3{font-family:var(--font-display);color:var(--gold);margin-bottom:0.5rem;font-size:1.1rem;}
+.confirm-box p{font-family:var(--font-ui);font-size:0.8rem;color:var(--text-mid);margin-bottom:1.5rem;}
+.confirm-btns{display:flex;gap:10px;justify-content:center;}
 
 /* ═══ STRUCTURAL TABLE PAGE ═══ */
 .structural-content{max-width:1400px;margin:0 auto;padding:3rem 2rem;}
@@ -808,20 +911,21 @@ footer{
     </div>
 
     <div class="company-cards">
-      <div class="company-card"><span class="company-badge">Technology</span><h4>💻 Lionheart Electronics</h4><p>Leading manufacturer of magic crystal devices, AI-assisted arcane tools, and portable mana tech for adventurers and corporations alike.</p></div>
-      <div class="company-card"><span class="company-badge">Infrastructure</span><h4>🏗️ Lionheart Construction</h4><p>Designs and builds fortress cities, dungeon facilities, magical infrastructure, and industrial zones across Asterra. Led by COO Darius Lionheart.</p></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Holding Company')"><span class="company-badge">Holding</span><h4>👑 Lionheart Holding Company</h4><p>Supreme corporate governance for all subsidiaries. Home of the C-Suite executive leadership of Lionheart Group.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Technologies')"><span class="company-badge">Technology</span><h4>🔮 Lionheart Technologies</h4><p>AI Rune Systems and Crystal Network infrastructure. CEO: Caelthas Lionheart. First heir candidate and tech visionary.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Construction')"><span class="company-badge">Infrastructure</span><h4>🏗️ Lionheart Construction</h4><p>Designs and builds fortress cities, dungeon facilities, magical infrastructure, and industrial zones across Asterra. Led by COO Darius Lionheart.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Biotech')"><span class="company-badge">Life Science</span><h4>🧬 Lionheart Biotech</h4><p>Cutting-edge research into monster biology, soul genetics, and regeneration technology. CEO: Velisara Lionheart, the Blood Queen.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Security Division')"><span class="company-badge">Security</span><h4>🗡️ Lionheart Security Division</h4><p>Private military forces, elite hunters, intelligence operations, and Tower expeditions across Asterra.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Entertainment')"><span class="company-badge">Entertainment</span><h4>🎭 Lionheart Entertainment</h4><p>Asterra's largest entertainment empire — idols, films, magical broadcasting, arena battles, and celebrity management. CEO: Lord Altheris Moonfang.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Finance &amp; Retail')"><span class="company-badge">Finance</span><h4>🏦 Lionheart Finance &amp; Retail</h4><p>Banking, investment management, luxury retail, and magical asset trading. The largest financial institution outside the royal treasury.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Strategic &amp; Intelligence Operations')"><span class="company-badge">Strategy</span><h4>♟️ Lionheart Strategic &amp; Intelligence Operations</h4><p>Military strategy, shadow diplomacy, and intelligence warfare. Led by Duchess Seravelle Mordrith under CSO Baelzhar Lionheart.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Foundation &amp; Medical')"><span class="company-badge">Humanitarian</span><h4>🤍 Lionheart Foundation &amp; Medical</h4><p>Hospital networks, research grants, and humanitarian programs. Overseen by Duke Roland Evercrest and COO Marianne Lionheart.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Heavy Industries, Motors &amp; Shipyard')"><span class="company-badge">Industry</span><h4>⚙️ Lionheart Heavy Industries, Motors &amp; Shipyard</h4><p>Industrial golem manufacturing, mana vehicles, sea vessels, and airships. Led by Helena Ironforge, Ironforge Matriarch.</p><div class="drill-hint">↗ View Structural Table</div></div>
+      <div class="company-card clickable" onclick="goToStructural('Lionheart Agribusiness, Foods &amp; Hotels')"><span class="company-badge">Agriculture</span><h4>🌾 Lionheart Agribusiness, Foods &amp; Hotels</h4><p>Managed monster farms, mana-infused crops, potion cuisine, and luxury hospitality. CEO: Sylvaria Lionheart, Golden Empress of Commerce.</p><div class="drill-hint">↗ View Structural Table</div></div>
       <div class="company-card"><span class="company-badge">Finance</span><h4>🛡️ Lionheart Insurance</h4><p>Comprehensive coverage for adventurers, artifact owners, guild operations, and Tower expeditions. Largest insurer in the northern kingdoms.</p></div>
-      <div class="company-card"><span class="company-badge">Marine & Air</span><h4>⚓ Lionheart Shipyard</h4><p>Constructs the finest sea vessels and airships in Asterra. Supplies both commercial fleets and royal navies.</p></div>
-      <div class="company-card"><span class="company-badge">Life Science</span><h4>🧬 Lionheart Biotech</h4><p>Cutting-edge research into monster biology, soul genetics, and regeneration technology. CEO: Velisara Lionheart, the Blood Queen.</p></div>
       <div class="company-card"><span class="company-badge">Automotive</span><h4>🚗 Lionheart Motors</h4><p>Pioneer in mana-powered transportation. From personal carriages to golem-assisted combat vehicles.</p></div>
-      <div class="company-card"><span class="company-badge">Industry</span><h4>⚙️ Lionheart Heavy Industries</h4><p>Industrial golem manufacturing, mining operations, and heavy machinery. The backbone of Asterra's construction sector.</p></div>
-      <div class="company-card"><span class="company-badge">Agriculture</span><h4>🌾 Lionheart Agribusiness</h4><p>Managed monster farms, mana-infused crops, and potion ingredient cultivation across multiple continents.</p></div>
-      <div class="company-card"><span class="company-badge">Technology</span><h4>🔮 Lionheart Technologies</h4><p>AI Rune Systems and Crystal Network infrastructure. CEO: Caelthas Lionheart. First heir candidate and tech visionary.</p></div>
-      <div class="company-card"><span class="company-badge">Finance</span><h4>🏦 Lionheart Finance</h4><p>Banking, investment management, and magical asset trading. The largest financial institution outside the royal treasury.</p></div>
-      <div class="company-card"><span class="company-badge">Retail</span><h4>🏪 Lionheart Retail</h4><p>Luxury department stores, enchanted goods, and magical accessories. CEO: Sylvaria Lionheart, Golden Empress of Commerce. Now also leads Agribusiness, Foods &amp; Hotels.</p></div>
       <div class="company-card"><span class="company-badge">Food & Beverage</span><h4>🍱 Lionheart Foods</h4><p>Producers of magical energy food, potion-infused cuisine, and premium ration supplies for adventurers and militaries.</p></div>
       <div class="company-card"><span class="company-badge">Hospitality</span><h4>🏨 Lionheart Hotels</h4><p>Luxurious hospitality chains catering to elite adventurers, nobles, and dignitaries in every major city.</p></div>
-      <div class="company-card"><span class="company-badge">Entertainment</span><h4>🎭 Lionheart Entertainment</h4><p>Asterra's largest entertainment empire — idols, films, magical broadcasting, arena battles, and celebrity management. CEO: Lord Altheris Moonfang.</p></div>
     </div>
   </div>
   <footer>
@@ -888,6 +992,18 @@ footer{
   <div class="modal" id="modal">
     <div class="modal-close" id="modalClose">✕</div>
     <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════ CONFIRM DIALOG ═══════════ -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <h3 id="confirmTitle">Confirm Delete</h3>
+    <p id="confirmMsg">Are you sure you want to remove this member?</p>
+    <div class="confirm-btns">
+      <button class="btn-delete" id="confirmYes">Delete</button>
+      <button class="btn-cancel" id="confirmNo">Cancel</button>
+    </div>
   </div>
 </div>
 
@@ -1626,8 +1742,6 @@ const COMPANIES = [
   name:'Lionheart Technologies', icon:'🔮', focus:'AI Rune Systems & Crystal Networks',
   rows:[
     {name:'Caelthas Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:42, race:'High Elf', duty:'Oversees AI Rune, Magic Networks, Advanced Technology', fam:'1st Child of Aetherion', gen:'g2', type:'family', id:'caelthas'},
-    {name:'Elaris Lionheart', pos:'University Student — Arcane Engineering (Enrolled)', sub:'On Leave', age:21, race:'High Elf', duty:'Currently pursuing academic studies; future Rune Systems role', fam:'1st Child of Caelthas', gen:'g3', type:'family', id:'elaris'},
-    {name:'Vaelric Lionheart', pos:'University Student — Finance & Mana Economics (Enrolled)', sub:'On Leave', age:19, race:'High Elf', duty:'Currently pursuing academic studies; future finance strategy role', fam:'2nd Child of Caelthas', gen:'g3', type:'family', id:'vaelric'},
     {name:'Lady Elenoria Dawnveil', pos:'Chief Research Advisor', sub:'R&D', age:null, race:'High Elf', duty:'Rune programming & mana circuit research', fam:'Wife of Caelthas', gen:null, type:'spouse'},
     {name:'Theriva Goldmane', pos:'VP of Engineering', sub:'Engineering', age:null, race:'High Elf', duty:'Oversees engineering & product dev', fam:'—', gen:null, type:'staff'},
     {name:'Corvan Mireth', pos:'Senior Rune Architect', sub:'R&D', age:null, race:'Human', duty:'Crystal network architecture design', fam:'—', gen:null, type:'staff'},
@@ -1640,7 +1754,6 @@ const COMPANIES = [
   rows:[
     {name:'Darius Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:34, race:'High Human', duty:'Leads infrastructure, fortress cities, industrial zones', fam:'Child of Aetherion (by Evelyne)', gen:'g2', type:'family', id:'darius'},
     {name:'Helena Ironforge', pos:'CEO Subsidiaries — Heavy Industries · Chief Structural Engineer', sub:'Engineering', age:null, race:'Dwarf', duty:'Fortress engineering & industrial golem machinery', fam:'Wife of Darius', gen:null, type:'spouse'},
-    {name:'Brakka Lionheart', pos:'Academy Student — Engineering (Enrolled)', sub:'On Leave', age:15, race:'Half Human/Dwarf', duty:'Currently pursuing studies at Ironforge Technical Academy', fam:'2nd Child of Darius', gen:'g3', type:'family', id:'brakka'},
     {name:'Gramhold Ironvein', pos:'General Manager, Operations', sub:'Operations', age:null, race:'Dwarf', duty:'Day-to-day construction oversight', fam:'—', gen:null, type:'staff'},
     {name:'Sira Blacktower', pos:'Project Development Manager', sub:'Development', age:null, race:'Orc', duty:'City planning & fortress design coordination', fam:'—', gen:null, type:'staff'},
     {name:'Rolvak Dustmantle', pos:'Safety & Compliance Supervisor', sub:'Compliance', age:null, race:'Dwarf', duty:'Construction safety enforcement', fam:'—', gen:null, type:'staff'},
@@ -1652,9 +1765,6 @@ const COMPANIES = [
   rows:[
     {name:'Velisara Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:32, race:'High Demon', duty:'Oversees biological enhancement, monster research, regeneration technology', fam:'Child of Aetherion (by Evelyne)', gen:'g2', type:'family', id:'velisara'},
     {name:'Prof. Malgrith Solaris', pos:'Chief Scientific Director', sub:'Research', age:null, race:'Dark Elf', duty:'Soul genetics and monster evolution research', fam:'Husband of Velisara', gen:null, type:'spouse'},
-    {name:'Helena Lionheart', pos:'University Student — Medical Sciences (Enrolled)', sub:'On Leave', age:23, race:'High Human', duty:'Currently pursuing studies; future Medical Specialist role', fam:'2nd Child of Marianne', gen:'g2', type:'family', id:'helena'},
-    {name:'Mirellia Lionheart', pos:'Academy Student — Biological Sciences (Enrolled)', sub:'On Leave', age:14, race:'Half Demon/Dark Elf', duty:'Currently pursuing studies; future research role', fam:'1st Child of Velisara', gen:'g3', type:'family', id:'mirellia'},
-    {name:'Seraphyne Lionheart', pos:'Academy Student — Advanced Biological Studies (Enrolled)', sub:'On Leave', age:17, race:'High Demon', duty:'Currently pursuing studies; independent research interests', fam:'2nd Child of Velisara', gen:'g3', type:'family', id:'seraphyne'},
     {name:'Prof. Lucien Arkwell', pos:'Dean / Chief Researcher (Affiliate)', sub:'Medical Institute', age:null, race:'Human', duty:'Pharmaceutical research & academia partnership', fam:'Husband of Helena', gen:null, type:'spouse'},
     {name:'Valdra Moonweave', pos:'VP of Research', sub:'Research', age:null, race:'Dark Elf', duty:'Oversees all research programs', fam:'—', gen:null, type:'staff'},
     {name:'Orrex Bloodholm', pos:'Monster Containment Manager', sub:'Security/Containment', age:null, race:'Orc', duty:'Monster specimen containment & security', fam:'—', gen:null, type:'staff'},
@@ -1667,9 +1777,6 @@ const COMPANIES = [
     {name:'Azrakar Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:33, race:'High Demon', duty:'Private military, elite hunters, intelligence operations', fam:'Child of Aetherion (by Seraphina)', gen:'g2', type:'family', id:'azrakar'},
     {name:'Lady Nythera Vhol', pos:'Director of Intelligence Operations / Commander, Black Veil', sub:'Intelligence', age:null, race:'High Demon', duty:'Espionage, political assassination, infiltration', fam:'Wife of Azrakar', gen:null, type:'spouse'},
     {name:'Mordreth Lionheart', pos:'Senior Manager / Commander, Abyss Guard Unit', sub:'Military Ops', age:27, race:'High Demon', duty:'Elite military response teams & Tower suppression', fam:'1st Child of Baelzhar', gen:'g2', type:'family', id:'mordreth'},
-    {name:'Nyxara Lionheart', pos:'Academy Student — Intelligence Studies (Enrolled)', sub:'On Leave', age:16, race:'High Demon', duty:'Currently pursuing studies at Black Veil Intelligence Academy', fam:'1st Child of Azrakar', gen:'g3', type:'family', id:'nyxara'},
-    {name:'Zephiron Lionheart', pos:'Military Academy Student (Enrolled)', sub:'On Leave', age:13, race:'High Demon', duty:'Currently enrolled at Abyss Military Preparatory Academy', fam:'2nd Child of Azrakar', gen:'g3', type:'family', id:'zephiron'},
-    {name:'Kaizer Lionheart', pos:'Military Academy Student (Enrolled)', sub:'On Leave', age:18, race:'Half Human/Dwarf', duty:'Currently enrolled at Abyss Military Preparatory Academy', fam:'1st Child of Darius', gen:'g3', type:'family', id:'kaizer'},
     {name:'Lady Xyrella Draven', pos:'Vice Commander, Black Veil Intelligence Agency', sub:'Intelligence', age:null, race:'High Demon', duty:'Interrogation and covert warfare', fam:'Wife of Mordreth', gen:null, type:'spouse'},
     {name:'Vexaron Nightblade', pos:'Special Operations Commander', sub:'Special Ops', age:null, race:'Dark Elf', duty:'High-risk infiltration and extraction missions', fam:'—', gen:null, type:'staff'},
     {name:'Kross Ironmaw', pos:'Tower Expedition General Manager', sub:'Tower Ops', age:null, race:'Beastman', duty:'Coordinates Tower expedition logistics', fam:'—', gen:null, type:'staff'},
@@ -1699,9 +1806,6 @@ const COMPANIES = [
     {name:'Vito', pos:'Investment Analyst', sub:'Investment Division', age:null, race:'Human', duty:'Conducts investment research and market analysis', fam:'—', gen:null, type:'staff', id:'vito_investment'},
     {name:'Laurela', pos:'Finance Analyst', sub:'Investment Division', age:null, race:'Human', duty:'Financial analysis, reporting, and budget monitoring', fam:'—', gen:null, type:'staff', id:'laurela_investment'},
     {name:'Coco', pos:'Treasury Staff', sub:'Investment Division', age:null, race:'Beastman (Panda)', duty:'Treasury operations and fund custody management', fam:'—', gen:null, type:'staff', id:'coco_investment'},
-    {name:'Selene Lionheart', pos:'University Student — Commerce (Enrolled)', sub:'On Leave', age:20, race:'High Elf', duty:'Currently pursuing studies; future Brand Strategy role', fam:'1st Child of Sylvaria', gen:'g3', type:'family', id:'selene'},
-    {name:'Leonhart Lionheart', pos:'University Student — Business Administration (Enrolled)', sub:'On Leave', age:22, race:'High Elf', duty:'Currently pursuing studies; future executive role', fam:'2nd Child of Sylvaria', gen:'g3', type:'family', id:'leonhart'},
-    {name:'Vaelric Lionheart', pos:'University Student — Finance (Enrolled)', sub:'On Leave', age:19, race:'High Elf', duty:'Currently pursuing studies; future investment strategy role', fam:'2nd Child of Caelthas', gen:'g3', type:'family', id:'vaelric'},
     {name:'Duke Valerius Evernight', pos:'Minister of International Trade (Affiliate)', sub:'Trade & Commerce', age:null, race:'High Elf', duty:'International trade & luxury goods strategy', fam:'Husband of Sylvaria', gen:null, type:'spouse'},
     {name:'Aldric Thornvale', pos:'CFO — Lionheart Finance', sub:'Finance', age:null, race:'Human', duty:'Financial reporting, budget & investment strategy', fam:'—', gen:null, type:'staff'},
     {name:'Melara Goldspire', pos:'Investment Operations Manager', sub:'Finance', age:null, race:'High Elf', duty:'Portfolio management & rune-asset trading', fam:'—', gen:null, type:'staff'},
@@ -1715,8 +1819,6 @@ const COMPANIES = [
     {name:'Duchess Seravelle Mordrith', pos:'CEO Subsidiaries', sub:'All', age:null, race:'High Demon', duty:'Leads Strategic & Intelligence operations; military strategy, shadow diplomacy, intelligence warfare', fam:'1st Wife of Baelzhar', gen:null, type:'spouse', id:'seravelle'},
     {name:'Baelzhar Lionheart', pos:'Chief Strategy Officer (CSO) — Holding Company · Supreme Commander', sub:'Strategic Oversight', age:295, race:'High Demon', duty:'Military strategy, shadow diplomacy, intelligence warfare oversight at holding level', fam:'Head of House Baelzhar', gen:'g1', type:'family', id:'baelzhar'},
     {name:'Lady Vireza Nocturne', pos:'Director, Black Market Trade Division', sub:'Underground', age:null, race:'Dark Elf', duty:'Illegal relic trade and information brokerage', fam:'2nd Wife of Baelzhar', gen:null, type:'spouse'},
-    {name:'Zareth Lionheart', pos:'University Student — Underground Economics (Enrolled)', sub:'On Leave', age:24, race:'Half Demon/Dark Elf', duty:'Currently pursuing studies; future underground operations role', fam:'4th Child of Baelzhar', gen:'g2', type:'family', id:'zareth'},
-    {name:'Lilithra Lionheart', pos:'University Student — Arcane Engineering (Enrolled)', sub:'On Leave', age:19, race:'High Demon', duty:'Currently pursuing studies at Arcane Technical Academy', fam:'2nd Child of Baelzhar', gen:'g2', type:'family', id:'lilithra'},
     {name:'Navar Duskmantle', pos:'Senior Intelligence Analyst', sub:'Intelligence', age:null, race:'Dark Elf', duty:'Strategic intelligence analysis', fam:'—', gen:null, type:'staff'},
     {name:'Hexra Valmoor', pos:'Shadow Diplomacy Manager', sub:'Diplomacy', age:null, race:'High Demon', duty:'Manages covert diplomatic contacts', fam:'—', gen:null, type:'staff'},
     {name:'Cael Morthwyn', pos:'Military Strategy Supervisor', sub:'Military', age:null, race:'Orc', duty:'Battlefield planning and logistics', fam:'—', gen:null, type:'staff'},
@@ -1728,7 +1830,6 @@ const COMPANIES = [
     {name:'Duke Roland Evercrest', pos:'CEO Subsidiaries', sub:'Medical & Humanitarian', age:null, race:'High Human', duty:'Leads Foundation & Medical; hospital networks, research grants, humanitarian programs', fam:'Husband of Marianne', gen:null, type:'spouse', id:'roland'},
     {name:'Marianne Lionheart', pos:'Chief Operating Officer (COO) — Holding Company · Supreme Director', sub:'Humanitarian Oversight', age:71, race:'High Human', duty:'Oversight of all humanitarian operations, disaster relief, civilian welfare at holding level', fam:'Head of House Marianne', gen:'g1', type:'family', id:'marianne'},
     {name:'Cedric Lionheart', pos:'Director, Lionheart Foundation / Humanitarian Advisor', sub:'Humanitarian', age:29, race:'High Human', duty:'Disaster recovery, refugee protection, public hospitals', fam:'1st Child of Marianne', gen:'g2', type:'family', id:'cedric'},
-    {name:'Helena Lionheart', pos:'University Student — Medical Sciences (Enrolled)', sub:'On Leave', age:23, race:'High Human', duty:'Currently pursuing studies at Imperial Medical Academy', fam:'2nd Child of Marianne', gen:'g2', type:'family', id:'helena'},
     {name:'Eleanor Valtoris', pos:'Senator / Chairwoman, Civil Welfare Committee (Affiliate)', sub:'Government', age:null, race:'Human', duty:'Government policy on civil welfare', fam:'Wife of Cedric', gen:null, type:'spouse'},
     {name:'Prof. Lucien Arkwell', pos:'Dean / Chief Pharma Researcher (Affiliate)', sub:'Pharmaceutical', age:null, race:'Human', duty:'Medical academia & pharmaceutical development', fam:'Husband of Helena', gen:null, type:'spouse'},
     {name:'Sorel Whiteveil', pos:'VP of Humanitarian Operations', sub:'Operations', age:null, race:'Human', duty:'Coordinates all disaster relief operations', fam:'—', gen:null, type:'staff'},
@@ -1741,7 +1842,6 @@ const COMPANIES = [
   name:'Lionheart Heavy Industries, Motors & Shipyard', icon:'⚙️', focus:'Golem Manufacturing, Vehicles & Naval/Aerial Vessels',
   rows:[
     {name:'Helena Ironforge', pos:'CEO Subsidiaries', sub:'All', age:null, race:'Dwarf', duty:'Leads Heavy Industries, Motors, Shipyard; golem manufacturing, vehicles, naval/aerial vessels', fam:'Wife of Darius', gen:null, type:'spouse', id:'helena_ironforge'},
-    {name:'Brakka Lionheart', pos:'Academy Student — Mechanical Engineering (Enrolled)', sub:'On Leave', age:15, race:'Half Human/Dwarf', duty:'Currently pursuing studies at Ironforge Technical Academy', fam:'2nd Child of Darius', gen:'g3', type:'family', id:'brakka'},
     {name:'Varrus Ironclad', pos:'General Manager, Heavy Industries', sub:'Heavy Ind.', age:null, race:'Orc', duty:'Oversees golem production lines', fam:'—', gen:null, type:'staff'},
     {name:'Kel Deepstrike', pos:'Chief Motor Engineer', sub:'Motors', age:null, race:'Dwarf', duty:'Mana vehicle engine design', fam:'—', gen:null, type:'staff'},
     {name:'Tura Galeborn', pos:'Naval Architecture Manager', sub:'Shipyard', age:null, race:'Human', duty:'Sea vessel & airship design', fam:'—', gen:null, type:'staff'},
@@ -1754,7 +1854,6 @@ const COMPANIES = [
   name:'Lionheart Agribusiness, Foods & Hotels', icon:'🌾', focus:'Monster Farming, Mana Crops, Food Production & Hospitality',
   rows:[
     {name:'Sylvaria Lionheart', pos:'CEO Subsidiaries', sub:'Agribusiness, Foods & Hotels', age:40, race:'High Elf', duty:'Leads Agribusiness, Foods & Hotels; monster farms, mana crops, food production, hospitality', fam:'Child of Aetherion (by Miradelle)', gen:'g2', type:'family', id:'sylvaria'},
-    {name:'Leonhart Lionheart', pos:'General Manager, Agribusiness (Student — On Leave)', sub:'Agribusiness Ops', age:22, race:'High Elf', duty:'Currently pursuing studies; designated General Manager of Agribusiness division', fam:'2nd Child of Sylvaria', gen:'g3', type:'family', id:'leonhart'},
     {name:'Thorn Ashleaf', pos:'Head of Agri-Research', sub:'R&D Agri', age:null, race:'Human', duty:'Mana plant cultivation research', fam:'—', gen:null, type:'staff'},
     {name:'Grix Boltkeg', pos:'Foods Production Manager', sub:'Foods', age:null, race:'Goblin', duty:'Energy food & potion cuisine production', fam:'—', gen:null, type:'staff'},
     {name:'Selara Brightmeal', pos:'Foods Brand Manager', sub:'Foods', age:null, race:'Human', duty:'Product branding & adventurer market strategy', fam:'—', gen:null, type:'staff'},
@@ -1780,7 +1879,7 @@ const HOUSES = [
    NAVIGATION
 ═══════════════════════════════════════════════ */
 let currentPage = 'home';
-function showPage(name){
+function showPage(name, scrollTarget){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name)?.classList.add('active');
   document.querySelectorAll('nav a, .mobile-nav a').forEach(a=>{
@@ -1790,8 +1889,21 @@ function showPage(name){
   window.scrollTo(0,0);
   document.getElementById('mobileNav').classList.remove('open');
   if(name==='staff') renderStaff();
-  if(name==='structural') renderStructural();
+  if(name==='structural'){
+    renderStructural();
+    if(scrollTarget){
+      setTimeout(()=>{
+        const id = 'structural-'+scrollTarget.replace(/[^a-zA-Z0-9]/g,'-');
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      }, 80);
+    }
+  }
   if(name==='family') renderFamily();
+}
+
+function goToStructural(companyName){
+  showPage('structural', companyName);
 }
 
 document.querySelectorAll('[data-page]').forEach(a=>{
@@ -1856,14 +1968,15 @@ document.getElementById('staffSearch')?.addEventListener('input', e=>{
 function renderStructural(){
   const el = document.getElementById('structuralContent');
   el.innerHTML = COMPANIES.map(c=>`
-    <div class="company-section">
+    <div class="company-section" id="structural-${c.name.replace(/[^a-zA-Z0-9]/g,'-')}">
       <div class="company-title"><span class="icon">${c.icon}</span>${c.name}</div>
       <div class="company-subtitle">${c.focus}</div>
+      <button class="add-member-btn" onclick="openAddMember('${c.name.replace(/'/g,"\\'")}')">➕ Add Member to ${c.name}</button>
       <div class="table-wrap">
         <table>
           <thead><tr>
             <th>Name</th><th>Position</th><th>Division / Dept.</th>
-            <th>Age</th><th>Race</th><th>Duties</th><th>Family Status</th>
+            <th>Age</th><th>Race</th><th>Duties</th><th>Family Status</th><th>Actions</th>
           </tr></thead>
           <tbody>
             ${c.rows.map(r=>`<tr>
@@ -1874,6 +1987,12 @@ function renderStructural(){
               <td class="td-dim">${r.race}</td>
               <td style="font-size:0.75rem;max-width:200px;">${r.duty}</td>
               <td>${r.gen?`<span class="badge-gen ${r.gen}">${r.gen.toUpperCase()}</span> `:''}${r.type==='staff'?`<span class="badge-random">Staff</span>`:''}<br><small class="td-dim">${r.fam}</small></td>
+              <td>
+                <div class="row-actions">
+                  ${r.id?`<button class="row-btn row-btn-edit" onclick="openMember('${r.id}')">✏ Edit</button>`:''}
+                  ${r.id?`<button class="row-btn row-btn-delete" onclick="confirmDelete('${r.id}')">🗑</button>`:''}
+                </div>
+              </td>
             </tr>`).join('')}
           </tbody>
         </table>
@@ -1932,56 +2051,250 @@ function showHouseTree(houseId){
 }
 
 /* ═══════════════════════════════════════════════
-   MODAL
+   MODAL — VIEW / EDIT / ADD / DELETE
 ═══════════════════════════════════════════════ */
+let _currentEditId = null;
+let _editMode = false;
+
+/* ── helpers ── */
+function esc(s){ return s==null?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function fv(id){ return document.getElementById(id)?.value||''; }
+
+/* ── VIEW modal ── */
 function openMember(id){
   const m = MEMBERS.find(x=>x.id===id);
   if(!m) return;
+  _currentEditId = id;
+  _editMode = false;
+  renderViewModal(m);
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function renderViewModal(m){
   const modal = document.getElementById('modalContent');
   modal.innerHTML = `
     <div class="modal-header">
-      <div class="modal-avatar">${m.emoji}</div>
+      <div class="modal-avatar">${esc(m.emoji)}</div>
       <div>
-        <div class="modal-name">${m.name}</div>
-        <div class="modal-title">${m.position}</div>
+        <div class="modal-name">${esc(m.name)}</div>
+        <div class="modal-title">${esc(m.position)}</div>
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
-          <span class="tag race">${m.race}</span>
-          ${m.age?`<span class="tag">Age: ${m.age}</span>`:''}
+          <span class="tag race">${esc(m.race)}</span>
+          ${m.age?`<span class="tag">Age: ${esc(m.age)}</span>`:''}
           <span class="tag gen ${m.gen}">${m.gen?.toUpperCase()||''}</span>
-          <span class="tag">${m.house} House</span>
+          <span class="tag">${esc(m.house)} House</span>
         </div>
       </div>
     </div>
     <div class="modal-body">
-      ${m.titles?.length?`<div class="modal-section"><h4>Titles & Epithets</h4><div style="display:flex;flex-wrap:wrap;gap:6px;">${m.titles.map(t=>`<span style="font-family:var(--font-ui);font-size:0.75rem;color:var(--gold-light);background:rgba(201,168,76,0.08);border:1px solid var(--gold-dim);padding:3px 10px;border-radius:2px;">${t}</span>`).join('')}</div></div>`:''}
+      ${m.titles?.length?`<div class="modal-section"><h4>Titles & Epithets</h4><div style="display:flex;flex-wrap:wrap;gap:6px;">${m.titles.map(t=>`<span style="font-family:var(--font-ui);font-size:0.75rem;color:var(--gold-light);background:rgba(201,168,76,0.08);border:1px solid var(--gold-dim);padding:3px 10px;border-radius:2px;">${esc(t)}</span>`).join('')}</div></div>`:''}
       <div class="modal-section">
         <h4>Position & Company</h4>
         <div class="modal-grid">
-          <div class="modal-row"><span class="lbl">Position</span><span class="val gold">${m.position}</span></div>
-          <div class="modal-row"><span class="lbl">Division / Company</span><span class="val">${m.company}</span></div>
-          ${m.gender?`<div class="modal-row"><span class="lbl">Gender</span><span class="val">${m.gender}</span></div>`:''}
-          <div class="modal-row"><span class="lbl">Family Status</span><span class="val">${m.status}</span></div>
+          <div class="modal-row"><span class="lbl">Position</span><span class="val gold">${esc(m.position)}</span></div>
+          <div class="modal-row"><span class="lbl">Division / Company</span><span class="val">${esc(m.company)}</span></div>
+          ${m.gender?`<div class="modal-row"><span class="lbl">Gender</span><span class="val">${esc(m.gender)}</span></div>`:''}
+          <div class="modal-row"><span class="lbl">Family Status</span><span class="val">${esc(m.status)}</span></div>
         </div>
       </div>
       <div class="modal-section">
         <h4>Innate Skill</h4>
         <div class="skill-badge">
-          <div class="skill-type">${m.skillType} Skill</div>
-          <div style="font-size:1rem;color:var(--gold-light);margin-bottom:4px;">${m.skill}</div>
-          <div style="font-size:0.8rem;color:var(--text-mid);">${m.skillDesc}</div>
+          <div class="skill-type">${esc(m.skillType)} Skill</div>
+          <div style="font-size:1rem;color:var(--gold-light);margin-bottom:4px;">${esc(m.skill)}</div>
+          <div style="font-size:0.8rem;color:var(--text-mid);">${esc(m.skillDesc)}</div>
         </div>
       </div>
-      ${m.personality?`<div class="modal-section"><h4>Personality</h4><div class="modal-desc">${m.personality}</div></div>`:''}
-      ${m.appearance?`<div class="modal-section"><h4>Appearance</h4><div class="modal-desc">${m.appearance}</div></div>`:''}
-      ${m.role?`<div class="modal-section"><h4>Role & Responsibilities</h4><div class="modal-desc">${m.role}</div></div>`:''}
-      ${m.spouse?`<div class="modal-section"><h4>Spouse / Partner</h4><div class="modal-desc">${m.spouse}</div></div>`:''}
-      ${m.children?`<div class="modal-section"><h4>Children</h4><div class="modal-desc">${m.children}</div></div>`:''}
-      ${m.secrets?`<div class="modal-section"><h4>⚠ Classified / Rumors</h4><div class="modal-desc" style="color:#c87070;">${m.secrets}</div></div>`:''}
+      ${m.personality?`<div class="modal-section"><h4>Personality</h4><div class="modal-desc">${esc(m.personality)}</div></div>`:''}
+      ${m.appearance?`<div class="modal-section"><h4>Appearance</h4><div class="modal-desc">${esc(m.appearance)}</div></div>`:''}
+      ${m.role?`<div class="modal-section"><h4>Role & Responsibilities</h4><div class="modal-desc">${esc(m.role)}</div></div>`:''}
+      ${m.spouse?`<div class="modal-section"><h4>Spouse / Partner</h4><div class="modal-desc">${esc(m.spouse)}</div></div>`:''}
+      ${m.children?`<div class="modal-section"><h4>Children</h4><div class="modal-desc">${esc(m.children)}</div></div>`:''}
+      ${m.secrets?`<div class="modal-section"><h4>⚠ Classified / Rumors</h4><div class="modal-desc" style="color:#c87070;">${esc(m.secrets)}</div></div>`:''}
+    </div>
+    <div class="modal-actions">
+      <button class="btn-edit" onclick="switchToEditMode('${esc(m.id)}')">✏ Edit Profile</button>
+      <button class="btn-delete" onclick="confirmDelete('${esc(m.id)}')">🗑 Delete</button>
     </div>
   `;
+}
+
+/* ── EDIT modal ── */
+function switchToEditMode(id){
+  const m = MEMBERS.find(x=>x.id===id);
+  if(!m) return;
+  _currentEditId = id;
+  _editMode = true;
+  renderEditForm(m, false);
+}
+
+function openAddMember(companyName){
+  _currentEditId = null;
+  _editMode = true;
+  const blank = {
+    id:'', name:'', emoji:'👤', race:'', age:'', gender:'',
+    position:'', company: companyName||'', gen:'', house:'',
+    skill:'', skillType:'Passive', skillDesc:'',
+    titles:[], personality:'', appearance:'', role:'',
+    spouse:'', children:'', secrets:'', status:'', family:''
+  };
+  renderEditForm(blank, true);
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
+
+function renderEditForm(m, isNew){
+  const modal = document.getElementById('modalContent');
+  const genOptions = ['','gen1','gen2','gen3'].map(v=>`<option value="${v}" ${m.gen===v?'selected':''}>${v||'— None —'}</option>`).join('');
+  const houseOptions = ['Aetherion','Baelzhar','Elyndra','Marianne'].map(v=>`<option value="${v}" ${m.house===v?'selected':''}>${v}</option>`).join('');
+  const skillTypeOpts = ['Passive','Active'].map(v=>`<option value="${v}" ${m.skillType===v?'selected':''}>${v}</option>`).join('');
+
+  modal.innerHTML = `
+    <div class="modal-header" style="padding-bottom:1rem;">
+      <div class="modal-avatar" style="font-size:1.8rem;cursor:pointer;" onclick="promptEmoji()" title="Click to change emoji">${esc(m.emoji)}</div>
+      <div style="flex:1;">
+        <div style="font-family:var(--font-display);font-size:1rem;color:var(--gold);margin-bottom:4px;">${isNew?'➕ Add New Member':'✏ Editing Profile'}</div>
+        <div style="font-family:var(--font-ui);font-size:0.7rem;color:var(--text-dim);">${isNew?'Fill in the details below':'Modify fields and save changes'}</div>
+        <input type="hidden" id="ef_emoji" value="${esc(m.emoji)}"/>
+      </div>
+    </div>
+    <div class="edit-form">
+      <div class="edit-form-grid">
+        <div class="edit-section-title">Identity</div>
+        ${isNew?`<div class="form-group"><label>ID (unique key)</label><input id="ef_id" value="${esc(m.id)}" placeholder="e.g. john_doe"/></div>`:''}
+        <div class="form-group"><label>Full Name</label><input id="ef_name" value="${esc(m.name)}"/></div>
+        <div class="form-group"><label>Race</label><input id="ef_race" value="${esc(m.race)}"/></div>
+        <div class="form-group"><label>Age</label><input id="ef_age" type="number" value="${esc(m.age)}"/></div>
+        <div class="form-group"><label>Gender</label><input id="ef_gender" value="${esc(m.gender)}"/></div>
+        <div class="form-group"><label>Generation</label><select id="ef_gen">${genOptions}</select></div>
+        <div class="form-group"><label>House</label><select id="ef_house">${houseOptions}</select></div>
+
+        <div class="edit-section-title">Role</div>
+        <div class="form-group edit-form-full"><label>Position / Title</label><input id="ef_position" value="${esc(m.position)}"/></div>
+        <div class="form-group edit-form-full"><label>Company / Division</label><input id="ef_company" value="${esc(m.company)}"/></div>
+        <div class="form-group edit-form-full"><label>Status / Family Line</label><input id="ef_status" value="${esc(m.status)}"/></div>
+
+        <div class="edit-section-title">Skill</div>
+        <div class="form-group"><label>Skill Name</label><input id="ef_skill" value="${esc(m.skill)}"/></div>
+        <div class="form-group"><label>Skill Type</label><select id="ef_skillType">${skillTypeOpts}</select></div>
+        <div class="form-group edit-form-full"><label>Skill Description</label><textarea id="ef_skillDesc">${esc(m.skillDesc)}</textarea></div>
+
+        <div class="edit-section-title">Lore & Details</div>
+        <div class="form-group edit-form-full"><label>Titles (comma-separated)</label><input id="ef_titles" value="${esc((m.titles||[]).join(', '))}"/></div>
+        <div class="form-group edit-form-full"><label>Personality</label><textarea id="ef_personality">${esc(m.personality||'')}</textarea></div>
+        <div class="form-group edit-form-full"><label>Appearance</label><textarea id="ef_appearance">${esc(m.appearance||'')}</textarea></div>
+        <div class="form-group edit-form-full"><label>Role & Responsibilities</label><textarea id="ef_role">${esc(m.role||'')}</textarea></div>
+        <div class="form-group edit-form-full"><label>Spouse / Partner</label><input id="ef_spouse" value="${esc(m.spouse||'')}"/></div>
+        <div class="form-group edit-form-full"><label>Children</label><input id="ef_children" value="${esc(m.children||'')}"/></div>
+        <div class="form-group edit-form-full"><label>⚠ Classified / Rumors</label><textarea id="ef_secrets">${esc(m.secrets||'')}</textarea></div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-save" onclick="saveMember(${isNew})">${isNew?'➕ Add Member':'💾 Save Changes'}</button>
+      <button class="btn-cancel" onclick="${isNew?'closeModal()':'renderViewModal(MEMBERS.find(x=>x.id===\''+esc(m.id)+'\'))'}">${isNew?'Cancel':'← Back'}</button>
+    </div>
+  `;
+}
+
+function promptEmoji(){
+  const e = prompt('Enter an emoji for this member:', document.getElementById('ef_emoji')?.value||'👤');
+  if(e){
+    document.getElementById('ef_emoji').value = e;
+    document.querySelector('.modal-avatar').textContent = e;
+  }
+}
+
+/* ── SAVE (add or edit) ── */
+function saveMember(isNew){
+  const id = isNew ? fv('ef_id').trim() : _currentEditId;
+  if(!id){ alert('ID is required.'); return; }
+  if(isNew && MEMBERS.find(x=>x.id===id)){ alert('ID already exists. Choose a unique ID.'); return; }
+  const updated = {
+    id,
+    emoji: document.getElementById('ef_emoji')?.value || '👤',
+    name: fv('ef_name'),
+    race: fv('ef_race'),
+    age: fv('ef_age') ? Number(fv('ef_age')) : null,
+    gender: fv('ef_gender'),
+    position: fv('ef_position'),
+    company: fv('ef_company'),
+    gen: fv('ef_gen') || null,
+    house: fv('ef_house'),
+    skill: fv('ef_skill'),
+    skillType: fv('ef_skillType'),
+    skillDesc: fv('ef_skillDesc'),
+    titles: fv('ef_titles').split(',').map(s=>s.trim()).filter(Boolean),
+    personality: fv('ef_personality'),
+    appearance: fv('ef_appearance'),
+    role: fv('ef_role'),
+    spouse: fv('ef_spouse'),
+    children: fv('ef_children'),
+    secrets: fv('ef_secrets'),
+    status: fv('ef_status'),
+    family: fv('ef_status'),
+  };
+  if(isNew){
+    MEMBERS.push(updated);
+  } else {
+    const idx = MEMBERS.findIndex(x=>x.id===id);
+    if(idx>=0) MEMBERS[idx] = updated;
+  }
+  // Refresh whichever view is active
+  if(currentPage==='staff') renderStaff(document.querySelector('.filter-btn.active')?.dataset.filter||'all', document.getElementById('staffSearch')?.value||'');
+  if(currentPage==='structural') renderStructural();
+  if(currentPage==='family') renderFamily();
+  // Show view modal of saved member
+  _currentEditId = id;
+  renderViewModal(updated);
+  showToast(isNew ? `${updated.name} added!` : `${updated.name} updated!`);
+}
+
+/* ── DELETE ── */
+function confirmDelete(id){
+  const m = MEMBERS.find(x=>x.id===id);
+  if(!m) return;
+  _currentEditId = id;
+  document.getElementById('confirmMsg').textContent = `Remove "${m.name}" from all records? This cannot be undone.`;
+  document.getElementById('confirmOverlay').classList.add('open');
+}
+document.getElementById('confirmYes').addEventListener('click',()=>{
+  const idx = MEMBERS.findIndex(x=>x.id===_currentEditId);
+  const name = idx>=0 ? MEMBERS[idx].name : '';
+  if(idx>=0) MEMBERS.splice(idx,1);
+  document.getElementById('confirmOverlay').classList.remove('open');
+  closeModal();
+  if(currentPage==='staff') renderStaff(document.querySelector('.filter-btn.active')?.dataset.filter||'all', document.getElementById('staffSearch')?.value||'');
+  if(currentPage==='structural') renderStructural();
+  if(currentPage==='family') renderFamily();
+  showToast(`${name} removed.`, true);
+});
+document.getElementById('confirmNo').addEventListener('click',()=>{
+  document.getElementById('confirmOverlay').classList.remove('open');
+});
+
+/* ── TOAST ── */
+function showToast(msg, warn){
+  let t = document.getElementById('appToast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = 'appToast';
+    t.style.cssText = `position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(60px);
+      font-family:var(--font-ui);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;
+      padding:10px 22px;border-radius:4px;z-index:3000;transition:transform 0.3s ease,opacity 0.3s ease;
+      opacity:0;pointer-events:none;white-space:nowrap;`;
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.background = warn ? 'rgba(100,30,30,0.95)' : 'rgba(30,60,40,0.95)';
+  t.style.border = warn ? '1px solid #8B1A1A' : '1px solid #2A7A4A';
+  t.style.color = warn ? '#c87070' : '#7AEC9A';
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(60px)'; }, 2800);
+}
+
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('modalOverlay').addEventListener('click', e=>{
   if(e.target === document.getElementById('modalOverlay')) closeModal();
@@ -1990,7 +2303,7 @@ function closeModal(){
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow='';
 }
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); document.getElementById('confirmOverlay').classList.remove('open'); } });
 
 /* ═══════════════════════════════════════════════
    PARTICLES
