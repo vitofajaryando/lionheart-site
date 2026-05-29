@@ -600,6 +600,8 @@ nav a:hover,nav a.active{color:var(--gold);border-bottom-color:var(--gold);}
 .confirm-box p{font-family:var(--font-ui);font-size:0.8rem;color:var(--text-mid);margin-bottom:1.5rem;}
 .confirm-btns{display:flex;gap:10px;justify-content:center;}
 
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
 /* ═══ STRUCTURAL TABLE PAGE ═══ */
 .structural-content{max-width:1400px;margin:0 auto;padding:3rem 2rem;}
 .company-section{margin-bottom:4rem;}
@@ -1008,6 +1010,74 @@ footer{
 </div>
 
 <script>
+/* ═══════════════════════════════════════════════
+   SUPABASE CONFIG
+═══════════════════════════════════════════════ */
+const SB_URL = 'https://iowxzphhqitwsbniyxwk.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlvd3h6cGhocWl0d3Nibml5eHdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwNDAyNzcsImV4cCI6MjA5NTYxNjI3N30.hdb22uD9CHoqNZRtlmv_mJr3Du1R-UF4tXVGGYZ0AvM';
+const SB_HEADERS = {
+  'apikey': SB_KEY,
+  'Authorization': `Bearer ${SB_KEY}`,
+  'Content-Type': 'application/json',
+  'Prefer': 'return=representation'
+};
+
+/* ── Supabase helpers ── */
+async function sbLoad(){
+  try {
+    const res = await fetch(`${SB_URL}/rest/v1/members?select=*`, { headers: SB_HEADERS });
+    if(!res.ok) throw new Error(await res.text());
+    const rows = await res.json();
+    if(rows.length > 0){
+      // Replace MEMBERS with data from Supabase
+      MEMBERS.length = 0;
+      rows.forEach(r => MEMBERS.push(r.data));
+    } else {
+      // First time: seed Supabase with default MEMBERS data
+      await sbSeedAll();
+    }
+  } catch(e){
+    console.warn('Supabase load failed, using local data:', e);
+  }
+}
+
+async function sbSeedAll(){
+  // Push all default members to Supabase on first load
+  const body = MEMBERS.map(m => ({ id: m.id, data: m }));
+  await fetch(`${SB_URL}/rest/v1/members`, {
+    method: 'POST',
+    headers: { ...SB_HEADERS, 'Prefer': 'resolution=merge-duplicates,return=representation' },
+    body: JSON.stringify(body)
+  });
+}
+
+async function sbUpsert(member){
+  try {
+    const res = await fetch(`${SB_URL}/rest/v1/members`, {
+      method: 'POST',
+      headers: { ...SB_HEADERS, 'Prefer': 'resolution=merge-duplicates,return=representation' },
+      body: JSON.stringify({ id: member.id, data: member })
+    });
+    if(!res.ok) throw new Error(await res.text());
+  } catch(e){
+    console.warn('Supabase upsert failed:', e);
+    showToast('⚠ Gagal simpan ke database', true);
+  }
+}
+
+async function sbDelete(id){
+  try {
+    const res = await fetch(`${SB_URL}/rest/v1/members?id=eq.${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+      headers: SB_HEADERS
+    });
+    if(!res.ok) throw new Error(await res.text());
+  } catch(e){
+    console.warn('Supabase delete failed:', e);
+    showToast('⚠ Gagal hapus dari database', true);
+  }
+}
+
 /* ═══════════════════════════════════════════════
    DATA
 ═══════════════════════════════════════════════ */
@@ -2240,6 +2310,8 @@ function saveMember(isNew){
     const idx = MEMBERS.findIndex(x=>x.id===id);
     if(idx>=0) MEMBERS[idx] = updated;
   }
+  // Persist to Supabase
+  sbUpsert(updated);
   // Refresh whichever view is active
   if(currentPage==='staff') renderStaff(document.querySelector('.filter-btn.active')?.dataset.filter||'all', document.getElementById('staffSearch')?.value||'');
   if(currentPage==='structural') renderStructural();
@@ -2261,9 +2333,12 @@ function confirmDelete(id){
 document.getElementById('confirmYes').addEventListener('click',()=>{
   const idx = MEMBERS.findIndex(x=>x.id===_currentEditId);
   const name = idx>=0 ? MEMBERS[idx].name : '';
+  const deletedId = _currentEditId;
   if(idx>=0) MEMBERS.splice(idx,1);
   document.getElementById('confirmOverlay').classList.remove('open');
   closeModal();
+  // Delete from Supabase
+  sbDelete(deletedId);
   if(currentPage==='staff') renderStaff(document.querySelector('.filter-btn.active')?.dataset.filter||'all', document.getElementById('staffSearch')?.value||'');
   if(currentPage==='structural') renderStructural();
   if(currentPage==='family') renderFamily();
@@ -2304,6 +2379,28 @@ function closeModal(){
   document.body.style.overflow='';
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal(); document.getElementById('confirmOverlay').classList.remove('open'); } });
+
+/* ═══════════════════════════════════════════════
+   INIT — Load from Supabase on startup
+═══════════════════════════════════════════════ */
+(async function init(){
+  // Show loading indicator
+  const loadEl = document.createElement('div');
+  loadEl.id = 'dbLoader';
+  loadEl.style.cssText = `position:fixed;bottom:1.5rem;right:1.5rem;z-index:3000;
+    font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;
+    background:rgba(9,9,15,0.95);border:1px solid var(--gold-dim);color:var(--gold-dim);
+    padding:8px 16px;border-radius:4px;display:flex;align-items:center;gap:8px;`;
+  loadEl.innerHTML = `<span style="animation:spin 1s linear infinite;display:inline-block;">⟳</span> Connecting to database…`;
+  document.body.appendChild(loadEl);
+
+  await sbLoad();
+
+  loadEl.style.color = '#7AEC9A';
+  loadEl.style.borderColor = '#2A7A4A';
+  loadEl.innerHTML = `✓ Database connected`;
+  setTimeout(()=>loadEl.remove(), 2000);
+})();
 
 /* ═══════════════════════════════════════════════
    PARTICLES
