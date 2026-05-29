@@ -718,6 +718,99 @@ tr:hover td{background:rgba(201,168,76,0.03);}
   color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;
 }
 
+/* ═══ RELATION PAGE ═══ */
+.relation-content{max-width:1200px;margin:0 auto;padding:3rem 2rem;}
+.relation-house-section{margin-bottom:4rem;}
+.relation-house-header{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:0.5rem;
+  padding-bottom:1rem;
+  border-bottom:2px solid var(--border-strong);
+}
+.relation-house-icon{font-size:2rem;}
+.relation-house-name{
+  font-family:var(--font-display);font-size:1.5rem;color:var(--gold);
+}
+.relation-house-title{
+  font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--text-dim);
+}
+.relation-cards{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1.2rem;margin-top:1.5rem;
+}
+.relation-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:var(--transition);
+}
+.relation-card:hover{border-color:var(--gold);box-shadow:0 8px 30px rgba(201,168,76,0.08);}
+.relation-card-header{
+  display:flex;align-items:center;gap:12px;
+  padding:1rem 1.2rem 0.8rem;
+  border-bottom:1px solid var(--border);
+  background:rgba(201,168,76,0.03);
+}
+.relation-member-avatar{
+  width:44px;height:44px;border-radius:50%;
+  border:2px solid var(--gold-dim);
+  background:linear-gradient(135deg,var(--bg-mid),var(--bg-card2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex-shrink:0;
+}
+.relation-member-name{
+  font-family:var(--font-display);font-size:0.95rem;
+  color:var(--text-light);display:block;
+}
+.relation-member-info{
+  font-family:var(--font-ui);font-size:0.65rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--gold);
+}
+.relation-connector{
+  display:flex;align-items:center;justify-content:center;
+  padding:0.5rem;color:var(--gold-dim);font-size:0.8rem;
+  font-family:var(--font-ui);letter-spacing:0.15em;text-transform:uppercase;
+}
+.relation-partner-block{
+  padding:1rem 1.2rem;
+}
+.relation-partner-row{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:0.7rem 0;border-bottom:1px solid var(--border);
+}
+.relation-partner-row:last-child{border-bottom:none;}
+.relation-partner-emoji{font-size:1.3rem;flex-shrink:0;margin-top:2px;}
+.relation-partner-name{
+  font-family:var(--font-display);font-size:0.88rem;
+  color:var(--gold-light);display:block;margin-bottom:2px;
+}
+.relation-partner-race{
+  font-family:var(--font-ui);font-size:0.68rem;
+  color:var(--text-dim);letter-spacing:0.08em;
+  text-transform:uppercase;margin-bottom:3px;
+}
+.relation-partner-pos{
+  font-size:0.8rem;color:var(--text-mid);line-height:1.4;
+}
+.rel-type-badge{
+  display:inline-block;font-family:var(--font-ui);font-size:0.6rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  padding:2px 7px;border-radius:2px;border:1px solid;
+  margin-bottom:4px;white-space:nowrap;
+}
+.rel-wife{border-color:rgba(200,120,180,0.6);background:rgba(200,120,180,0.1);color:#e090c8;}
+.rel-husband{border-color:rgba(100,160,220,0.6);background:rgba(100,160,220,0.1);color:#80b4e8;}
+.rel-fiance{border-color:rgba(201,168,76,0.6);background:rgba(201,168,76,0.1);color:var(--gold);}
+.rel-concubine{border-color:rgba(160,100,200,0.5);background:rgba(160,100,200,0.08);color:#c07ae0;}
+.rel-lover{border-color:rgba(220,100,100,0.5);background:rgba(220,100,100,0.08);color:#e07070;}
+.rel-girlfriend{border-color:rgba(200,160,100,0.5);background:rgba(200,160,100,0.1);color:#d4a860;}
+.rel-boyfriend{border-color:rgba(100,200,160,0.5);background:rgba(100,200,160,0.1);color:#60c8a0;}
+.rel-partner{border-color:rgba(150,200,150,0.5);background:rgba(150,200,150,0.08);color:#90c890;}
+.rel-candidate{border-color:rgba(180,180,100,0.5);background:rgba(180,180,100,0.08);color:#c8c860;}
+.relation-clickable{cursor:pointer;}
+.relation-clickable:hover .relation-member-name{color:var(--gold);}
+
 /* ═══ FOOTER ═══ */
 footer{
   border-top:1px solid var(--border);padding:3rem 2rem;
@@ -777,6 +870,7 @@ footer{
       <a href="#" data-page="staff">Staff Profiles</a>
       <a href="#" data-page="structural">Structural</a>
       <a href="#" data-page="family">Family</a>
+      <a href="#" data-page="relation">Relation</a>
     </nav>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
@@ -791,6 +885,7 @@ footer{
   <a href="#" data-page="staff">Staff Profiles</a>
   <a href="#" data-page="structural">Structural</a>
   <a href="#" data-page="family">Family</a>
+  <a href="#" data-page="relation">Relation</a>
 </div>
 
 <!-- ═══════════ PAGE: HOME ═══════════ -->
@@ -989,7 +1084,21 @@ footer{
   </footer>
 </div>
 
-<!-- ═══════════ MODAL ═══════════ -->
+<!-- ═══════════ PAGE: RELATION ═══════════ -->
+<div class="page" id="page-relation">
+  <div class="page-hero">
+    <h2>House Relations</h2>
+    <p>Spouses, partners & alliances across the four noble bloodlines</p>
+  </div>
+  <div class="relation-content" id="relationContent"></div>
+  <footer>
+    <div class="footer-logo">⚜ LIONHEART GROUP ⚜</div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© Lionheart Group · All Rights Reserved</p>
+  </footer>
+</div>
+
+
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modal">
     <div class="modal-close" id="modalClose">✕</div>
@@ -1789,6 +1898,446 @@ const MEMBERS = [
   personality:'Unknown — born with mysterious soul energy.',
   family:'Gen 3 — House Marianne',
   status:'2nd Child of Helena Lionheart'
+},
+
+/* ═══════════════════════════════════════════
+   PARTNERS / SPOUSES — HOUSE AETHERION
+═══════════════════════════════════════════ */
+{
+  id:'seraphina_vaelcrest', gen:null, house:'Aetherion',
+  name:'Lady Seraphina Vaelcrest', emoji:'🌿',
+  race:'High Elf', age:287, gender:'Female',
+  position:'Head of Noble Affairs · Director of Royal Alliances — Lionheart Group',
+  company:'Lionheart Group (Noble Affairs)',
+  skill:'Moonlight Authority', skillType:'Passive',
+  skillDesc:'Increases mental stability and magical concentration of allies nearby.',
+  titles:['Queen of Noble Society'],
+  personality:'Elegant and graceful, extremely strict, politically manipulative.',
+  appearance:'Long platinum-blonde hair, emerald green eyes, white-gold noble dresses.',
+  role:'Maintains relationships with elf kingdoms and noble families. Handles political marriages and bloodline purity. Oversees etiquette and elite education within the family.',
+  secrets:'Daughter of the ancient Vaelcrest Royal Bloodline. Her marriage with Aetherion united two major High Elf houses. Many fear her influence more than military power.',
+  family:'1st Wife of Aetherion Lionheart',
+  spouse:'Aetherion Lionheart',
+  children:'Caelthas Lionheart, Azrakar Lionheart',
+  status:'1st Wife of Aetherion Lionheart'
+},
+{
+  id:'miradelle_astoria', gen:null, house:'Aetherion',
+  name:'Lady Miradelle Astoria', emoji:'💎',
+  race:'High Human', age:71, gender:'Female',
+  position:'Director of International Diplomacy · Political Advisor — Lionheart Group',
+  company:'Lionheart Group (Diplomatic Affairs)',
+  skill:'Diplomatic Resonance', skillType:'Passive',
+  skillDesc:'Reduces hostility and improves negotiation outcomes during discussions.',
+  titles:['Silver-Tongued Duchess'],
+  personality:'Warm and refined, highly intelligent, dangerous negotiator behind closed doors.',
+  appearance:'Long dark brown hair, sapphire blue eyes, elegant royal dresses with magical jewelry.',
+  role:'Handles human kingdom relations. Negotiates trade treaties and military agreements. Oversees government lobbying.',
+  secrets:'Former princess of Astoria Kingdom. Famous for ending a continental trade war peacefully. Her marriage strengthened Lionheart influence among humans.',
+  family:'2nd Wife of Aetherion Lionheart',
+  spouse:'Aetherion Lionheart',
+  children:'Sylvaria Lionheart',
+  status:'2nd Wife of Aetherion Lionheart'
+},
+{
+  id:'evelyne_noctis', gen:null, house:'Aetherion',
+  name:'Lady Evelyne Noctis', emoji:'🔮',
+  race:'High Demon', age:263, gender:'Female',
+  position:'Supervisor of Abyss Research Division · Senior Advisor, Lionheart Biotech',
+  company:'Lionheart Biotech',
+  skill:'Abyss Whisper', skillType:'Active',
+  skillDesc:'Allows manipulation of fear and emotional instability in enemies.',
+  titles:['Abyss Queen'],
+  personality:'Seductive and mysterious, emotionally unreadable, extremely dangerous when angered.',
+  appearance:'Long black-purple hair, crimson glowing eyes, black dresses with demonic crystal ornaments.',
+  role:'Oversees demon-related magic research. Supervises forbidden relic containment. Controls abyssal resource acquisition.',
+  secrets:'Descendant of ancient demon nobility. Rumored to have massacred an enemy clan alone in her youth. Her marriage ended centuries of conflict between demon clans and Lionheart.',
+  family:'3rd Wife of Aetherion Lionheart',
+  spouse:'Aetherion Lionheart',
+  children:'Darius Lionheart, Velisara Lionheart',
+  status:'3rd Wife of Aetherion Lionheart'
+},
+{
+  id:'lyrieth_moonveil', gen:null, house:'Aetherion',
+  name:'Lyrieth Moonveil', emoji:'🌙',
+  race:'High Elf', age:198, gender:'Female',
+  position:'Personal Intelligence Secretary of Aetherion · Hidden Information Broker',
+  company:'Lionheart Group (Intelligence)',
+  skill:'Silent Mind', skillType:'Passive',
+  skillDesc:'Makes her immune to mind-reading and emotional detection abilities.',
+  titles:['The Silent Moon'],
+  personality:'Calm and soft-spoken, extremely observant, loyal only to Aetherion.',
+  appearance:'Silver-blue hair, pale violet eyes, usually wears dark elegant robes.',
+  role:'Manages confidential information and secret investigations. Maintains contact with guilds and underground informants. Secretly monitors internal family conflicts.',
+  secrets:'Originally a low-ranking noble elf who rose to power through intelligence and loyalty. Rumored to know every hidden scandal in the empire.',
+  family:'Concubine of Aetherion Lionheart',
+  spouse:'Aetherion Lionheart (Concubine)',
+  children:'Aerion Lionheart',
+  status:'Concubine of Aetherion Lionheart'
+},
+{
+  id:'elenoria_dawnveil', gen:null, house:'Aetherion',
+  name:'Lady Elenoria Dawnveil', emoji:'📚',
+  race:'High Elf', age:null, gender:'Female',
+  position:'Chief Research Advisor — Lionheart Technologies',
+  company:'Lionheart Technologies',
+  skill:'Rune Mastery', skillType:'Passive',
+  skillDesc:'Intuitively understands and optimizes any magical rune structure.',
+  titles:[],
+  personality:'Elegant, intellectual, emotionally distant.',
+  role:'Former professor at Imperial Arcane University. Oversees research direction of Lionheart Technologies. Expert in Rune Programming & Mana Circuits. Controls many academic and research connections.',
+  family:'Wife of Caelthas Lionheart',
+  spouse:'Caelthas Lionheart',
+  children:'Elaris Lionheart, Vaelric Lionheart',
+  status:'Wife of Caelthas Lionheart'
+},
+{
+  id:'valerius_evernight', gen:null, house:'Aetherion',
+  name:'Duke Valerius Evernight', emoji:'🌐',
+  race:'High Elf', age:null, gender:'Male',
+  position:'Minister of International Trade · Ambassador of the Northern Alliance · Owner, Evernight Trading Consortium',
+  company:'Evernight Trading Consortium',
+  skill:'Silver Pact', skillType:'Passive',
+  skillDesc:'Naturally forges trusting agreements and prevents negotiations from collapsing.',
+  titles:['Duke of Evernight'],
+  personality:'Charismatic, diplomatic, extremely ambitious.',
+  role:'Oversees international trade and luxury goods empire. Strong ties with royal families and merchant unions. Business covers luxury goods, magical jewelry, and intercontinental trade.',
+  family:'Husband of Sylvaria Lionheart',
+  spouse:'Sylvaria Lionheart',
+  children:'Selene Lionheart, Leonhart Lionheart',
+  status:'Husband of Sylvaria Lionheart'
+},
+{
+  id:'nythera_vhol', gen:null, house:'Aetherion',
+  name:'Lady Nythera Vhol', emoji:'🕵️',
+  race:'High Demon', age:null, gender:'Female',
+  position:'Director of Intelligence Operations · Commander, Black Veil Intelligence Agency',
+  company:'Black Veil Intelligence Network',
+  skill:'Shadow Read', skillType:'Active',
+  skillDesc:'Extracts hidden intentions and secrets from individuals by observing micro-expressions and aura shifts.',
+  titles:[],
+  personality:'Cold, ruthless, highly intelligent.',
+  role:'Runs the Black Veil Intelligence Network. Expert in espionage, political assassination, and infiltration. Oversees all covert intelligence for Lionheart Security.',
+  family:'Wife of Azrakar Lionheart',
+  spouse:'Azrakar Lionheart',
+  children:'Nyxara Lionheart, Zephiron Lionheart',
+  status:'Wife of Azrakar Lionheart'
+},
+{
+  id:'malgrith_solaris', gen:null, house:'Aetherion',
+  name:'Prof. Malgrith Solaris', emoji:'🔬',
+  race:'Dark Elf', age:null, gender:'Male',
+  position:'Chief Scientific Director — Lionheart Biotech',
+  company:'Lionheart Biotech',
+  skill:'Gene Weave', skillType:'Active',
+  skillDesc:'Directly manipulates biological and magical genetic structures at a cellular level.',
+  titles:[],
+  personality:'Brilliant, obsessive, morally gray.',
+  role:'Former Head Researcher of Imperial Bio-Alchemy Institute. Leads Lionheart Biotech scientific research. Expert in soul genetics and monster evolution. Considered morally dangerous by many kingdoms.',
+  family:'Husband of Velisara Lionheart',
+  spouse:'Velisara Lionheart',
+  children:'Mirellia Lionheart, Seraphyne Lionheart',
+  status:'Husband of Velisara Lionheart'
+},
+{
+  id:'arcelia_windrune', gen:null, house:'Aetherion',
+  name:'Arcelia Windrune', emoji:'🐾',
+  race:'Beastman', age:null, gender:'Female',
+  position:'Former S-Rank Adventurer · Founder, Windrune Hunter Guild',
+  company:'Windrune Hunter Guild',
+  skill:'Apex Instinct', skillType:'Passive',
+  skillDesc:'Heightened combat instincts that react faster than conscious thought.',
+  titles:[],
+  personality:'Fearless, wild, fiercely loyal.',
+  role:'Leads the Windrune Hunter Guild specializing in high-rank Tower expeditions and monster extermination. Former S-Rank Adventurer. Partner of Aerion Lionheart.',
+  family:'Partner of Aerion Lionheart',
+  spouse:'Aerion Lionheart (Partner)',
+  children:'None recorded',
+  status:'Partner of Aerion Lionheart'
+},
+{
+  id:'aurelisse_etrand', gen:null, house:'Aetherion',
+  name:'Princess Aurelisse Von Etrand', emoji:'👸',
+  race:'High Elf', age:null, gender:'Female',
+  position:'Second Princess of Etrand Kingdom · Royal Diplomatic Advisor',
+  company:'Etrand Royal Court',
+  skill:'Noble Radiance', skillType:'Passive',
+  skillDesc:'Naturally commands respect and admiration from those in her presence.',
+  titles:['Second Princess of Etrand'],
+  personality:'Graceful and politically brilliant.',
+  role:'Serves as Royal Diplomatic Advisor of Etrand Kingdom. Fiancée of Elaris Lionheart. Engagement forges a major political alliance between Etrand Kingdom and Lionheart Group.',
+  family:'Fiancée of Elaris Lionheart',
+  spouse:'Elaris Lionheart (Fiancée)',
+  children:'None',
+  status:'Fiancée of Elaris Lionheart'
+},
+{
+  id:'celestine_aurelia', gen:null, house:'Aetherion',
+  name:'Celestine Aurelia', emoji:'🏛️',
+  race:'Human', age:null, gender:'Female',
+  position:'Government Treasury Officer · Ministry of Economic Affairs',
+  company:'Ministry of Economic Affairs',
+  skill:'Ledger Sense', skillType:'Passive',
+  skillDesc:'Intuitively identifies financial discrepancies and economic patterns.',
+  titles:[],
+  personality:'Calm and highly intelligent.',
+  role:'Serves as Treasury Officer at the Ministry of Economic Affairs. Wife of Leonhart Lionheart. Strengthens Lionheart ties with government institutions.',
+  family:'Wife of Leonhart Lionheart',
+  spouse:'Leonhart Lionheart',
+  children:'None recorded',
+  status:'Wife of Leonhart Lionheart'
+},
+{
+  id:'lucard_ravenholt', gen:null, house:'Aetherion',
+  name:'Lucard Ravenholt', emoji:'💍',
+  race:'Human', age:null, gender:'Male',
+  position:'Founder & CEO — Ravenholt Luxury Group',
+  company:'Ravenholt Luxury Group',
+  skill:'Taste Arbiter', skillType:'Passive',
+  skillDesc:'Intuitively recognizes value, quality, and market trends in luxury goods.',
+  titles:[],
+  personality:'Stylish and manipulative.',
+  role:'Runs the Ravenholt Luxury Group covering fashion, jewelry, and magical accessories. Boyfriend of Selene Lionheart.',
+  family:'Boyfriend of Selene Lionheart',
+  spouse:'Selene Lionheart (Girlfriend)',
+  children:'None',
+  status:'Boyfriend of Selene Lionheart'
+},
+{
+  id:'freya_stormclaw', gen:null, house:'Aetherion',
+  name:'Freya Stormclaw', emoji:'🐾',
+  race:'Beastman', age:null, gender:'Female',
+  position:'A-Rank Hunter Guild Adventurer',
+  company:'Hunter Guild (Independent)',
+  skill:'Stormclaw Strike', skillType:'Active',
+  skillDesc:'Delivers devastating multi-hit physical attacks at lightning speed.',
+  titles:[],
+  personality:'Wild and fiercely loyal.',
+  role:'A-Rank adventurer known for exceptional combat ability. Girlfriend of Kaizer Lionheart.',
+  family:'Girlfriend of Kaizer Lionheart',
+  spouse:'Kaizer Lionheart (Boyfriend)',
+  children:'None',
+  status:'Girlfriend of Kaizer Lionheart'
+},
+{
+  id:'vaelor_drakemire', gen:null, house:'Aetherion',
+  name:'Prince Vaelor Drakemire', emoji:'👑',
+  race:'High Demon', age:null, gender:'Male',
+  position:'Crown Prince of Drakemire Dominion · Military Commander',
+  company:'Drakemire Dominion',
+  skill:'Dread Sovereign', skillType:'Passive',
+  skillDesc:'Emits an oppressive aura that suppresses the will of weaker opponents.',
+  titles:['Crown Prince of Drakemire'],
+  personality:'Ruthless and charismatic.',
+  role:'Crown Prince and Military Commander of the Drakemire Dominion. Engagement candidate of Nyxara Lionheart. Alliance would strengthen Lionheart presence in demon territories.',
+  family:'Engagement Candidate of Nyxara Lionheart',
+  spouse:'Nyxara Lionheart (Candidate)',
+  children:'None',
+  status:'Engagement Candidate of Nyxara Lionheart'
+},
+{
+  id:'orion_valemortis', gen:null, house:'Aetherion',
+  name:'Orion Valemortis', emoji:'⚗️',
+  race:'Dark Elf', age:null, gender:'Male',
+  position:'Heir of Valemortis Pharmaceutical Empire',
+  company:'Valemortis Pharmaceutical Empire',
+  skill:'Compound Sight', skillType:'Passive',
+  skillDesc:'Instantly analyzes chemical and magical compound structures.',
+  titles:[],
+  personality:'Secretive and intelligent.',
+  role:'Heir to the Valemortis Pharmaceutical Empire. Marriage candidate of Mirellia Lionheart. Strategic alliance would merge biotech and pharmaceutical interests.',
+  family:'Marriage Candidate of Mirellia Lionheart',
+  spouse:'Mirellia Lionheart (Candidate)',
+  children:'None',
+  status:'Marriage Candidate of Mirellia Lionheart'
+},
+{
+  id:'kael_draven', gen:null, house:'Aetherion',
+  name:'Kael Draven', emoji:'⚔️',
+  race:'Human', age:null, gender:'Male',
+  position:'Vice Captain — Black Fang Mercenary Company',
+  company:'Black Fang Mercenary Company',
+  skill:'Battle Fury', skillType:'Active',
+  skillDesc:'Temporarily doubles combat speed and damage output in intense battles.',
+  titles:[],
+  personality:'Loyal and battle-hardened.',
+  role:'Vice Captain of the Black Fang Mercenary Company. Unofficial lover of Seraphyne Lionheart. Relationship disapproved by the Lionheart family.',
+  family:'Lover of Seraphyne Lionheart',
+  spouse:'Seraphyne Lionheart (Lover)',
+  children:'None',
+  status:'Lover of Seraphyne Lionheart'
+},
+{
+  id:'elise_farnova', gen:null, house:'Aetherion',
+  name:'Elise Farnova', emoji:'💰',
+  race:'Human', age:null, gender:'Female',
+  position:'Daughter of Farnova Banking Group Chairman · Junior Financial Analyst',
+  company:'Farnova Banking Group',
+  skill:'Market Read', skillType:'Passive',
+  skillDesc:'Instinctively reads financial market movements and investment risks.',
+  titles:[],
+  personality:'Intelligent and elegant.',
+  role:'Daughter of the Farnova Banking Group Chairman. Junior Financial Analyst. Girlfriend of Vaelric Lionheart. Relationship strengthens ties with the Farnova Banking Group.',
+  family:'Girlfriend of Vaelric Lionheart',
+  spouse:'Vaelric Lionheart (Boyfriend)',
+  children:'None',
+  status:'Girlfriend of Vaelric Lionheart'
+},
+
+/* ═══════════════════════════════════════════
+   PARTNERS / SPOUSES — HOUSE BAELZHAR
+═══════════════════════════════════════════ */
+{
+  id:'vireza_nocturne', gen:null, house:'Baelzhar',
+  name:'Lady Vireza Nocturne', emoji:'🌑',
+  race:'Dark Elf', age:null, gender:'Female',
+  position:'Director, Black Market Trade Division · Owner, Nocturne Underground Consortium',
+  company:'Nocturne Underground Consortium',
+  skill:'Shadow Trace', skillType:'Active',
+  skillDesc:'Tracks the movements and dealings of any individual through magical shadow networks.',
+  titles:[],
+  personality:'Cunning, ruthless, deeply pragmatic.',
+  role:'Controls illegal relic trade and information brokerage through the Nocturne Underground Consortium. 2nd Wife of Baelzhar Lionheart.',
+  family:'2nd Wife of Baelzhar Lionheart',
+  spouse:'Baelzhar Lionheart',
+  children:'Varkiel Lionheart, Zareth Lionheart',
+  status:'2nd Wife of Baelzhar Lionheart'
+},
+{
+  id:'xyrella_draven', gen:null, house:'Baelzhar',
+  name:'Lady Xyrella Draven', emoji:'🕵️',
+  race:'High Demon', age:null, gender:'Female',
+  position:'Vice Commander — Black Veil Intelligence Agency',
+  company:'Black Veil Intelligence Agency',
+  skill:'Mind Fracture', skillType:'Active',
+  skillDesc:'Temporarily shatters an opponent\'s mental defenses, forcing truthful responses.',
+  titles:[],
+  personality:'Cold, calculating, expert manipulator.',
+  role:'Serves as Vice Commander of the Black Veil Intelligence Agency. Expert in interrogation and covert warfare. Wife of Mordreth Lionheart.',
+  family:'Wife of Mordreth Lionheart',
+  spouse:'Mordreth Lionheart',
+  children:'Ravion Lionheart, Khaelys Lionheart',
+  status:'Wife of Mordreth Lionheart'
+},
+{
+  id:'kaedros_velnar', gen:null, house:'Baelzhar',
+  name:'Kaedros Velnar', emoji:'🔧',
+  race:'Dark Elf', age:null, gender:'Male',
+  position:'Heir of Velnar Arcane Industries · Magic Weapon Manufacturing',
+  company:'Velnar Arcane Industries',
+  skill:'Arcane Forge', skillType:'Active',
+  skillDesc:'Imbues weapons with concentrated arcane energy during the forging process.',
+  titles:[],
+  personality:'Ambitious and highly technical.',
+  role:'Heir to Velnar Arcane Industries specializing in magic weapon manufacturing. Fiancé of Lilithra Lionheart. Engagement forges a strategic alliance in magic weapons manufacturing.',
+  family:'Fiancé of Lilithra Lionheart',
+  spouse:'Lilithra Lionheart (Fiancée)',
+  children:'None',
+  status:'Fiancé of Lilithra Lionheart'
+},
+{
+  id:'serina_valeth', gen:null, house:'Baelzhar',
+  name:'Serina Valeth', emoji:'🔍',
+  race:'Human', age:null, gender:'Female',
+  position:'Information Broker · Owner, Valeth Intelligence Network',
+  company:'Valeth Intelligence Network',
+  skill:'Intel Web', skillType:'Passive',
+  skillDesc:'Maintains a vast mental map of information sources and connections across multiple kingdoms.',
+  titles:[],
+  personality:'Sharp, calculating, and discreet.',
+  role:'Owns and operates the Valeth Intelligence Network. Unofficial lover of Zareth Lionheart. No children officially acknowledged.',
+  family:'Lover of Zareth Lionheart',
+  spouse:'Zareth Lionheart (Lover)',
+  children:'None officially acknowledged',
+  status:'Lover of Zareth Lionheart'
+},
+
+/* ═══════════════════════════════════════════
+   PARTNERS / SPOUSES — HOUSE ELYNDRA
+═══════════════════════════════════════════ */
+{
+  id:'altheris_moonfang', gen:null, house:'Elyndra',
+  name:'Lord Altheris Moonfang', emoji:'🎭',
+  race:'High Elf', age:null, gender:'Male',
+  position:'Chairman — Moonfang Arts Consortium · Legendary Music & Film Producer',
+  company:'Moonfang Arts Consortium',
+  skill:'Harmonic Genius', skillType:'Passive',
+  skillDesc:'Naturally elevates the artistic quality of anyone performing under his direction.',
+  titles:['The Grand Maestro'],
+  personality:'Artistic genius, flamboyant, politically neutral.',
+  role:'Leads Moonfang Arts Consortium covering music production, theater, and magical cinema. Legendary producer behind many royal performers. Husband of Elyndra Lionheart.',
+  family:'Husband of Elyndra Lionheart',
+  spouse:'Elyndra Lionheart',
+  children:'Aurelianne, Faelion, Lysithea',
+  status:'Husband of Elyndra Lionheart'
+},
+{
+  id:'cedrius_valemor', gen:null, house:'Elyndra',
+  name:'Crown Prince Cedrius Valemor', emoji:'👑',
+  race:'Human', age:null, gender:'Male',
+  position:'Crown Prince of Valemor Kingdom · Future King & Royal Military Commander',
+  company:'Valemor Royal Court',
+  skill:'Royal Command', skillType:'Passive',
+  skillDesc:'Inspires absolute loyalty and fearlessness in allied forces.',
+  titles:['Crown Prince of Valemor'],
+  personality:'Noble, calm, highly educated.',
+  role:'Crown Prince of the Valemor Kingdom and future King. Husband of Aurelianne Lionheart. Marriage forges a powerful political alliance between Lionheart Group and Valemor Kingdom.',
+  family:'Husband of Aurelianne Lionheart',
+  spouse:'Aurelianne Lionheart',
+  children:'Celestia Lionheart Valemor, Ardyn Valemor',
+  status:'Husband of Aurelianne Lionheart'
+},
+{
+  id:'mireya_sol', gen:null, house:'Elyndra',
+  name:'Mireya Sol Astra', emoji:'🎬',
+  race:'Human', age:null, gender:'Female',
+  position:'Rising Actress · Influencer under Lionheart Entertainment',
+  company:'Lionheart Entertainment',
+  skill:'Stage Presence', skillType:'Passive',
+  skillDesc:'Commands attention and emotional response from audiences naturally.',
+  titles:[],
+  personality:'Ambitious and cheerful.',
+  role:'Rising actress and social influencer under Lionheart Entertainment. Girlfriend of Faelion Lionheart.',
+  family:'Girlfriend of Faelion Lionheart',
+  spouse:'Faelion Lionheart (Boyfriend)',
+  children:'None',
+  status:'Girlfriend of Faelion Lionheart'
+},
+
+/* ═══════════════════════════════════════════
+   PARTNERS / SPOUSES — HOUSE MARIANNE
+═══════════════════════════════════════════ */
+{
+  id:'eleanor_valtoris', gen:null, house:'Marianne',
+  name:'Eleanor Valtoris', emoji:'⚖️',
+  race:'Human', age:null, gender:'Female',
+  position:'Senator of Central Human Kingdom · Chairwoman, Civil Welfare Committee',
+  company:'Central Human Kingdom — Senate',
+  skill:'Civil Voice', skillType:'Passive',
+  skillDesc:'Her words carry natural authority in government chambers, increasing support for humanitarian policies.',
+  titles:[],
+  personality:'Strong-willed and intelligent.',
+  role:'Serves as Senator of the Central Human Kingdom and Chairwoman of the Civil Welfare Committee. Wife of Cedric Lionheart. Bridges the Lionheart Foundation with government legislative power.',
+  family:'Wife of Cedric Lionheart',
+  spouse:'Cedric Lionheart',
+  children:'Aurelia Lionheart, Theodore Lionheart',
+  status:'Wife of Cedric Lionheart'
+},
+{
+  id:'lucien_arkwell', gen:null, house:'Marianne',
+  name:'Prof. Lucien Arkwell', emoji:'📖',
+  race:'Human', age:null, gender:'Male',
+  position:'Dean of Imperial Medical Academy · Chief Researcher, Arkwell Pharmaceuticals',
+  company:'Imperial Medical Academy · Arkwell Pharmaceuticals',
+  skill:'Diagnosis Aura', skillType:'Passive',
+  skillDesc:'Instantly identifies diseases, ailments, and soul damage in nearby individuals.',
+  titles:[],
+  personality:'Intellectual and calm.',
+  role:'Serves as Dean of the Imperial Medical Academy and Chief Researcher of Arkwell Pharmaceuticals. Husband of Helena Lionheart. Unites medical academia and pharmaceutical research.',
+  family:'Husband of Helena Lionheart',
+  spouse:'Helena Lionheart',
+  children:'Serenia Arkwell, Lucius Arkwell',
+  status:'Husband of Helena Lionheart'
 }
 ];
 
@@ -1812,7 +2361,7 @@ const COMPANIES = [
   name:'Lionheart Technologies', icon:'🔮', focus:'AI Rune Systems & Crystal Networks',
   rows:[
     {name:'Caelthas Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:42, race:'High Elf', duty:'Oversees AI Rune, Magic Networks, Advanced Technology', fam:'1st Child of Aetherion', gen:'g2', type:'family', id:'caelthas'},
-    {name:'Lady Elenoria Dawnveil', pos:'Chief Research Advisor', sub:'R&D', age:null, race:'High Elf', duty:'Rune programming & mana circuit research', fam:'Wife of Caelthas', gen:null, type:'spouse'},
+    {name:'Lady Elenoria Dawnveil', pos:'Chief Research Advisor', sub:'R&D', age:null, race:'High Elf', duty:'Rune programming & mana circuit research', fam:'Wife of Caelthas', gen:null, type:'spouse', id:'elenoria_dawnveil'},
     {name:'Theriva Goldmane', pos:'VP of Engineering', sub:'Engineering', age:null, race:'High Elf', duty:'Oversees engineering & product dev', fam:'—', gen:null, type:'staff'},
     {name:'Corvan Mireth', pos:'Senior Rune Architect', sub:'R&D', age:null, race:'Human', duty:'Crystal network architecture design', fam:'—', gen:null, type:'staff'},
     {name:'Ysolde Vane', pos:'AI Crystal Operations Manager', sub:'Operations', age:null, race:'Goblin', duty:'AI crystal deployment & maintenance', fam:'—', gen:null, type:'staff'},
@@ -1823,7 +2372,7 @@ const COMPANIES = [
   name:'Lionheart Construction', icon:'🏗️', focus:'Cities, Fortresses & Dungeon Facilities',
   rows:[
     {name:'Darius Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:34, race:'High Human', duty:'Leads infrastructure, fortress cities, industrial zones', fam:'Child of Aetherion (by Evelyne)', gen:'g2', type:'family', id:'darius'},
-    {name:'Helena Ironforge', pos:'CEO Subsidiaries — Heavy Industries · Chief Structural Engineer', sub:'Engineering', age:null, race:'Dwarf', duty:'Fortress engineering & industrial golem machinery', fam:'Wife of Darius', gen:null, type:'spouse'},
+    {name:'Helena Ironforge', pos:'CEO Subsidiaries — Heavy Industries · Chief Structural Engineer', sub:'Engineering', age:null, race:'Dwarf', duty:'Fortress engineering & industrial golem machinery', fam:'Wife of Darius', gen:null, type:'spouse', id:'helena_ironforge'},
     {name:'Gramhold Ironvein', pos:'General Manager, Operations', sub:'Operations', age:null, race:'Dwarf', duty:'Day-to-day construction oversight', fam:'—', gen:null, type:'staff'},
     {name:'Sira Blacktower', pos:'Project Development Manager', sub:'Development', age:null, race:'Orc', duty:'City planning & fortress design coordination', fam:'—', gen:null, type:'staff'},
     {name:'Rolvak Dustmantle', pos:'Safety & Compliance Supervisor', sub:'Compliance', age:null, race:'Dwarf', duty:'Construction safety enforcement', fam:'—', gen:null, type:'staff'},
@@ -1834,8 +2383,8 @@ const COMPANIES = [
   name:'Lionheart Biotech', icon:'🧬', focus:'Monster Research, Regeneration & Biological Enhancement',
   rows:[
     {name:'Velisara Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:32, race:'High Demon', duty:'Oversees biological enhancement, monster research, regeneration technology', fam:'Child of Aetherion (by Evelyne)', gen:'g2', type:'family', id:'velisara'},
-    {name:'Prof. Malgrith Solaris', pos:'Chief Scientific Director', sub:'Research', age:null, race:'Dark Elf', duty:'Soul genetics and monster evolution research', fam:'Husband of Velisara', gen:null, type:'spouse'},
-    {name:'Prof. Lucien Arkwell', pos:'Dean / Chief Researcher (Affiliate)', sub:'Medical Institute', age:null, race:'Human', duty:'Pharmaceutical research & academia partnership', fam:'Husband of Helena', gen:null, type:'spouse'},
+    {name:'Prof. Malgrith Solaris', pos:'Chief Scientific Director', sub:'Research', age:null, race:'Dark Elf', duty:'Soul genetics and monster evolution research', fam:'Husband of Velisara', gen:null, type:'spouse', id:'malgrith_solaris'},
+    {name:'Prof. Lucien Arkwell', pos:'Dean / Chief Researcher (Affiliate)', sub:'Medical Institute', age:null, race:'Human', duty:'Pharmaceutical research & academia partnership', fam:'Husband of Helena', gen:null, type:'spouse', id:'lucien_arkwell'},
     {name:'Valdra Moonweave', pos:'VP of Research', sub:'Research', age:null, race:'Dark Elf', duty:'Oversees all research programs', fam:'—', gen:null, type:'staff'},
     {name:'Orrex Bloodholm', pos:'Monster Containment Manager', sub:'Security/Containment', age:null, race:'Orc', duty:'Monster specimen containment & security', fam:'—', gen:null, type:'staff'},
     {name:'Fenris Aurell', pos:'Regeneration Lab Supervisor', sub:'Lab', age:null, race:'High Elf', duty:'Regeneration experiment oversight', fam:'—', gen:null, type:'staff'},
@@ -1845,9 +2394,9 @@ const COMPANIES = [
   name:'Lionheart Security Division', icon:'🗡️', focus:'Private Military, Intelligence & Tower Expeditions',
   rows:[
     {name:'Azrakar Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:33, race:'High Demon', duty:'Private military, elite hunters, intelligence operations', fam:'Child of Aetherion (by Seraphina)', gen:'g2', type:'family', id:'azrakar'},
-    {name:'Lady Nythera Vhol', pos:'Director of Intelligence Operations / Commander, Black Veil', sub:'Intelligence', age:null, race:'High Demon', duty:'Espionage, political assassination, infiltration', fam:'Wife of Azrakar', gen:null, type:'spouse'},
+    {name:'Lady Nythera Vhol', pos:'Director of Intelligence Operations / Commander, Black Veil', sub:'Intelligence', age:null, race:'High Demon', duty:'Espionage, political assassination, infiltration', fam:'Wife of Azrakar', gen:null, type:'spouse', id:'nythera_vhol'},
     {name:'Mordreth Lionheart', pos:'Senior Manager / Commander, Abyss Guard Unit', sub:'Military Ops', age:27, race:'High Demon', duty:'Elite military response teams & Tower suppression', fam:'1st Child of Baelzhar', gen:'g2', type:'family', id:'mordreth'},
-    {name:'Lady Xyrella Draven', pos:'Vice Commander, Black Veil Intelligence Agency', sub:'Intelligence', age:null, race:'High Demon', duty:'Interrogation and covert warfare', fam:'Wife of Mordreth', gen:null, type:'spouse'},
+    {name:'Lady Xyrella Draven', pos:'Vice Commander, Black Veil Intelligence Agency', sub:'Intelligence', age:null, race:'High Demon', duty:'Interrogation and covert warfare', fam:'Wife of Mordreth', gen:null, type:'spouse', id:'xyrella_draven'},
     {name:'Vexaron Nightblade', pos:'Special Operations Commander', sub:'Special Ops', age:null, race:'Dark Elf', duty:'High-risk infiltration and extraction missions', fam:'—', gen:null, type:'staff'},
     {name:'Kross Ironmaw', pos:'Tower Expedition General Manager', sub:'Tower Ops', age:null, race:'Beastman', duty:'Coordinates Tower expedition logistics', fam:'—', gen:null, type:'staff'},
     {name:'Sylmara Ashveil', pos:'Intelligence Analysis Supervisor', sub:'Intelligence', age:null, race:'High Elf', duty:'Data analysis and threat assessment', fam:'—', gen:null, type:'staff'},
@@ -1876,7 +2425,7 @@ const COMPANIES = [
     {name:'Vito', pos:'Investment Analyst', sub:'Investment Division', age:null, race:'Human', duty:'Conducts investment research and market analysis', fam:'—', gen:null, type:'staff', id:'vito_investment'},
     {name:'Laurela', pos:'Finance Analyst', sub:'Investment Division', age:null, race:'Human', duty:'Financial analysis, reporting, and budget monitoring', fam:'—', gen:null, type:'staff', id:'laurela_investment'},
     {name:'Coco', pos:'Treasury Staff', sub:'Investment Division', age:null, race:'Beastman (Panda)', duty:'Treasury operations and fund custody management', fam:'—', gen:null, type:'staff', id:'coco_investment'},
-    {name:'Duke Valerius Evernight', pos:'Minister of International Trade (Affiliate)', sub:'Trade & Commerce', age:null, race:'High Elf', duty:'International trade & luxury goods strategy', fam:'Husband of Sylvaria', gen:null, type:'spouse'},
+    {name:'Duke Valerius Evernight', pos:'Minister of International Trade (Affiliate)', sub:'Trade & Commerce', age:null, race:'High Elf', duty:'International trade & luxury goods strategy', fam:'Husband of Sylvaria', gen:null, type:'spouse', id:'valerius_evernight'},
     {name:'Aldric Thornvale', pos:'CFO — Lionheart Finance', sub:'Finance', age:null, race:'Human', duty:'Financial reporting, budget & investment strategy', fam:'—', gen:null, type:'staff'},
     {name:'Melara Goldspire', pos:'Investment Operations Manager', sub:'Finance', age:null, race:'High Elf', duty:'Portfolio management & rune-asset trading', fam:'—', gen:null, type:'staff'},
     {name:'Crix Noven', pos:'Retail General Manager', sub:'Retail', age:null, race:'Human', duty:'Department store chain operations', fam:'—', gen:null, type:'staff'},
@@ -1888,7 +2437,7 @@ const COMPANIES = [
   rows:[
     {name:'Duchess Seravelle Mordrith', pos:'CEO Subsidiaries', sub:'All', age:null, race:'High Demon', duty:'Leads Strategic & Intelligence operations; military strategy, shadow diplomacy, intelligence warfare', fam:'1st Wife of Baelzhar', gen:null, type:'spouse', id:'seravelle'},
     {name:'Baelzhar Lionheart', pos:'Chief Strategy Officer (CSO) — Holding Company · Supreme Commander', sub:'Strategic Oversight', age:295, race:'High Demon', duty:'Military strategy, shadow diplomacy, intelligence warfare oversight at holding level', fam:'Head of House Baelzhar', gen:'g1', type:'family', id:'baelzhar'},
-    {name:'Lady Vireza Nocturne', pos:'Director, Black Market Trade Division', sub:'Underground', age:null, race:'Dark Elf', duty:'Illegal relic trade and information brokerage', fam:'2nd Wife of Baelzhar', gen:null, type:'spouse'},
+    {name:'Lady Vireza Nocturne', pos:'Director, Black Market Trade Division', sub:'Underground', age:null, race:'Dark Elf', duty:'Illegal relic trade and information brokerage', fam:'2nd Wife of Baelzhar', gen:null, type:'spouse', id:'vireza_nocturne'},
     {name:'Navar Duskmantle', pos:'Senior Intelligence Analyst', sub:'Intelligence', age:null, race:'Dark Elf', duty:'Strategic intelligence analysis', fam:'—', gen:null, type:'staff'},
     {name:'Hexra Valmoor', pos:'Shadow Diplomacy Manager', sub:'Diplomacy', age:null, race:'High Demon', duty:'Manages covert diplomatic contacts', fam:'—', gen:null, type:'staff'},
     {name:'Cael Morthwyn', pos:'Military Strategy Supervisor', sub:'Military', age:null, race:'Orc', duty:'Battlefield planning and logistics', fam:'—', gen:null, type:'staff'},
@@ -1900,8 +2449,8 @@ const COMPANIES = [
     {name:'Duke Roland Evercrest', pos:'CEO Subsidiaries', sub:'Medical & Humanitarian', age:null, race:'High Human', duty:'Leads Foundation & Medical; hospital networks, research grants, humanitarian programs', fam:'Husband of Marianne', gen:null, type:'spouse', id:'roland'},
     {name:'Marianne Lionheart', pos:'Chief Operating Officer (COO) — Holding Company · Supreme Director', sub:'Humanitarian Oversight', age:71, race:'High Human', duty:'Oversight of all humanitarian operations, disaster relief, civilian welfare at holding level', fam:'Head of House Marianne', gen:'g1', type:'family', id:'marianne'},
     {name:'Cedric Lionheart', pos:'Director, Lionheart Foundation / Humanitarian Advisor', sub:'Humanitarian', age:29, race:'High Human', duty:'Disaster recovery, refugee protection, public hospitals', fam:'1st Child of Marianne', gen:'g2', type:'family', id:'cedric'},
-    {name:'Eleanor Valtoris', pos:'Senator / Chairwoman, Civil Welfare Committee (Affiliate)', sub:'Government', age:null, race:'Human', duty:'Government policy on civil welfare', fam:'Wife of Cedric', gen:null, type:'spouse'},
-    {name:'Prof. Lucien Arkwell', pos:'Dean / Chief Pharma Researcher (Affiliate)', sub:'Pharmaceutical', age:null, race:'Human', duty:'Medical academia & pharmaceutical development', fam:'Husband of Helena', gen:null, type:'spouse'},
+    {name:'Eleanor Valtoris', pos:'Senator / Chairwoman, Civil Welfare Committee (Affiliate)', sub:'Government', age:null, race:'Human', duty:'Government policy on civil welfare', fam:'Wife of Cedric', gen:null, type:'spouse', id:'eleanor_valtoris'},
+    {name:'Prof. Lucien Arkwell', pos:'Dean / Chief Pharma Researcher (Affiliate)', sub:'Pharmaceutical', age:null, race:'Human', duty:'Medical academia & pharmaceutical development', fam:'Husband of Helena', gen:null, type:'spouse', id:'lucien_arkwell'},
     {name:'Sorel Whiteveil', pos:'VP of Humanitarian Operations', sub:'Operations', age:null, race:'Human', duty:'Coordinates all disaster relief operations', fam:'—', gen:null, type:'staff'},
     {name:'Mira Ashburn', pos:'Hospital Network General Manager', sub:'Medical', age:null, race:'Human', duty:'Manages hospital chain across kingdoms', fam:'—', gen:null, type:'staff'},
     {name:'Arlen Godsend', pos:'Welfare Program Supervisor', sub:'Welfare', age:null, race:'Human', duty:'Orphanage and civilian aid programs', fam:'—', gen:null, type:'staff'},
@@ -1970,6 +2519,7 @@ function showPage(name, scrollTarget){
     }
   }
   if(name==='family') renderFamily();
+  if(name==='relation') renderRelation();
 }
 
 function goToStructural(companyName){
@@ -2121,8 +2671,175 @@ function showHouseTree(houseId){
 }
 
 /* ═══════════════════════════════════════════════
-   MODAL — VIEW / EDIT / ADD / DELETE
+   RELATION RENDER
 ═══════════════════════════════════════════════ */
+const RELATIONS = [
+/* ══════════════════════════════════════════════
+   HOUSE AETHERION
+══════════════════════════════════════════════ */
+{house:'Aetherion', memberId:'aetherion', memberEmoji:'👑', memberName:'Aetherion Lionheart', memberGen:'Gen 1 — Supreme Head', partners:[
+  {type:'wife', order:'1st Wife', emoji:'🌿', name:'Lady Seraphina Vaelcrest', race:'High Elf', age:287, position:'Head of Noble Affairs · Director of Royal Alliances', skill:'Moonlight Authority (Passive)', notes:'Daughter of ancient Vaelcrest Royal Bloodline. "Queen of Noble Society."', children:'Caelthas, Azrakar'},
+  {type:'wife', order:'2nd Wife', emoji:'💎', name:'Lady Miradelle Astoria', race:'High Human', age:71, position:'Director of International Diplomacy · Political Advisor', skill:'Diplomatic Resonance (Passive)', notes:'Former princess of Astoria Kingdom. Known as the "Silver-Tongued Duchess."', children:'Sylvaria'},
+  {type:'wife', order:'3rd Wife', emoji:'🔮', name:'Lady Evelyne Noctis', race:'High Demon', age:263, position:'Supervisor of Abyss Research Division · Senior Advisor, Lionheart Biotech', skill:'Abyss Whisper (Active)', notes:'Descendant of ancient demon nobility. Feared as the "Abyss Queen."', children:'Darius, Velisara'},
+  {type:'concubine', order:'Concubine', emoji:'🌙', name:'Lyrieth Moonveil', race:'High Elf', age:198, position:'Personal Intelligence Secretary · Hidden Information Broker', skill:'Silent Mind (Passive)', notes:'Known in secret circles as "The Silent Moon." Loyal only to Aetherion.', children:'Aerion'},
+]},
+{house:'Aetherion', memberId:'caelthas', memberEmoji:'🔮', memberName:'Caelthas Lionheart', memberGen:'Gen 2 — House Aetherion', partners:[
+  {type:'wife', order:'Wife', emoji:'📚', name:'Lady Elenoria Dawnveil', race:'High Elf', age:null, position:'Chief Research Advisor, Lionheart Technologies', skill:'—', notes:'Former professor at Imperial Arcane University. Expert in Rune Programming & Mana Circuits.', children:'Elaris, Vaelric'},
+]},
+{house:'Aetherion', memberId:'sylvaria', memberEmoji:'👑', memberName:'Sylvaria Lionheart', memberGen:'Gen 2 — House Aetherion', partners:[
+  {type:'husband', order:'Husband', emoji:'🌐', name:'Duke Valerius Evernight', race:'High Elf', age:null, position:'Minister of International Trade · Owner of Evernight Trading Consortium', skill:'—', notes:'Strong ties with royal families and merchant unions. Extremely ambitious diplomat.', children:'Selene, Leonhart'},
+]},
+{house:'Aetherion', memberId:'darius', memberEmoji:'🏗️', memberName:'Darius Lionheart', memberGen:'Gen 2 — House Aetherion', partners:[
+  {type:'wife', order:'Wife', emoji:'⚙️', name:'Helena Ironforge', race:'Dwarf', age:null, position:'Chief Structural Engineer · CEO Lionheart Heavy Industries, Motors & Shipyard', skill:'Iron Resonance (Active)', notes:'Daughter of Ironforge Mining Clan. The most respected engineer in Asterra.', children:'Kaizer, Brakka'},
+]},
+{house:'Aetherion', memberId:'azrakar', memberEmoji:'🗡️', memberName:'Azrakar Lionheart', memberGen:'Gen 2 — House Aetherion', partners:[
+  {type:'wife', order:'Wife', emoji:'🕵️', name:'Lady Nythera Vhol', race:'High Demon', age:null, position:'Director of Intelligence Operations · Commander, Black Veil Intelligence Agency', skill:'—', notes:'Runs her own Black Veil Intelligence Network. Expert in espionage and infiltration.', children:'Nyxara, Zephiron'},
+]},
+{house:'Aetherion', memberId:'velisara', memberEmoji:'🧬', memberName:'Velisara Lionheart', memberGen:'Gen 2 — House Aetherion', partners:[
+  {type:'husband', order:'Husband', emoji:'🔬', name:'Prof. Malgrith Solaris', race:'Dark Elf', age:null, position:'Chief Scientific Director, Lionheart Biotech', skill:'—', notes:'Former Head Researcher of Imperial Bio-Alchemy Institute. Expert in soul genetics. Considered morally dangerous by many kingdoms.', children:'Mirellia, Seraphyne'},
+]},
+{house:'Aetherion', memberId:'aerion', memberEmoji:'🌙', memberName:'Aerion Lionheart', memberGen:'Gen 2 — House Aetherion', partners:[
+  {type:'partner', order:'Partner', emoji:'🐾', name:'Arcelia Windrune', race:'Beastman', age:null, position:'Former S-Rank Adventurer · Founder, Windrune Hunter Guild', skill:'—', notes:'Fearless and fiercely loyal. Leads high-rank Tower expeditions and monster extermination.', children:'—'},
+]},
+{house:'Aetherion', memberId:'elaris', memberEmoji:'⚡', memberName:'Elaris Lionheart', memberGen:'Gen 3 — House Aetherion', partners:[
+  {type:'fiance', order:'Fiancée', emoji:'👸', name:'Princess Aurelisse Von Etrand', race:'High Elf', age:null, position:'Second Princess of Etrand Kingdom · Royal Diplomatic Advisor', skill:'—', notes:'Graceful and politically brilliant. Engagement forges an alliance with Etrand Kingdom.', children:'—'},
+]},
+{house:'Aetherion', memberId:'leonhart', memberEmoji:'🦁', memberName:'Leonhart Lionheart', memberGen:'Gen 3 — House Aetherion', partners:[
+  {type:'wife', order:'Wife', emoji:'🏛️', name:'Celestine Aurelia', race:'Human', age:null, position:'Government Treasury Officer · Ministry of Economic Affairs', skill:'—', notes:'Calm and highly intelligent. Strengthens Lionheart ties with government institutions.', children:'—'},
+]},
+{house:'Aetherion', memberId:'selene', memberEmoji:'✨', memberName:'Selene Lionheart', memberGen:'Gen 3 — House Aetherion', partners:[
+  {type:'boyfriend', order:'Boyfriend', emoji:'💍', name:'Lucard Ravenholt', race:'Human', age:null, position:'Founder & CEO, Ravenholt Luxury Group', skill:'—', notes:'Stylish and manipulative. Operates in fashion, jewelry, and magical accessories.', children:'—'},
+]},
+{house:'Aetherion', memberId:'kaizer', memberEmoji:'⚔️', memberName:'Kaizer Lionheart', memberGen:'Gen 3 — House Aetherion', partners:[
+  {type:'girlfriend', order:'Girlfriend', emoji:'🐾', name:'Freya Stormclaw', race:'Beastman', age:null, position:'A-Rank Hunter Guild Adventurer', skill:'—', notes:'Wild and fiercely loyal. Top-rank adventurer.', children:'—'},
+]},
+{house:'Aetherion', memberId:'nyxara', memberEmoji:'🌑', memberName:'Nyxara Lionheart', memberGen:'Gen 3 — House Aetherion', partners:[
+  {type:'candidate', order:'Engagement Candidate', emoji:'👑', name:'Prince Vaelor Drakemire', race:'High Demon', age:null, position:'Crown Prince of Drakemire Dominion · Military Commander', skill:'—', notes:'Ruthless and charismatic. Engagement would forge alliance with Drakemire Dominion.', children:'—'},
+]},
+{house:'Aetherion', memberId:'mirellia', memberEmoji:'🔬', memberName:'Mirellia Lionheart', memberGen:'Gen 3 — House Aetherion', partners:[
+  {type:'candidate', order:'Marriage Candidate', emoji:'⚗️', name:'Orion Valemortis', race:'Dark Elf', age:null, position:'Heir of Valemortis Pharmaceutical Empire', skill:'—', notes:'Secretive and intelligent. Strategic alliance with Valemortis Pharma.', children:'—'},
+]},
+{house:'Aetherion', memberId:'seraphyne', memberEmoji:'🩸', memberName:'Seraphyne Lionheart', memberGen:'Gen 3 — House Aetherion', partners:[
+  {type:'lover', order:'Lover', emoji:'⚔️', name:'Kael Draven', race:'Human', age:null, position:'Vice Captain, Black Fang Mercenary Company', skill:'—', notes:'Loyal and battle-hardened. Unofficial relationship disapproved by the family.', children:'—'},
+]},
+{house:'Aetherion', memberId:'vaelric', memberEmoji:'📈', memberName:'Vaelric Lionheart', memberGen:'Gen 3 — House Aetherion', partners:[
+  {type:'girlfriend', order:'Girlfriend', emoji:'💰', name:'Elise Farnova', race:'Human', age:null, position:'Daughter of Farnova Banking Group Chairman · Junior Financial Analyst', skill:'—', notes:'Intelligent and elegant. Relationship strengthens ties with Farnova Banking Group.', children:'—'},
+]},
+/* ══════════════════════════════════════════════
+   HOUSE BAELZHAR
+══════════════════════════════════════════════ */
+{house:'Baelzhar', memberId:'baelzhar', memberEmoji:'♟️', memberName:'Baelzhar Lionheart', memberGen:'Gen 1 — Branch House Head', partners:[
+  {type:'wife', order:'1st Wife', emoji:'♟️', name:'Duchess Seravelle Mordrith', race:'High Demon', age:null, position:'Chairwoman of Abyss Noble Council · CEO Strategic & Intelligence Operations', skill:'Shadow Veil (Active)', notes:'Elegant and deadly. Represents demon aristocracy in Imperial Senate. Politically dangerous.', children:'Mordreth, Lilithra'},
+  {type:'wife', order:'2nd Wife', emoji:'🌑', name:'Lady Vireza Nocturne', race:'Dark Elf', age:null, position:'Director, Black Market Trade Division · Owner of Nocturne Underground Consortium', skill:'—', notes:'Controls illegal relic trade and information brokerage networks.', children:'Varkiel, Zareth'},
+]},
+{house:'Baelzhar', memberId:'mordreth', memberEmoji:'🛡️', memberName:'Mordreth Lionheart', memberGen:'Gen 2 — House Baelzhar', partners:[
+  {type:'wife', order:'Wife', emoji:'🕵️', name:'Lady Xyrella Draven', race:'High Demon', age:null, position:'Vice Commander, Black Veil Intelligence Agency', skill:'—', notes:'Expert in interrogation and covert warfare. Politically dangerous partner.', children:'Ravion, Khaelys'},
+]},
+{house:'Baelzhar', memberId:'lilithra', memberEmoji:'🔗', memberName:'Lilithra Lionheart', memberGen:'Gen 2 — House Baelzhar', partners:[
+  {type:'fiance', order:'Fiancé', emoji:'🔧', name:'Kaedros Velnar', race:'Dark Elf', age:null, position:'Heir of Velnar Arcane Industries · Magic Weapon Manufacturing', skill:'—', notes:'Engagement forges strategic alliance in magic weapons manufacturing sector.', children:'—'},
+]},
+{house:'Baelzhar', memberId:'zareth', memberEmoji:'🖤', memberName:'Zareth Lionheart', memberGen:'Gen 2 — House Baelzhar', partners:[
+  {type:'lover', order:'Lover', emoji:'🔍', name:'Serina Valeth', race:'Human', age:null, position:'Information Broker · Owner of Valeth Intelligence Network', skill:'—', notes:'Unofficial relationship. Controls vast intelligence network. No children officially acknowledged.', children:'None officially'},
+]},
+/* ══════════════════════════════════════════════
+   HOUSE ELYNDRA
+══════════════════════════════════════════════ */
+{house:'Elyndra', memberId:'elyndra', memberEmoji:'🌟', memberName:'Elyndra Lionheart', memberGen:'Gen 1 — Entertainment House Head', partners:[
+  {type:'husband', order:'Husband', emoji:'🎭', name:'Lord Altheris Moonfang', race:'High Elf', age:null, position:'Chairman, Moonfang Arts Consortium · Music & Magical Cinema Producer', skill:'—', notes:'Artistic genius and legendary producer. Flamboyant and politically neutral. Behind many royal performers.', children:'Aurelianne, Faelion, Lysithea'},
+]},
+{house:'Elyndra', memberId:'aurelianne', memberEmoji:'⭐', memberName:'Aurelianne Lionheart', memberGen:'Gen 2 — House Elyndra', partners:[
+  {type:'husband', order:'Husband', emoji:'👑', name:'Crown Prince Cedrius Valemor', race:'Human', age:null, position:'Crown Prince of Valemor Kingdom · Future King & Royal Military Commander', skill:'—', notes:'Noble, calm, highly educated. Marriage forges powerful political alliance with Valemor Kingdom.', children:'Celestia, Ardyn'},
+]},
+{house:'Elyndra', memberId:'faelion', memberEmoji:'📺', memberName:'Faelion Lionheart', memberGen:'Gen 2 — House Elyndra', partners:[
+  {type:'girlfriend', order:'Girlfriend', emoji:'🎬', name:'Mireya Sol Astra', race:'Human', age:null, position:'Rising Actress · Influencer under Lionheart Entertainment', skill:'—', notes:'Ambitious and cheerful. Rising talent within Lionheart Entertainment.', children:'—'},
+]},
+/* ══════════════════════════════════════════════
+   HOUSE MARIANNE
+══════════════════════════════════════════════ */
+{house:'Marianne', memberId:'marianne', memberEmoji:'🤍', memberName:'Marianne Lionheart', memberGen:'Gen 1 — Humanitarian House Head', partners:[
+  {type:'husband', order:'Husband', emoji:'🏥', name:'Duke Roland Evercrest', race:'High Human', age:null, position:'Founder, Evercrest Medical Consortium · CEO Foundation & Medical', skill:'Mending Aura (Passive)', notes:'One of the greatest medical reformers in history. Calm, scholarly, and deeply ethical.', children:'Cedric, Helena, Orion'},
+]},
+{house:'Marianne', memberId:'cedric', memberEmoji:'🏥', memberName:'Cedric Lionheart', memberGen:'Gen 2 — House Marianne', partners:[
+  {type:'wife', order:'Wife', emoji:'⚖️', name:'Eleanor Valtoris', race:'Human', age:null, position:'Senator, Central Human Kingdom · Chairwoman, Civil Welfare Committee', skill:'—', notes:'Strong-willed and intelligent. Bridges Lionheart Foundation with government policy.', children:'Aurelia, Theodore'},
+]},
+{house:'Marianne', memberId:'helena', memberEmoji:'🔬', memberName:'Helena Lionheart', memberGen:'Gen 2 — House Marianne', partners:[
+  {type:'husband', order:'Husband', emoji:'📖', name:'Prof. Lucien Arkwell', race:'Human', age:null, position:'Dean, Imperial Medical Academy · Chief Researcher, Arkwell Pharmaceuticals', skill:'—', notes:'Intellectual and calm. Marriage unites medical research and pharmaceutical expertise.', children:'Serenia, Lucius'},
+]},
+];
+
+const HOUSE_META = {
+  Aetherion: {icon:'👑', banner:'h1', title:'The Supreme House', color:'rgba(201,168,76,0.15)'},
+  Baelzhar:  {icon:'♟️', banner:'h2', title:'The Strategist House', color:'rgba(139,26,26,0.2)'},
+  Elyndra:   {icon:'🌟', banner:'h3', title:'The Entertainment House', color:'rgba(26,90,42,0.2)'},
+  Marianne:  {icon:'🤍', banner:'h4', title:'The Humanitarian House', color:'rgba(200,200,240,0.1)'},
+};
+
+const REL_BADGE_CLASS = {
+  wife:'rel-wife', husband:'rel-husband', fiance:'rel-fiance',
+  concubine:'rel-concubine', lover:'rel-lover', girlfriend:'rel-girlfriend',
+  boyfriend:'rel-boyfriend', partner:'rel-partner', candidate:'rel-candidate'
+};
+
+function renderRelation(){
+  const el = document.getElementById('relationContent');
+  const byHouse = {};
+  HOUSES.forEach(h=>{ byHouse[h.id] = []; });
+  RELATIONS.forEach(r=>{ if(byHouse[r.house]) byHouse[r.house].push(r); });
+
+  el.innerHTML = HOUSES.map(h=>{
+    const meta = HOUSE_META[h.id];
+    const entries = byHouse[h.id];
+    if(!entries.length) return '';
+    return `
+      <div class="relation-house-section">
+        <div class="relation-house-header">
+          <div class="relation-house-icon">${meta.icon}</div>
+          <div>
+            <div class="relation-house-name">House ${h.id}</div>
+            <div class="relation-house-title">${meta.title}</div>
+          </div>
+        </div>
+        <div class="relation-cards">
+          ${entries.map(entry=>`
+            <div class="relation-card">
+              <div class="relation-card-header relation-clickable" onclick="openMember('${entry.memberId}')">
+                <div class="relation-member-avatar">${entry.memberEmoji}</div>
+                <div>
+                  <span class="relation-member-name">${entry.memberName}</span>
+                  <div class="relation-member-info">${entry.memberGen}</div>
+                </div>
+              </div>
+              <div class="relation-connector">💍 ${entry.partners.length > 1 ? entry.partners.length + ' Relationships' : entry.partners[0].order}</div>
+              <div class="relation-partner-block">
+                ${entry.partners.map(p=>{
+                  // auto-find partner's profile by name match
+                  const pm = MEMBERS.find(x=>x.name===p.name);
+                  const pid = pm ? pm.id : null;
+                  return `
+                  <div class="relation-partner-row">
+                    <div class="relation-partner-emoji" style="${pid?'cursor:pointer;':''}${pid?''://
+                    ''}" ${pid?`onclick="openMember('${pid}')"`:''}>${p.emoji}</div>
+                    <div style="flex:1;min-width:0;">
+                      <span class="rel-type-badge ${REL_BADGE_CLASS[p.type]||'rel-partner'}">${p.order}</span>
+                      <span class="relation-partner-name" style="${pid?'cursor:pointer;color:var(--gold-light);':''}text-decoration:${pid?'none':''}" ${pid?`onclick="openMember('${pid}')"`:''}>${p.name}${pid?' <span style="font-family:var(--font-ui);font-size:0.62rem;color:var(--gold-dim);letter-spacing:0.1em;">↗ PROFILE</span>':''}</span>
+                      <div class="relation-partner-race">${p.race}${p.age ? ' · Age '+p.age : ''}</div>
+                      <div class="relation-partner-pos">${p.position}</div>
+                      ${p.skill && p.skill!=='—' ? `<div style="font-family:var(--font-ui);font-size:0.72rem;color:var(--gold-dim);margin-top:3px;">⚡ ${p.skill}</div>` : ''}
+                      ${p.notes ? `<div style="font-size:0.78rem;color:var(--text-dim);margin-top:4px;font-style:italic;">${p.notes}</div>` : ''}
+                      ${p.children && p.children!=='—' ? `<div style="font-family:var(--font-ui);font-size:0.7rem;color:var(--gold-dim);margin-top:4px;letter-spacing:0.05em;">👶 ${p.children}</div>` : ''}
+                    </div>
+                  </div>`;
+                }).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+
 let _currentEditId = null;
 let _editMode = false;
 
@@ -2316,6 +3033,7 @@ function saveMember(isNew){
   if(currentPage==='staff') renderStaff(document.querySelector('.filter-btn.active')?.dataset.filter||'all', document.getElementById('staffSearch')?.value||'');
   if(currentPage==='structural') renderStructural();
   if(currentPage==='family') renderFamily();
+  if(currentPage==='relation') renderRelation();
   // Show view modal of saved member
   _currentEditId = id;
   renderViewModal(updated);
