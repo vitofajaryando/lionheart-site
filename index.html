@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lionheart Group — Asterra's Premier Conglomerate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════
+   CSS VARIABLES — EDIT HERE TO RETHEME
+═══════════════════════════════════════════════ */
+:root {
+  --gold:        #C9A84C;
+  --gold-light:  #E8D08A;
+  --gold-dim:    #7A5F2A;
+  --bg-dark:     #09090F;
+  --bg-mid:      #10101C;
+  --bg-card:     #141420;
+  --bg-card2:    #1A1A2A;
+  --text-light:  #F0EAD6;
+  --text-dim:    #8A8070;
+  --text-mid:    #C4B89A;
+  --red-accent:  #8B1A1A;
+  --blue-accent: #1A2A5A;
+  --border:      rgba(201,168,76,0.2);
+  --border-strong: rgba(201,168,76,0.5);
+  --shadow:      0 8px 40px rgba(0,0,0,0.8);
+  --font-display: 'Cinzel', serif;
+  --font-body:    'Cormorant Garamond', serif;
+  --font-ui:      'Montserrat', sans-serif;
+  --radius:       4px;
+  --transition:   0.3s ease;
+}
+
+/* ═══ RESET & BASE ═══ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg-dark);
+  color:var(--text-light);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+a{color:var(--gold);text-decoration:none;}
+a:hover{color:var(--gold-light);}
+img{max-width:100%;}
+
+/* ═══ SCROLLBAR ═══ */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg-dark);}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px;}
+
+/* ═══ PARTICLES BG ═══ */
+#particles{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;overflow:hidden;
+}
+.particle{
+  position:absolute;width:2px;height:2px;
+  background:var(--gold);border-radius:50%;
+  opacity:0;animation:float-up linear infinite;
+}
+@keyframes float-up{
+  0%{opacity:0;transform:translateY(100vh) scale(0);}
+  10%{opacity:0.6;}
+  90%{opacity:0.3;}
+  100%{opacity:0;transform:translateY(-10vh) scale(1.5);}
+}
+
+/* ═══ HEADER / NAV ═══ */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(9,9,15,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  max-width:1400px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:72px;
+}
+.logo{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--font-display);font-size:1.1rem;
+  letter-spacing:0.15em;color:var(--gold);
+  white-space:nowrap;
+}
+.logo-icon{
+  width:40px;height:40px;
+  border:2px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;
+}
+nav{display:flex;gap:0;align-items:center;}
+nav a{
+  font-family:var(--font-ui);font-size:0.72rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text-mid);padding:8px 16px;
+  transition:color var(--transition);
+  border-bottom:2px solid transparent;
+  white-space:nowrap;
+}
+nav a:hover,nav a.active{color:var(--gold);border-bottom-color:var(--gold);}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;padding:8px;
+}
+.hamburger span{
+  width:24px;height:2px;background:var(--gold);
+  transition:var(--transition);display:block;
+}
+.mobile-nav{
+  display:none;position:fixed;top:72px;left:0;width:100%;
+  background:rgba(9,9,15,0.98);border-bottom:1px solid var(--border);
+  flex-direction:column;z-index:999;
+  padding:1rem 0;
+}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{
+  font-family:var(--font-ui);font-size:0.8rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--text-mid);
+  padding:14px 2rem;border-bottom:1px solid var(--border);
+  transition:color var(--transition);
+}
+.mobile-nav a:hover{color:var(--gold);}
+
+/* ═══ PAGES ═══ */
+.page{display:none;min-height:100vh;padding-top:72px;}
+.page.active{display:block;}
+
+/* ═══ HOME PAGE ═══ */
+.hero{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 20%, rgba(139,26,26,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(26,42,90,0.15) 0%, transparent 50%),
+    var(--bg-dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:6rem 2rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-crest{
+  font-size:4rem;margin-bottom:1.5rem;
+  animation:pulse-glow 3s ease-in-out infinite;
+}
+@keyframes pulse-glow{
+  0%,100%{filter:drop-shadow(0 0 8px var(--gold));}
+  50%{filter:drop-shadow(0 0 24px var(--gold-light));}
+}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.5rem,8vw,5.5rem);
+  font-weight:900;letter-spacing:0.1em;
+  color:var(--gold);
+  text-shadow:0 0 40px rgba(201,168,76,0.4);
+  margin-bottom:0.5rem;
+}
+.hero-sub{
+  font-family:var(--font-display);
+  font-size:clamp(0.8rem,2vw,1rem);
+  letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--text-dim);margin-bottom:2rem;
+}
+.hero-divider{
+  width:200px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto 2.5rem;
+}
+.hero-tagline{
+  font-size:clamp(1.2rem,3vw,1.8rem);
+  font-style:italic;color:var(--text-mid);
+  max-width:700px;margin:0 auto 1rem;
+  font-weight:300;
+}
+.hero-tagline strong{color:var(--gold-light);font-style:normal;}
+.hero-motto{
+  font-family:var(--font-ui);font-size:0.75rem;
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--gold-dim);margin-top:1.5rem;
+}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-family:var(--font-ui);font-size:0.65rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--text-dim);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:bounce 2s ease-in-out infinite;
+}
+@keyframes bounce{
+  0%,100%{transform:translateX(-50%) translateY(0);}
+  50%{transform:translateX(-50%) translateY(6px);}
+}
+.hero-stats{
+  display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap;justify-content:center;
+}
+.stat{text-align:center;}
+.stat-num{
+  font-family:var(--font-display);font-size:2.2rem;
+  color:var(--gold);font-weight:700;
+  display:block;line-height:1;
+}
+.stat-label{
+  font-family:var(--font-ui);font-size:0.65rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--text-dim);margin-top:4px;
+}
+
+/* WORLD SECTION */
+.world-section{
+  max-width:1200px;margin:0 auto;padding:6rem 2rem;
+}
+.section-header{
+  text-align:center;margin-bottom:4rem;
+}
+.section-label{
+  font-family:var(--font-ui);font-size:0.7rem;
+  letter-spacing:0.4em;text-transform:uppercase;
+  color:var(--gold-dim);margin-bottom:1rem;
+  display:block;
+}
+.section-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  color:var(--gold);font-weight:700;
+  margin-bottom:1rem;
+}
+.section-line{
+  width:80px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto;
+}
+.race-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:1rem;
+}
+.race-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.2rem;text-align:center;
+  transition:var(--transition);
+}
+.race-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.race-icon{font-size:2rem;margin-bottom:0.5rem;}
+.race-name{
+  font-family:var(--font-display);font-size:0.8rem;
+  color:var(--gold);letter-spacing:0.1em;margin-bottom:0.3rem;
+}
+.race-desc{font-size:0.75rem;color:var(--text-dim);font-family:var(--font-ui);}
+
+/* DIVISIONS PREVIEW */
+.divisions-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1rem;
+}
+.div-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.5rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+}
+.div-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-dim));
+  opacity:0;transition:var(--transition);
+}
+.div-card:hover{border-color:var(--border-strong);transform:translateY(-4px);}
+.div-card:hover::before{opacity:1;}
+.div-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.div-name{
+  font-family:var(--font-display);font-size:0.8rem;
+  color:var(--gold);letter-spacing:0.08em;margin-bottom:0.4rem;
+}
+.div-focus{font-size:0.8rem;color:var(--text-dim);font-family:var(--font-ui);}
+
+/* ═══ ABOUT PAGE ═══ */
+.page-hero{
+  background:
+    linear-gradient(180deg,var(--bg-dark) 0%,var(--bg-mid) 100%);
+  padding:5rem 2rem 3rem;text-align:center;
+  border-bottom:1px solid var(--border);
+}
+.page-hero h2{
+  font-family:var(--font-display);
+  font-size:clamp(2rem,5vw,3.5rem);
+  color:var(--gold);margin-bottom:0.5rem;
+}
+.page-hero p{color:var(--text-mid);font-size:1rem;font-family:var(--font-ui);}
+.about-content{max-width:1100px;margin:0 auto;padding:4rem 2rem;}
+.about-block{
+  display:grid;grid-template-columns:1fr 2fr;gap:3rem;
+  margin-bottom:4rem;align-items:start;
+}
+.about-block.reverse{grid-template-columns:2fr 1fr;}
+.about-label{
+  font-family:var(--font-display);font-size:0.75rem;
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--gold-dim);
+  margin-bottom:0.5rem;
+}
+.about-title{
+  font-family:var(--font-display);font-size:1.6rem;
+  color:var(--gold);margin-bottom:1rem;
+}
+.about-text{color:var(--text-mid);line-height:1.9;font-size:1rem;}
+.about-text p{margin-bottom:1rem;}
+.info-box{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:2rem;
+}
+.info-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.6rem 0;border-bottom:1px solid var(--border);
+  font-family:var(--font-ui);font-size:0.8rem;
+}
+.info-row:last-child{border-bottom:none;}
+.info-key{color:var(--text-dim);}
+.info-val{color:var(--gold-light);font-weight:500;}
+.company-cards{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5rem;margin-top:2rem;
+}
+.company-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.8rem;
+  transition:var(--transition);
+}
+.company-card:hover{border-color:var(--gold);box-shadow:0 4px 20px rgba(201,168,76,0.1);}
+.company-card h4{
+  font-family:var(--font-display);font-size:0.95rem;
+  color:var(--gold);margin-bottom:0.5rem;letter-spacing:0.05em;
+}
+.company-card p{font-size:0.85rem;color:var(--text-dim);font-family:var(--font-ui);}
+.company-badge{
+  display:inline-block;
+  font-family:var(--font-ui);font-size:0.65rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  background:rgba(201,168,76,0.1);border:1px solid var(--gold-dim);
+  color:var(--gold-dim);padding:2px 8px;border-radius:2px;
+  margin-bottom:0.6rem;
+}
+
+/* ═══ STAFF PAGE ═══ */
+.staff-controls{
+  max-width:1200px;margin:0 auto;padding:2rem 2rem 1rem;
+  display:flex;gap:1rem;flex-wrap:wrap;align-items:center;
+}
+.search-box{
+  flex:1;min-width:200px;
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:10px 16px;
+  color:var(--text-light);font-family:var(--font-ui);font-size:0.85rem;
+  outline:none;transition:border-color var(--transition);
+}
+.search-box:focus{border-color:var(--gold);}
+.search-box::placeholder{color:var(--text-dim);}
+.filter-btn{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:10px 18px;
+  color:var(--text-mid);font-family:var(--font-ui);font-size:0.72rem;
+  letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;
+  transition:var(--transition);white-space:nowrap;
+}
+.filter-btn:hover,.filter-btn.active{
+  border-color:var(--gold);color:var(--gold);
+  background:rgba(201,168,76,0.08);
+}
+.staff-grid{
+  max-width:1200px;margin:0 auto;padding:1rem 2rem 4rem;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1.5rem;
+}
+.staff-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+  transition:var(--transition);cursor:pointer;
+}
+.staff-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(201,168,76,0.08);}
+.staff-card-header{
+  padding:1.5rem 1.5rem 1rem;
+  border-bottom:1px solid var(--border);
+  position:relative;
+}
+.staff-avatar{
+  width:56px;height:56px;border-radius:50%;
+  border:2px solid var(--gold-dim);
+  background:linear-gradient(135deg,var(--bg-mid),var(--bg-card2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:0.8rem;flex-shrink:0;
+}
+.staff-name{
+  font-family:var(--font-display);font-size:1rem;
+  color:var(--text-light);margin-bottom:0.2rem;
+}
+.staff-role{
+  font-family:var(--font-ui);font-size:0.72rem;
+  letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;
+}
+.staff-card-body{padding:1rem 1.5rem 1.2rem;}
+.staff-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0.7rem;}
+.tag{
+  font-family:var(--font-ui);font-size:0.65rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  background:rgba(201,168,76,0.08);border:1px solid var(--border);
+  color:var(--text-dim);padding:2px 8px;border-radius:2px;
+}
+.tag.race{border-color:rgba(26,42,90,0.8);background:rgba(26,42,90,0.3);}
+.tag.gen{border-color:rgba(139,26,26,0.6);background:rgba(139,26,26,0.15);color:#c87070;}
+.staff-skill{
+  font-size:0.82rem;color:var(--text-mid);
+  font-style:italic;
+}
+.staff-skill span{color:var(--gold-light);font-style:normal;font-weight:500;}
+.view-profile-btn{
+  display:inline-block;margin-top:0.8rem;
+  font-family:var(--font-ui);font-size:0.68rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold-dim);border-bottom:1px solid var(--gold-dim);
+  transition:var(--transition);cursor:pointer;
+}
+.view-profile-btn:hover{color:var(--gold);border-color:var(--gold);}
+
+/* ═══ MODAL ═══ */
+.modal-overlay{
+  display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.85);z-index:2000;
+  align-items:center;justify-content:center;padding:1rem;
+  backdrop-filter:blur(8px);
+}
+.modal-overlay.open{display:flex;}
+.modal{
+  background:var(--bg-card);border:1px solid var(--border-strong);
+  border-radius:var(--radius);max-width:700px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  position:relative;animation:modal-in 0.3s ease;
+}
+@keyframes modal-in{
+  from{opacity:0;transform:scale(0.95) translateY(20px);}
+  to{opacity:1;transform:scale(1) translateY(0);}
+}
+.modal-close{
+  position:sticky;top:0;right:0;float:right;
+  background:var(--bg-dark);border:1px solid var(--border);
+  color:var(--text-dim);width:36px;height:36px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1.2rem;margin:12px 12px 0 0;
+  transition:var(--transition);z-index:1;
+}
+.modal-close:hover{color:var(--gold);border-color:var(--gold);}
+.modal-header{
+  padding:2rem 2rem 1.5rem;
+  border-bottom:1px solid var(--border);
+  display:flex;gap:1.5rem;align-items:flex-start;
+  margin-top:-36px;padding-top:2.5rem;
+}
+.modal-avatar{
+  width:80px;height:80px;border-radius:50%;flex-shrink:0;
+  border:2px solid var(--gold);
+  background:linear-gradient(135deg,var(--bg-mid),var(--bg-card2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;
+}
+.modal-name{
+  font-family:var(--font-display);font-size:1.5rem;
+  color:var(--gold);margin-bottom:0.3rem;
+}
+.modal-title{
+  font-family:var(--font-ui);font-size:0.72rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--text-dim);margin-bottom:0.5rem;
+}
+.modal-body{padding:1.5rem 2rem 2rem;}
+.modal-section{margin-bottom:1.5rem;}
+.modal-section h4{
+  font-family:var(--font-display);font-size:0.8rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold-dim);margin-bottom:0.8rem;
+  padding-bottom:0.4rem;border-bottom:1px solid var(--border);
+}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+.modal-row{
+  font-family:var(--font-ui);font-size:0.8rem;padding:0.4rem 0;
+  display:flex;flex-direction:column;gap:2px;
+}
+.modal-row .lbl{color:var(--text-dim);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;}
+.modal-row .val{color:var(--text-light);}
+.modal-row .val.gold{color:var(--gold-light);}
+.skill-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));
+  border:1px solid var(--gold-dim);border-radius:var(--radius);
+  padding:8px 14px;font-family:var(--font-ui);font-size:0.78rem;
+  color:var(--gold-light);margin-bottom:0.5rem;
+}
+.skill-type{
+  font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold-dim);margin-bottom:2px;
+}
+.modal-desc{
+  font-size:0.9rem;color:var(--text-mid);line-height:1.8;
+}
+
+/* ═══ STRUCTURAL TABLE PAGE ═══ */
+.structural-content{max-width:1400px;margin:0 auto;padding:3rem 2rem;}
+.company-section{margin-bottom:4rem;}
+.company-title{
+  font-family:var(--font-display);font-size:1.4rem;
+  color:var(--gold);margin-bottom:0.3rem;
+  display:flex;align-items:center;gap:12px;
+}
+.company-title .icon{font-size:1.6rem;}
+.company-subtitle{
+  font-family:var(--font-ui);font-size:0.75rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--text-dim);margin-bottom:1.5rem;
+}
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);}
+table{width:100%;border-collapse:collapse;font-family:var(--font-ui);font-size:0.78rem;}
+thead tr{background:rgba(201,168,76,0.1);}
+th{
+  padding:12px 14px;text-align:left;
+  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);white-space:nowrap;font-weight:600;
+  border-bottom:2px solid var(--gold-dim);
+}
+td{
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  color:var(--text-mid);vertical-align:top;
+  line-height:1.4;
+}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(201,168,76,0.03);}
+.td-name{color:var(--text-light);font-weight:500;}
+.td-name.clickable{cursor:pointer;color:var(--gold-light);}
+.td-name.clickable:hover{color:var(--gold);text-decoration:underline;}
+.td-pos{color:var(--gold);font-weight:500;}
+.td-dim{color:var(--text-dim);font-size:0.72rem;}
+.badge-gen{
+  display:inline-block;padding:1px 6px;
+  border-radius:2px;font-size:0.62rem;letter-spacing:0.08em;
+  text-transform:uppercase;border:1px solid;
+}
+.badge-gen.g1{border-color:#7A5F2A;background:rgba(122,95,42,0.2);color:#C9A84C;}
+.badge-gen.g2{border-color:#2A4A7A;background:rgba(42,74,122,0.2);color:#7AACDC;}
+.badge-gen.g3{border-color:#4A2A6A;background:rgba(74,42,106,0.2);color:#B07AEC;}
+.badge-random{
+  display:inline-block;padding:1px 6px;border-radius:2px;
+  font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;
+  border:1px solid rgba(100,100,100,0.4);background:rgba(100,100,100,0.1);
+  color:var(--text-dim);
+}
+
+/* ═══ FAMILY PAGE ═══ */
+.family-content{max-width:1200px;margin:0 auto;padding:3rem 2rem;}
+.family-houses{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.5rem;margin-bottom:4rem;
+}
+.house-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  transition:var(--transition);
+}
+.house-card:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 16px 50px rgba(201,168,76,0.1);}
+.house-banner{
+  height:80px;display:flex;align-items:center;justify-content:center;
+  font-size:3rem;
+  border-bottom:1px solid var(--border);
+}
+.house-banner.h1{background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(26,42,90,0.3));}
+.house-banner.h2{background:linear-gradient(135deg,rgba(139,26,26,0.3),rgba(50,0,50,0.3));}
+.house-banner.h3{background:linear-gradient(135deg,rgba(26,90,42,0.3),rgba(201,168,76,0.1));}
+.house-banner.h4{background:linear-gradient(135deg,rgba(200,200,240,0.1),rgba(201,168,76,0.1));}
+.house-info{padding:1.5rem;}
+.house-name{
+  font-family:var(--font-display);font-size:1.1rem;
+  color:var(--gold);margin-bottom:0.3rem;
+}
+.house-title{
+  font-family:var(--font-ui);font-size:0.7rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text-dim);margin-bottom:0.8rem;
+}
+.house-desc{font-size:0.88rem;color:var(--text-mid);}
+.family-tree-section{margin-bottom:3rem;}
+.tree-title{
+  font-family:var(--font-display);font-size:1.3rem;
+  color:var(--gold);margin-bottom:0.5rem;
+}
+.tree-subtitle{
+  font-family:var(--font-ui);font-size:0.72rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text-dim);margin-bottom:2rem;
+}
+.tree-gen{margin-bottom:2rem;}
+.tree-gen-label{
+  font-family:var(--font-ui);font-size:0.65rem;
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--gold-dim);margin-bottom:1rem;
+  padding-left:1rem;border-left:2px solid var(--gold-dim);
+}
+.tree-members{display:flex;flex-wrap:wrap;gap:0.8rem;}
+.tree-member{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:0.8rem 1.2rem;
+  cursor:pointer;transition:var(--transition);
+  display:flex;align-items:center;gap:10px;
+}
+.tree-member:hover{border-color:var(--gold);background:rgba(201,168,76,0.05);}
+.tree-member .em{font-size:1.2rem;}
+.tree-member-name{
+  font-family:var(--font-display);font-size:0.85rem;
+  color:var(--text-light);display:block;
+}
+.tree-member-role{
+  font-family:var(--font-ui);font-size:0.65rem;
+  color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;
+}
+
+/* ═══ FOOTER ═══ */
+footer{
+  border-top:1px solid var(--border);padding:3rem 2rem;
+  text-align:center;background:var(--bg-mid);
+}
+.footer-logo{
+  font-family:var(--font-display);font-size:1.2rem;
+  color:var(--gold);letter-spacing:0.2em;margin-bottom:0.8rem;
+}
+.footer-text{font-family:var(--font-ui);font-size:0.72rem;color:var(--text-dim);}
+.footer-divider{width:100px;height:1px;background:var(--border);margin:1.5rem auto;}
+
+/* ═══ UTILITY ═══ */
+.container{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.gold{color:var(--gold);}
+.spacer{height:2px;background:linear-gradient(90deg,transparent,var(--border-strong),transparent);margin:4rem 0;}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:768px){
+  nav{display:none;}
+  .hamburger{display:flex;}
+  .about-block,.about-block.reverse{grid-template-columns:1fr;}
+  .hero-stats{gap:2rem;}
+  .modal-header{flex-direction:column;}
+  .modal-grid{grid-template-columns:1fr;}
+  .modal-body{padding:1rem 1.2rem 1.5rem;}
+  .modal-header{padding:2rem 1.2rem 1rem;}
+  .staff-controls{flex-direction:column;}
+  .search-box{width:100%;}
+  table{font-size:0.72rem;}
+  th,td{padding:8px 10px;}
+  .family-houses{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .header-inner{padding:0 1rem;}
+  .logo span{display:none;}
+  .family-houses{grid-template-columns:1fr;}
+  .hero h1{font-size:2.2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🦁</div>
+      <span>LIONHEART GROUP</span>
+    </div>
+    <nav id="mainNav">
+      <a href="#" class="active" data-page="home">Home</a>
+      <a href="#" data-page="about">About Us</a>
+      <a href="#" data-page="staff">Staff Profiles</a>
+      <a href="#" data-page="structural">Structural</a>
+      <a href="#" data-page="family">Family</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#" data-page="home">Home</a>
+  <a href="#" data-page="about">About Us</a>
+  <a href="#" data-page="staff">Staff Profiles</a>
+  <a href="#" data-page="structural">Structural</a>
+  <a href="#" data-page="family">Family</a>
+</div>
+
+<!-- ═══════════ PAGE: HOME ═══════════ -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-crest">🦁</div>
+    <h1>LIONHEART GROUP</h1>
+    <p class="hero-sub">Asterra's Premier Conglomerate · Est. Ancient Era</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">
+      <strong>Where Power Meets Purpose.</strong><br/>
+      From the highest towers to the deepest abyss — we build, govern, and shape the future of Asterra.
+    </p>
+    <p class="hero-motto">⚜ Strength · Innovation · Legacy · Dominion ⚜</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">14</span><span class="stat-label">Subsidiaries</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-label">Noble Houses</span></div>
+      <div class="stat"><span class="stat-num">312</span><span class="stat-label">Years of Rule</span></div>
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Influence</span></div>
+    </div>
+    <div class="hero-scroll">▼ Scroll</div>
+  </section>
+
+  <section class="world-section">
+    <div class="section-header">
+      <span class="section-label">The World</span>
+      <h2 class="section-title">Welcome to Asterra</h2>
+      <div class="section-line"></div>
+      <p style="color:var(--text-mid);margin-top:1.5rem;max-width:600px;margin-left:auto;margin-right:auto;font-size:1rem;">
+        A realm where ancient magic and corporate power intertwine. Eight great races compete for dominance, and one family stands above them all.
+      </p>
+    </div>
+    <div class="race-grid">
+      <div class="race-card"><div class="race-icon">🧝</div><div class="race-name">High Elf</div><div class="race-desc">Magic, politics & arcane technology</div></div>
+      <div class="race-card"><div class="race-icon">⚒️</div><div class="race-name">Dwarf</div><div class="race-desc">Construction, weapons & industry</div></div>
+      <div class="race-card"><div class="race-icon">😈</div><div class="race-name">Demon</div><div class="race-desc">Abyss energy & war strategy</div></div>
+      <div class="race-card"><div class="race-icon">🐾</div><div class="race-name">Beastman</div><div class="race-desc">Physical power & instinct</div></div>
+      <div class="race-card"><div class="race-icon">⚔️</div><div class="race-name">Orc</div><div class="race-desc">Heavy industry & military</div></div>
+      <div class="race-card"><div class="race-icon">🔧</div><div class="race-name">Goblin</div><div class="race-desc">Innovation & improvisation</div></div>
+      <div class="race-card"><div class="race-icon">👤</div><div class="race-name">Human</div><div class="race-desc">Adaptable & trade-dominant</div></div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-mid);padding:6rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+      <div class="section-header">
+        <span class="section-label">Our Empire</span>
+        <h2 class="section-title">Group Divisions</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="divisions-grid">
+        <div class="div-card"><div class="div-icon">💻</div><div class="div-name">Lionheart Electronics</div><div class="div-focus">Magic devices & AI crystals</div></div>
+        <div class="div-card"><div class="div-icon">🏗️</div><div class="div-name">Lionheart Construction</div><div class="div-focus">Cities, fortresses & dungeon facilities</div></div>
+        <div class="div-card"><div class="div-icon">🛡️</div><div class="div-name">Lionheart Insurance</div><div class="div-focus">Adventurer & artifact insurance</div></div>
+        <div class="div-card"><div class="div-icon">⚓</div><div class="div-name">Lionheart Shipyard</div><div class="div-focus">Sea vessels & airships</div></div>
+        <div class="div-card"><div class="div-icon">🧬</div><div class="div-name">Lionheart Biotech</div><div class="div-focus">Monster research & regeneration</div></div>
+        <div class="div-card"><div class="div-icon">🚗</div><div class="div-name">Lionheart Motors</div><div class="div-focus">Magic-tech vehicles</div></div>
+        <div class="div-card"><div class="div-icon">⚙️</div><div class="div-name">Lionheart Heavy Ind.</div><div class="div-focus">Industrial golems & heavy machinery</div></div>
+        <div class="div-card"><div class="div-icon">🌾</div><div class="div-name">Lionheart Agribusiness</div><div class="div-focus">Monster farming & mana crops</div></div>
+        <div class="div-card"><div class="div-icon">🔮</div><div class="div-name">Lionheart Technologies</div><div class="div-focus">AI rune & crystal networks</div></div>
+        <div class="div-card"><div class="div-icon">🏦</div><div class="div-name">Lionheart Finance</div><div class="div-focus">Banking & investment</div></div>
+        <div class="div-card"><div class="div-icon">🏪</div><div class="div-name">Lionheart Retail</div><div class="div-focus">Department stores & luxury</div></div>
+        <div class="div-card"><div class="div-icon">🍱</div><div class="div-name">Lionheart Foods</div><div class="div-focus">Energy food & potion cuisine</div></div>
+        <div class="div-card"><div class="div-icon">🏨</div><div class="div-name">Lionheart Hotels</div><div class="div-focus">Luxury adventurer hospitality</div></div>
+        <div class="div-card"><div class="div-icon">🎭</div><div class="div-name">Lionheart Entertainment</div><div class="div-focus">Idols, arena battles & media</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">⚜ LIONHEART GROUP ⚜</div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© Lionheart Group · All Rights Reserved · Asterra Corporate Registry</p>
+    <p class="footer-text" style="margin-top:0.4rem;font-style:italic;">"The lion does not concern himself with the opinions of sheep."</p>
+  </footer>
+</div>
+
+<!-- ═══════════ PAGE: ABOUT US ═══════════ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <h2>About Lionheart Group</h2>
+    <p>Asterra's oldest and most powerful corporate conglomerate</p>
+  </div>
+  <div class="about-content">
+    <div class="about-block">
+      <div>
+        <div class="about-label">Our Foundation</div>
+        <div class="about-title">The Lionheart Legacy</div>
+        <div class="info-box">
+          <div class="info-row"><span class="info-key">Founded</span><span class="info-val">Ancient Era</span></div>
+          <div class="info-row"><span class="info-key">Headquarters</span><span class="info-val">Asterra Capital</span></div>
+          <div class="info-row"><span class="info-key">Supreme Chairman</span><span class="info-val">Lord Aetherion Lionheart</span></div>
+          <div class="info-row"><span class="info-key">Group CEO</span><span class="info-val">Lord Aetherion Lionheart</span></div>
+          <div class="info-row"><span class="info-key">CFO</span><span class="info-val">Aldric Voss Halvren</span></div>
+          <div class="info-row"><span class="info-key">CSO</span><span class="info-val">Baelzhar Lionheart</span></div>
+          <div class="info-row"><span class="info-key">CHCO</span><span class="info-val">Elyndra Lionheart</span></div>
+          <div class="info-row"><span class="info-key">CLO</span><span class="info-val">Seraphene Mourne Delvais</span></div>
+          <div class="info-row"><span class="info-key">COO</span><span class="info-val">Marianne Lionheart</span></div>
+          <div class="info-row"><span class="info-key">CIO / CTO</span><span class="info-val">Corvain Axel Runes</span></div>
+          <div class="info-row"><span class="info-key">Subsidiaries</span><span class="info-val">14 Active Divisions</span></div>
+          <div class="info-row"><span class="info-key">Noble Houses</span><span class="info-val">4 (Aetherion, Baelzhar, Elyndra, Marianne)</span></div>
+          <div class="info-row"><span class="info-key">Industry</span><span class="info-val">Multi-sector Conglomerate</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="about-text">
+          <p>Lionheart Group stands as the most dominant corporate entity in the known world of Asterra. Founded by the immortal High Elf lord Aetherion Lionheart, the group has grown from a single trading house into a sprawling empire encompassing technology, military, entertainment, biotech, finance, and beyond.</p>
+          <p>The group operates through a Holding Company with a full C-Suite executive team, and four noble bloodlines each overseeing key subsidiary pillars of the empire. Lord Aetherion leads as CEO, commanding technology and operations from the apex. Duke Baelzhar serves as Chief Strategy Officer. Lady Elyndra leads as Chief Human Capital Officer. Lady Marianne commands operations as Chief Operating Officer.</p>
+          <p>Lionheart Group maintains influence in every major kingdom of Asterra. From royal marriages to black market operations, from idol concerts to Tower expeditions — the reach of House Lionheart is truly without limit.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="section-header">
+      <span class="section-label">Our Subsidiaries</span>
+      <h2 class="section-title">Group Companies</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="company-cards">
+      <div class="company-card"><span class="company-badge">Technology</span><h4>💻 Lionheart Electronics</h4><p>Leading manufacturer of magic crystal devices, AI-assisted arcane tools, and portable mana tech for adventurers and corporations alike.</p></div>
+      <div class="company-card"><span class="company-badge">Infrastructure</span><h4>🏗️ Lionheart Construction</h4><p>Designs and builds fortress cities, dungeon facilities, magical infrastructure, and industrial zones across Asterra. Led by COO Darius Lionheart.</p></div>
+      <div class="company-card"><span class="company-badge">Finance</span><h4>🛡️ Lionheart Insurance</h4><p>Comprehensive coverage for adventurers, artifact owners, guild operations, and Tower expeditions. Largest insurer in the northern kingdoms.</p></div>
+      <div class="company-card"><span class="company-badge">Marine & Air</span><h4>⚓ Lionheart Shipyard</h4><p>Constructs the finest sea vessels and airships in Asterra. Supplies both commercial fleets and royal navies.</p></div>
+      <div class="company-card"><span class="company-badge">Life Science</span><h4>🧬 Lionheart Biotech</h4><p>Cutting-edge research into monster biology, soul genetics, and regeneration technology. CEO: Velisara Lionheart, the Blood Queen.</p></div>
+      <div class="company-card"><span class="company-badge">Automotive</span><h4>🚗 Lionheart Motors</h4><p>Pioneer in mana-powered transportation. From personal carriages to golem-assisted combat vehicles.</p></div>
+      <div class="company-card"><span class="company-badge">Industry</span><h4>⚙️ Lionheart Heavy Industries</h4><p>Industrial golem manufacturing, mining operations, and heavy machinery. The backbone of Asterra's construction sector.</p></div>
+      <div class="company-card"><span class="company-badge">Agriculture</span><h4>🌾 Lionheart Agribusiness</h4><p>Managed monster farms, mana-infused crops, and potion ingredient cultivation across multiple continents.</p></div>
+      <div class="company-card"><span class="company-badge">Technology</span><h4>🔮 Lionheart Technologies</h4><p>AI Rune Systems and Crystal Network infrastructure. CEO: Caelthas Lionheart. First heir candidate and tech visionary.</p></div>
+      <div class="company-card"><span class="company-badge">Finance</span><h4>🏦 Lionheart Finance</h4><p>Banking, investment management, and magical asset trading. The largest financial institution outside the royal treasury.</p></div>
+      <div class="company-card"><span class="company-badge">Retail</span><h4>🏪 Lionheart Retail</h4><p>Luxury department stores, enchanted goods, and magical accessories. CEO: Sylvaria Lionheart, Golden Empress of Commerce. Now also leads Agribusiness, Foods &amp; Hotels.</p></div>
+      <div class="company-card"><span class="company-badge">Food & Beverage</span><h4>🍱 Lionheart Foods</h4><p>Producers of magical energy food, potion-infused cuisine, and premium ration supplies for adventurers and militaries.</p></div>
+      <div class="company-card"><span class="company-badge">Hospitality</span><h4>🏨 Lionheart Hotels</h4><p>Luxurious hospitality chains catering to elite adventurers, nobles, and dignitaries in every major city.</p></div>
+      <div class="company-card"><span class="company-badge">Entertainment</span><h4>🎭 Lionheart Entertainment</h4><p>Asterra's largest entertainment empire — idols, films, magical broadcasting, arena battles, and celebrity management. CEO: Lord Altheris Moonfang.</p></div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-logo">⚜ LIONHEART GROUP ⚜</div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© Lionheart Group · All Rights Reserved · Asterra Corporate Registry</p>
+  </footer>
+</div>
+
+<!-- ═══════════ PAGE: STAFF ═══════════ -->
+<div class="page" id="page-staff">
+  <div class="page-hero">
+    <h2>Staff Profiles</h2>
+    <p>Meet the leaders and key figures of Lionheart Group</p>
+  </div>
+  <div class="staff-controls">
+    <input type="text" class="search-box" id="staffSearch" placeholder="Search by name, race, or position…"/>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="gen1">Gen 1</button>
+    <button class="filter-btn" data-filter="gen2">Gen 2</button>
+    <button class="filter-btn" data-filter="gen3">Gen 3</button>
+  </div>
+  <div class="staff-grid" id="staffGrid"></div>
+  <footer>
+    <div class="footer-logo">⚜ LIONHEART GROUP ⚜</div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© Lionheart Group · All Rights Reserved</p>
+  </footer>
+</div>
+
+<!-- ═══════════ PAGE: STRUCTURAL ═══════════ -->
+<div class="page" id="page-structural">
+  <div class="page-hero">
+    <h2>Organizational Structure</h2>
+    <p>Corporate hierarchy across all Lionheart Group subsidiaries</p>
+  </div>
+  <div class="structural-content" id="structuralContent"></div>
+  <footer>
+    <div class="footer-logo">⚜ LIONHEART GROUP ⚜</div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© Lionheart Group · All Rights Reserved</p>
+  </footer>
+</div>
+
+<!-- ═══════════ PAGE: FAMILY ═══════════ -->
+<div class="page" id="page-family">
+  <div class="page-hero">
+    <h2>House Lionheart</h2>
+    <p>Four noble bloodlines that form the pillars of the empire</p>
+  </div>
+  <div class="family-content">
+    <div class="family-houses" id="familyHouses"></div>
+    <div id="familyTreeContainer"></div>
+  </div>
+  <footer>
+    <div class="footer-logo">⚜ LIONHEART GROUP ⚜</div>
+    <div class="footer-divider"></div>
+    <p class="footer-text">© Lionheart Group · All Rights Reserved</p>
+  </footer>
+</div>
+
+<!-- ═══════════ MODAL ═══════════ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="modal-close" id="modalClose">✕</div>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════ */
+const MEMBERS = [
+/* ─── GEN 1 — HOUSE AETHERION ─── */
+{
+  id:'aetherion', gen:'gen1', house:'Aetherion',
+  name:'Aetherion Lionheart', emoji:'👑',
+  race:'High Elf', age:312, gender:'Male',
+  position:'Chief Executive Officer (CEO) — Lionheart Holding Company · Supreme Chairman',
+  company:'Lionheart Group (All Subsidiaries)',
+  skill:'Celestial Dominion', skillType:'Passive',
+  skillDesc:'Emits overwhelming aura of authority — increases loyalty, morale, and efficiency of nearby allies. Weak-minded enemies feel fear and submission instinctively.',
+  titles:['The Eternal Chairman','King of Corporate Thrones','Lord of the Golden Dominion'],
+  personality:'Calm, elegant, ruthlessly pragmatic, extremely charismatic. Feared even by kings and emperors.',
+  appearance:'Long silver-white hair, golden glowing eyes, pale flawless skin. Wears black-and-gold royal corporate robes mixed with ancient magical armor.',
+  role:'Controls all subsidiaries and strategic decisions. Oversees Tower expansion, international alliances, and royal political influence. Holds final veto power over all family matters.',
+  secrets:'Rumored to no longer age naturally. Suspected to possess an ancient relic hidden inside the Tower. Rumored to hold a second hidden skill known only to the direct bloodline.',
+  family:'Supreme Head of House Lionheart',
+  spouse:'Lady Seraphina Vaelcrest (1st Wife), Lady Miradelle Astoria (2nd Wife), Lady Evelyne Noctis (3rd Wife), Lyrieth Moonveil (Concubine)',
+  children:'Caelthas, Azrakar (by Seraphina) · Sylvaria (by Miradelle) · Darius, Velisara (by Evelyne) · Aerion (by Lyrieth)',
+  status:'Supreme Head · House Aetherion'
+},
+{
+  id:'caelthas', gen:'gen2', house:'Aetherion',
+  name:'Caelthas Lionheart', emoji:'🔮',
+  race:'High Elf', age:42, gender:'Male',
+  position:'CEO Subsidiaries — Lionheart Technologies',
+  company:'Lionheart Technologies',
+  skill:'Mind Acceleration', skillType:'Passive',
+  skillDesc:'Processes information and strategic calculations at extreme speed.',
+  titles:['Official First Heir Candidate'],
+  personality:'Cold genius, perfectionist, visionary.',
+  role:'Oversees AI Rune Systems, Magic Networks, and Advanced Technology development.',
+  family:'2nd Child of House Aetherion (Gen 2)',
+  spouse:'Lady Elenoria Dawnveil — Chief Research Advisor, Lionheart Technologies',
+  children:'Elaris Lionheart, Vaelric Lionheart',
+  status:'1st Child of Aetherion Lionheart (by Lady Seraphina)'
+},
+{
+  id:'sylvaria', gen:'gen2', house:'Aetherion',
+  name:'Sylvaria Lionheart', emoji:'👑',
+  race:'High Elf', age:40, gender:'Female',
+  position:'CEO Subsidiaries — Lionheart Agribusiness, Foods & Hotels · Group CMO',
+  company:'Lionheart Retail · Group HQ',
+  skill:'Charm Authority', skillType:'Passive',
+  skillDesc:'Increases persuasion and negotiation success naturally.',
+  titles:['Golden Empress of Commerce'],
+  personality:'Charismatic, commercially brilliant, socially dominant.',
+  role:'Controls retail, branding, luxury goods, and public influence across Asterra.',
+  family:'Gen 2 — House Aetherion',
+  spouse:'Duke Valerius Evernight — Minister of International Trade, Evernight Trading Consortium',
+  children:'Selene Lionheart, Leonhart Lionheart',
+  status:'Child of Aetherion Lionheart (by Lady Miradelle)'
+},
+{
+  id:'darius', gen:'gen2', house:'Aetherion',
+  name:'Darius Lionheart', emoji:'🏗️',
+  race:'High Human', age:34, gender:'Male',
+  position:'CEO Subsidiaries — Lionheart Construction',
+  company:'Lionheart Construction',
+  skill:'Titan Frame', skillType:'Passive',
+  skillDesc:'Grants immense physical durability and strength.',
+  personality:'Honest, practical, respected by workers.',
+  role:'Leads infrastructure, fortress cities, industrial zones, and Tower facilities construction.',
+  family:'Gen 2 — House Aetherion',
+  spouse:'Helena Ironforge — Chief Structural Engineer, Vice Director of Lionheart Heavy Industries',
+  children:'Kaizer Lionheart, Brakka Lionheart',
+  status:'Child of Aetherion Lionheart (by Lady Evelyne)'
+},
+{
+  id:'azrakar', gen:'gen2', house:'Aetherion',
+  name:'Azrakar Lionheart', emoji:'🗡️',
+  race:'High Demon', age:33, gender:'Male',
+  position:'CEO Subsidiaries — Lionheart Security Division · Supreme Head of Security',
+  company:'Lionheart Security Division',
+  skill:'Shadow Rift', skillType:'Active',
+  skillDesc:'Allows instantaneous movement through shadows.',
+  titles:['Shadow of the Tower'],
+  personality:'Cold, ruthless, strategically brilliant.',
+  role:'Controls private military forces, elite hunters, and intelligence operations.',
+  family:'Gen 2 — House Aetherion',
+  spouse:'Lady Nythera Vhol — Director of Intelligence Operations, Commander of Black Veil Intelligence Agency',
+  children:'Nyxara Lionheart, Zephiron Lionheart',
+  status:'Child of Aetherion Lionheart (by Lady Seraphina)'
+},
+{
+  id:'velisara', gen:'gen2', house:'Aetherion',
+  name:'Velisara Lionheart', emoji:'🧬',
+  race:'High Demon', age:32, gender:'Female',
+  position:'CEO Subsidiaries — Lionheart Biotech',
+  company:'Lionheart Biotech',
+  skill:'Blood Resonance', skillType:'Active',
+  skillDesc:'Manipulates biological regeneration and mutation.',
+  titles:['Blood Queen'],
+  personality:'Obsessive, brilliant, ruthless in pursuit of science.',
+  role:'Oversees biological enhancement, monster research, and regeneration technology.',
+  family:'Gen 2 — House Aetherion',
+  spouse:'Prof. Malgrith Solaris — Chief Scientific Director of Lionheart Biotech',
+  children:'Mirellia Lionheart, Seraphyne Lionheart',
+  status:'Child of Aetherion Lionheart (by Lady Evelyne)'
+},
+{
+  id:'aerion', gen:'gen2', house:'Aetherion',
+  name:'Aerion Lionheart', emoji:'🌙',
+  race:'High Elf', age:30, gender:'Male',
+  position:'CEO Subsidiaries — Lionheart Finance & Retail',
+  company:'Lionheart Finance & Retail',
+  skill:'Soul Synchronize', skillType:'Passive',
+  skillDesc:'Senses emotions and soul resonance naturally.',
+  titles:['The Uncrowned Prince'],
+  personality:'Humble, mysterious, beloved by adventurers and commoners.',
+  role:'Leads Lionheart Finance & Retail operations. Previously served as secret mediator between guilds and Lionheart Group.',
+  family:'Gen 2 — House Aetherion',
+  spouse:'Arcelia Windrune — Former S-Rank Adventurer, Founder of Windrune Adventurer Guild',
+  children:'None recorded',
+  status:'Child of Aetherion Lionheart (by Lyrieth Moonveil)'
+},
+/* GEN 3 — Aetherion */
+{
+  id:'elaris', gen:'gen3', house:'Aetherion',
+  name:'Elaris Lionheart', emoji:'⚡',
+  race:'High Elf', age:21, gender:'Female',
+  position:'University Student — Arcane Engineering & Rune Systems',
+  company:'N/A (Currently Enrolled at Asterra Arcane University)',
+  skill:'Rune Analysis', skillType:'Passive',
+  skillDesc:'Instantly understands magical structures and rune systems.',
+  personality:'Calm, analytical, emotionally detached. Future CTO candidate.',
+  role:'Currently pursuing advanced studies in Rune Systems Engineering. Engaged to Princess Aurelisse Von Etrand.',
+  family:'Gen 3 — House Aetherion',
+  spouse:'Fiancée: Princess Aurelisse Von Etrand (Second Princess of Etrand Kingdom)',
+  children:'None',
+  status:'1st Child of Caelthas Lionheart'
+},
+{
+  id:'vaelric', gen:'gen3', house:'Aetherion',
+  name:'Vaelric Lionheart', emoji:'📈',
+  race:'High Elf', age:19, gender:'Male',
+  position:'University Student — Finance & Mana Economics',
+  company:'N/A (Currently Enrolled at Asterra Commerce Academy)',
+  skill:'Mana Computation', skillType:'Passive',
+  skillDesc:'Calculates mana efficiency and resource allocation instantly.',
+  personality:'Disciplined, ambitious, highly political.',
+  role:'Currently pursuing studies in Finance and Mana Economics. Girlfriend is Elise Farnova, daughter of Farnova Banking Group Chairman.',
+  family:'Gen 3 — House Aetherion',
+  status:'2nd Child of Caelthas Lionheart'
+},
+{
+  id:'selene', gen:'gen3', house:'Aetherion',
+  name:'Selene Lionheart', emoji:'✨',
+  race:'High Elf', age:20, gender:'Female',
+  position:'University Student — Commerce & Brand Management',
+  company:'N/A (Currently Enrolled at Asterra Business University)',
+  skill:'Silver Tongue', skillType:'Passive',
+  skillDesc:'Improves negotiation and persuasion naturally.',
+  personality:'Charming, ambitious, socially dominant.',
+  role:'Currently pursuing studies in Commerce and Brand Management.',
+  family:'Gen 3 — House Aetherion',
+  status:'1st Child of Sylvaria Lionheart'
+},
+{
+  id:'leonhart', gen:'gen3', house:'Aetherion',
+  name:'Leonhart Lionheart', emoji:'🦁',
+  race:'High Elf', age:22, gender:'Male',
+  position:'University Student — Business Administration & Leadership',
+  company:'N/A (Currently Enrolled at Asterra Royal Academy)',
+  skill:'Command Presence', skillType:'Passive',
+  skillDesc:'Naturally increases authority and obedience in his presence.',
+  personality:'Strict, diplomatic, strategic.',
+  role:'Currently pursuing studies in Business Administration. Wife: Celestine Aurelia, Government Treasury Officer.',
+  family:'Gen 3 — House Aetherion',
+  status:'2nd Child of Sylvaria Lionheart'
+},
+{
+  id:'kaizer', gen:'gen3', house:'Aetherion',
+  name:'Kaizer Lionheart', emoji:'⚔️',
+  race:'Half Human/Half Dwarf', age:18, gender:'Male',
+  position:'Military Academy Student — Tower Combat Studies',
+  company:'N/A (Currently Enrolled at Abyss Military Preparatory Academy)',
+  skill:'Iron Pulse', skillType:'Active',
+  skillDesc:'Temporarily boosts physical power explosively.',
+  personality:'Fearless, competitive, hot-blooded.',
+  role:'Currently enrolled at Military Academy, studying Tower Combat. Future Tower Assault Unit candidate.',
+  family:'Gen 3 — House Aetherion',
+  status:'1st Child of Darius Lionheart'
+},
+{
+  id:'brakka', gen:'gen3', house:'Aetherion',
+  name:'Brakka Lionheart', emoji:'⚙️',
+  race:'Half Human/Half Dwarf', age:15, gender:'Male',
+  position:'Apprentice Golem Mechanic',
+  company:'Lionheart Heavy Industries',
+  skill:'Steel Resonance', skillType:'Passive',
+  skillDesc:'Improves compatibility with machines and metal.',
+  personality:'Loud, energetic, talented engineer.',
+  role:'Engineering apprentice at Ironforge Technical Academy.',
+  family:'Gen 3 — House Aetherion',
+  status:'2nd Child of Darius Lionheart'
+},
+{
+  id:'nyxara', gen:'gen3', house:'Aetherion',
+  name:'Nyxara Lionheart', emoji:'🌑',
+  race:'High Demon', age:16, gender:'Female',
+  position:'Academy Student — Intelligence & Covert Arts',
+  company:'N/A (Currently Enrolled at Black Veil Intelligence Academy)',
+  skill:'Night Veil', skillType:'Active',
+  skillDesc:'Conceals presence perfectly in darkness.',
+  personality:'Silent, deadly, observant.',
+  role:'Currently pursuing studies in Intelligence and Covert Arts. Engagement candidate: Crown Prince Vaelor Drakemire.',
+  family:'Gen 3 — House Aetherion',
+  status:'1st Child of Azrakar Lionheart'
+},
+{
+  id:'zephiron', gen:'gen3', house:'Aetherion',
+  name:'Zephiron Lionheart', emoji:'😤',
+  race:'High Demon', age:13, gender:'Male',
+  position:'Heir Candidate — Lionheart Security Division',
+  company:'Lionheart Security Division',
+  skill:'Fear Dominion', skillType:'Passive',
+  skillDesc:'Weakens enemy morale nearby.',
+  personality:'Aggressive and prideful.',
+  role:'Abyss Military Preparatory Academy. Future security division heir.',
+  family:'Gen 3 — House Aetherion',
+  status:'2nd Child of Azrakar Lionheart'
+},
+{
+  id:'mirellia', gen:'gen3', house:'Aetherion',
+  name:'Mirellia Lionheart', emoji:'🔬',
+  race:'Half Demon/Half Dark Elf', age:14, gender:'Female',
+  position:'Academy Student — Biological Sciences',
+  company:'N/A (Currently Enrolled at Asterra Sciences Institute)',
+  skill:'Cell Control', skillType:'Active',
+  skillDesc:'Manipulates living cells and regeneration.',
+  personality:'Genius-level intellect, unstable emotions.',
+  role:'Currently pursuing studies in Biological Sciences. Future marriage candidate: Orion Valemortis.',
+  family:'Gen 3 — House Aetherion',
+  status:'1st Child of Velisara Lionheart'
+},
+{
+  id:'seraphyne', gen:'gen3', house:'Aetherion',
+  name:'Seraphyne Lionheart', emoji:'🩸',
+  race:'High Demon', age:17, gender:'Female',
+  position:'Academy Student — Advanced Biological Studies',
+  company:'N/A (Currently Enrolled at Asterra Sciences Institute)',
+  skill:'Blood Bloom', skillType:'Active',
+  skillDesc:'Converts blood mana into destructive biological energy.',
+  personality:'Rebellious and dangerous.',
+  role:'Currently pursuing studies in Advanced Biological Sciences. Known for independent research interests in forbidden biological magic. Lover: Kael Draven, Vice Captain of Black Fang Mercenary Company.',
+  family:'Gen 3 — House Aetherion',
+  status:'2nd Child of Velisara Lionheart'
+},
+/* ─── C-SUITE EXECUTIVES — LIONHEART HOLDING COMPANY ─── */
+{
+  id:'cfo_holding', gen:null, house:'Aetherion',
+  name:'Aldric Voss Halvren', emoji:'💰',
+  race:'Human', age:58, gender:'Male',
+  position:'Chief Financial Officer (CFO) — Lionheart Holding Company',
+  company:'Lionheart Holding Company',
+  skill:'Mana Ledger', skillType:'Passive',
+  skillDesc:'Intuitively tracks financial flows and risk exposure across complex structures.',
+  titles:['The Iron Treasurer'],
+  personality:'Meticulous, composed, fiercely loyal. Known for transforming subsidiaries from losses to record profits.',
+  appearance:'Silver-streaked hair, steel-grey eyes, always seen in immaculate dark suits with a gold pocket watch.',
+  role:'Oversees all financial reporting, treasury operations, investment strategy, and capital allocation across Lionheart Group holdings.',
+  family:'Non-Family Executive',
+  status:'Appointed CFO — Lionheart Holding Company'
+},
+{
+  id:'clo_holding', gen:null, house:'Aetherion',
+  name:'Seraphene Mourne Delvais', emoji:'⚖️',
+  race:'High Elf', age:211, gender:'Female',
+  position:'Chief Legal Officer (CLO) — Lionheart Holding Company',
+  company:'Lionheart Holding Company',
+  skill:'Contract Binding', skillType:'Active',
+  skillDesc:'Magically enforces or nullifies arcane legal contracts at will.',
+  titles:['The Silver Arbiter'],
+  personality:'Razor-sharp intellect, unreadable demeanor. Feared in courtrooms and boardrooms equally.',
+  appearance:'Platinum-silver hair pulled back severely, violet eyes, dark legal robes with golden rune trim.',
+  role:'Manages all legal affairs, regulatory compliance, contract negotiations, and litigation strategy across all subsidiaries and international operations.',
+  family:'Non-Family Executive',
+  status:'Appointed CLO — Lionheart Holding Company'
+},
+{
+  id:'cto_holding', gen:null, house:'Aetherion',
+  name:'Corvain Axel Runes', emoji:'⚡',
+  race:'Half Elf/Half Human', age:47, gender:'Male',
+  position:'Chief Information & Technology Officer (CIO/CTO) — Lionheart Holding Company',
+  company:'Lionheart Holding Company',
+  skill:'System Override', skillType:'Active',
+  skillDesc:'Can interface with and override any crystal-tech network directly.',
+  titles:['The Architect of the Grid'],
+  personality:'Visionary, eccentric, obsessively innovative. Pushes the boundaries of what magic and technology can do together.',
+  appearance:'Medium-length dark hair, glowing blue rune tattoos on his forearms, always carrying a crystalline datapad.',
+  role:'Leads digital infrastructure, AI rune networks, cybersecurity, and technology innovation strategy for the entire Lionheart Group.',
+  family:'Non-Family Executive',
+  status:'Appointed CIO/CTO — Lionheart Holding Company'
+},
+/* ─── CEO SUBSIDIARIES — STRATEGIC & INTELLIGENCE ─── */
+{
+  id:'seravelle', gen:null, house:'Baelzhar',
+  name:'Duchess Seravelle Mordrith', emoji:'♟️',
+  race:'High Demon', age:null, gender:'Female',
+  position:'CEO Subsidiaries — Lionheart Strategic & Intelligence Operations · Chairwoman, Abyss Noble Council',
+  company:'Lionheart Strategic & Intelligence Operations',
+  skill:'Shadow Veil', skillType:'Active',
+  skillDesc:'Conceals political intent and reads the true motives of opponents.',
+  titles:['Duchess of Mordrith','The Abyss Counselor'],
+  personality:'Elegant and deadly, moves through politics like a blade through silk.',
+  role:'Leads Lionheart Strategic & Intelligence Operations. Represents demon aristocracy in Imperial Senate. Wife of Baelzhar Lionheart.',
+  family:'1st Wife of Baelzhar Lionheart',
+  status:'CEO Subsidiaries — Strategic & Intelligence Operations'
+},
+/* ─── CEO SUBSIDIARIES — FOUNDATION & MEDICAL ─── */
+{
+  id:'roland', gen:null, house:'Marianne',
+  name:'Duke Roland Evercrest', emoji:'🤍',
+  race:'High Human', age:null, gender:'Male',
+  position:'CEO Subsidiaries — Lionheart Foundation & Medical · Founder, Evercrest Medical Consortium',
+  company:'Lionheart Foundation & Medical',
+  skill:'Mending Aura', skillType:'Passive',
+  skillDesc:'Naturally reduces suffering and promotes recovery in those nearby.',
+  titles:['Duke of Evercrest','The Compassionate Hand'],
+  personality:'Warm, dignified, and deeply principled. Believes in medicine as a moral duty.',
+  role:'Leads Lionheart Foundation & Medical operations. Oversees hospital networks, research grants, and humanitarian programs. Husband of Marianne Lionheart.',
+  family:'Husband of Marianne Lionheart',
+  status:'CEO Subsidiaries — Foundation & Medical'
+},
+/* ─── CEO SUBSIDIARIES — HEAVY INDUSTRIES, MOTORS & SHIPYARD ─── */
+{
+  id:'helena_ironforge', gen:null, house:'Aetherion',
+  name:'Helena Ironforge', emoji:'⚙️',
+  race:'Dwarf', age:null, gender:'Female',
+  position:'CEO Subsidiaries — Lionheart Heavy Industries, Motors & Shipyard · Chief Structural Engineer',
+  company:'Lionheart Heavy Industries, Motors & Shipyard',
+  skill:'Iron Resonance', skillType:'Active',
+  skillDesc:'Communes with metal structures, detecting flaws and optimizing mechanical systems.',
+  titles:['The Ironforge Matriarch'],
+  personality:'Blunt, fearless, extraordinarily capable. The most respected engineer in Asterra.',
+  role:'Leads Heavy Industries, Motors, and Shipyard divisions. Oversees golem manufacturing, mana vehicles, and naval/aerial vessel production. Wife of Darius Lionheart.',
+  family:'Wife of Darius Lionheart',
+  status:'CEO Subsidiaries — Heavy Industries, Motors & Shipyard'
+},
+
+{
+  id:'baelzhar', gen:'gen1', house:'Baelzhar',
+  name:'Baelzhar Lionheart', emoji:'♟️',
+  race:'High Demon', age:295, gender:'Male',
+  position:'Chief Strategy Officer (CSO) — Lionheart Holding Company · Supreme Commander of Strategic Operations',
+  company:'Lionheart Group (Strategic Division)',
+  skill:'Abyss Calculation', skillType:'Active',
+  skillDesc:'Predicts battlefield probabilities and strategic outcomes.',
+  titles:['The Abyss Strategist'],
+  personality:'Cold, calculating, master of shadow diplomacy.',
+  role:'Oversees military strategy, shadow diplomacy, intelligence warfare, and Tower expansion.',
+  family:'Branch House Head — House Baelzhar',
+  spouse:'Duchess Seravelle Mordrith (1st Wife), Lady Vireza Nocturne (2nd Wife)',
+  children:'Mordreth, Lilithra (by Seravelle) · Varkiel, Zareth (by Vireza)',
+  status:'Head of House Baelzhar · Branch of Lionheart'
+},
+{
+  id:'mordreth', gen:'gen2', house:'Baelzhar',
+  name:'Mordreth Lionheart', emoji:'🛡️',
+  race:'High Demon', age:27, gender:'Male',
+  position:'Senior Manager — Lionheart Security Division · Commander, Abyss Guard Unit',
+  company:'Lionheart Security Division',
+  skill:'Fear Aura', skillType:'Passive',
+  skillDesc:'Weakens enemy morale in combat.',
+  personality:'Stern, ruthless, highly professional.',
+  role:'Oversees elite military response teams and Tower suppression missions.',
+  family:'Gen 2 — House Baelzhar',
+  spouse:'Lady Xyrella Draven — Vice Commander, Black Veil Intelligence Agency',
+  children:'Ravion Lionheart, Khaelys Lionheart',
+  status:'1st Child of Baelzhar Lionheart (by Duchess Seravelle)'
+},
+{
+  id:'lilithra', gen:'gen2', house:'Baelzhar',
+  name:'Lilithra Lionheart', emoji:'🕸️',
+  race:'High Demon', age:19, gender:'Female',
+  position:'University Student — Arcane Engineering & Magical Weaponry',
+  company:'N/A (Currently Enrolled at Asterra Arcane Technical Academy)',
+  skill:'Curse Thread', skillType:'Active',
+  skillDesc:'Creates invisible cursed mana strings.',
+  personality:'Dark, precise, academically obsessed.',
+  role:'Currently pursuing studies in Arcane Engineering and Magical Weaponry. Fiancé: Kaedros Velnar, Heir of Velnar Arcane Industries.',
+  family:'Gen 2 — House Baelzhar',
+  status:'2nd Child of Baelzhar Lionheart (by Duchess Seravelle)'
+},
+{
+  id:'varkiel', gen:'gen2', house:'Baelzhar',
+  name:'Varkiel Lionheart', emoji:'🔥',
+  race:'Half Demon', age:12, gender:'Male',
+  position:'Student — Royal Demon Preparatory Academy',
+  company:'N/A (Student)',
+  skill:'Hellfire Spark', skillType:'Active',
+  skillDesc:'Produces unstable demonic fire explosions.',
+  personality:'Unpredictable, powerful, still in training.',
+  role:'Preparatory education. Son of Lady Vireza Nocturne.',
+  family:'Gen 2 — House Baelzhar',
+  status:'3rd Child of Baelzhar Lionheart (by Lady Vireza)'
+},
+{
+  id:'zareth', gen:'gen2', house:'Baelzhar',
+  name:'Zareth Lionheart', emoji:'🌑',
+  race:'Half Demon/Half Dark Elf', age:24, gender:'Male',
+  position:'University Student — Underground Economics & Shadow Diplomacy',
+  company:'N/A (Currently Enrolled at Asterra Covert Studies Institute)',
+  skill:'Shadow Contract', skillType:'Passive',
+  skillDesc:'Gains influence over anyone bound by magical agreements.',
+  personality:'Shrewd, calculating, prefers shadows over spotlight.',
+  role:'Currently pursuing studies in Underground Economics and Shadow Diplomacy. Lover: Serina Valeth, Information Broker.',
+  family:'Gen 2 — House Baelzhar',
+  status:'4th Child of Baelzhar Lionheart (by Lady Vireza)'
+},
+{
+  id:'ravion', gen:'gen3', house:'Baelzhar',
+  name:'Ravion Lionheart', emoji:'😤',
+  race:'High Demon', age:8, gender:'Male',
+  position:'Private Tutor Education',
+  company:'N/A (Student)',
+  skill:'Crimson Pressure', skillType:'Passive',
+  skillDesc:'Intimidates weaker minds instinctively.',
+  personality:'Young, already imposing, trained by private abyss tutors.',
+  family:'Gen 3 — House Baelzhar',
+  status:'1st Child of Mordreth Lionheart'
+},
+{
+  id:'khaelys', gen:'gen3', house:'Baelzhar',
+  name:'Khaelys Lionheart', emoji:'👁️',
+  race:'High Demon', age:5, gender:'Male',
+  position:'Private Tutor Education',
+  company:'N/A (Student)',
+  skill:'Abyss Eye', skillType:'Passive',
+  skillDesc:'Detects fear and hostile intent nearby.',
+  personality:'Quiet and unnervingly perceptive for his age.',
+  family:'Gen 3 — House Baelzhar',
+  status:'2nd Child of Mordreth Lionheart'
+},
+/* ─── CEO SUBSIDIARIES — ENTERTAINMENT ─── */
+{
+  id:'altheris', gen:null, house:'Elyndra',
+  name:'Lord Altheris Moonfang', emoji:'🎭',
+  race:'High Elf', age:null, gender:'Male',
+  position:'CEO Subsidiaries — Lionheart Entertainment · Chairman, Moonfang Arts Consortium',
+  company:'Lionheart Entertainment',
+  skill:'Stage Presence', skillType:'Passive',
+  skillDesc:'Commands rooms and crowds with effortless magnetism.',
+  titles:['Lord Moonfang','The Grand Impresario'],
+  personality:'Flamboyant, brilliant, utterly devoted to artistic excellence.',
+  role:'Leads Lionheart Entertainment operations. Oversees music production, magical cinema, arena shows, and idol talent management. Husband of Elyndra Lionheart.',
+  family:'Husband of Elyndra Lionheart',
+  status:'CEO Subsidiaries — Lionheart Entertainment'
+},
+/* ─── FINANCE & RETAIL — INVESTMENT DIVISION STAFF ─── */
+{
+  id:'dan_investment', gen:null, house:'Aetherion',
+  name:'Dan', emoji:'📊',
+  race:'Human', age:null, gender:'Male',
+  position:'Head of Investment — Lionheart Finance & Retail (Investment Division)',
+  company:'Lionheart Finance & Retail',
+  skill:'Market Instinct', skillType:'Passive',
+  skillDesc:'Reads market fluctuations with uncanny precision.',
+  personality:'Sharp, driven, results-focused.',
+  role:'Leads all investment operations within the Finance & Retail division. Reports to CEO Aerion Lionheart.',
+  family:'Non-Family Staff',
+  status:'Head of Investment Division'
+},
+{
+  id:'zerak_investment', gen:null, house:'Aetherion',
+  name:'Zerak', emoji:'😈',
+  race:'Demon', age:null, gender:'Male',
+  position:'Investment Manager — Lionheart Finance & Retail (Investment Division)',
+  company:'Lionheart Finance & Retail',
+  skill:'Risk Calculation', skillType:'Active',
+  skillDesc:'Assesses risk and return potential with demonic precision.',
+  personality:'Cold, analytical, relentlessly efficient.',
+  role:'Manages investment portfolios and oversees high-value asset placements.',
+  family:'Non-Family Staff',
+  status:'Investment Manager'
+},
+{
+  id:'vito_investment', gen:null, house:'Aetherion',
+  name:'Vito', emoji:'📈',
+  race:'Human', age:null, gender:'Male',
+  position:'Investment Analyst — Lionheart Finance & Retail (Investment Division)',
+  company:'Lionheart Finance & Retail',
+  skill:'Data Synthesis', skillType:'Passive',
+  skillDesc:'Processes financial data and generates insight at exceptional speed.',
+  personality:'Meticulous, ambitious, detail-oriented.',
+  role:'Conducts investment research and market analysis for the division.',
+  family:'Non-Family Staff',
+  status:'Investment Analyst'
+},
+{
+  id:'laurela_investment', gen:null, house:'Aetherion',
+  name:'Laurela', emoji:'💹',
+  race:'Human', age:null, gender:'Female',
+  position:'Finance Analyst — Lionheart Finance & Retail (Investment Division)',
+  company:'Lionheart Finance & Retail',
+  skill:'Budget Foresight', skillType:'Passive',
+  skillDesc:'Identifies financial inefficiencies and forecasting gaps intuitively.',
+  personality:'Diligent, precise, quietly confident.',
+  role:'Handles financial analysis, reporting, and budget monitoring for the investment division.',
+  family:'Non-Family Staff',
+  status:'Finance Analyst'
+},
+{
+  id:'coco_investment', gen:null, house:'Aetherion',
+  name:'Coco', emoji:'🐼',
+  race:'Beastman (Panda)', age:null, gender:'Female',
+  position:'Treasury Staff — Lionheart Finance & Retail (Investment Division)',
+  company:'Lionheart Finance & Retail',
+  skill:'Safe Keeper', skillType:'Passive',
+  skillDesc:'Maintains flawless accuracy in treasury records and fund custody.',
+  personality:'Cheerful, reliable, unexpectedly sharp.',
+  role:'Manages treasury operations and fund custody for the investment division.',
+  family:'Non-Family Staff',
+  status:'Treasury Staff'
+},
+
+{
+  id:'elyndra', gen:'gen1', house:'Elyndra',
+  name:'Elyndra Lionheart', emoji:'🌟',
+  race:'High Elf', age:287, gender:'Female',
+  position:'Chief Human Capital Officer (CHCO) — Lionheart Holding Company · Chairwoman, Media & Cultural Affairs',
+  company:'Lionheart Entertainment',
+  skill:'Voice of Enchantment', skillType:'Passive',
+  skillDesc:'Her voice naturally influences emotions, admiration, and loyalty.',
+  titles:['Queen of Stardust','Empress of Entertainment'],
+  personality:'Elegant, charismatic, highly manipulative socially. Obsessed with perfection and beauty.',
+  appearance:'Long golden hair, crystal blue eyes, luxurious white-gold gowns adorned with mana crystals.',
+  role:'Controls entertainment industries. Oversees idol groups, films, magical broadcasting, arena shows, and celebrity management.',
+  family:'Branch House Head — House Elyndra',
+  spouse:'Lord Altheris Moonfang — Chairman of Moonfang Arts Consortium',
+  children:'Aurelianne, Faelion, Lysithea',
+  status:'Head of House Elyndra · Branch of Lionheart'
+},
+{
+  id:'aurelianne', gen:'gen2', house:'Elyndra',
+  name:'Aurelianne Lionheart', emoji:'💫',
+  race:'High Elf', age:25, gender:'Female',
+  position:'Top Idol & Global Celebrity — Lionheart Entertainment',
+  company:'Lionheart Entertainment',
+  skill:'Dream Voice', skillType:'Passive',
+  skillDesc:'Her singing creates emotional resonance and hypnotic admiration.',
+  titles:['Princess of Stardust','The Nation\'s Idol'],
+  personality:'Charming and graceful publicly. Secretly exhausted by fame.',
+  appearance:'Platinum-blonde hair, light blue eyes.',
+  role:'Main face of Lionheart Entertainment. Brand ambassador for luxury and royal events.',
+  family:'Gen 2 — House Elyndra',
+  spouse:'Crown Prince Cedrius Valemor of Valemor Kingdom',
+  children:'Celestia Lionheart Valemor, Ardyn Valemor',
+  status:'1st Child of Elyndra Lionheart'
+},
+{
+  id:'faelion', gen:'gen2', house:'Elyndra',
+  name:'Faelion Lionheart', emoji:'📢',
+  race:'High Elf', age:17, gender:'Male',
+  position:'Idol & Talent — Lionheart Entertainment (Student)',
+  company:'Lionheart Entertainment',
+  skill:'Emotion Reading', skillType:'Passive',
+  skillDesc:'Can instinctively sense emotional states nearby.',
+  personality:'Intelligent, socially gifted, secretly rebellious.',
+  role:'Active as idol and performer under Lionheart Entertainment while still enrolled in studies. Girlfriend: Mireya Sol Astra, rising actress.',
+  family:'Gen 2 — House Elyndra',
+  status:'2nd Child of Elyndra Lionheart'
+},
+{
+  id:'lysithea', gen:'gen2', house:'Elyndra',
+  name:'Lysithea Lionheart', emoji:'🎵',
+  race:'High Elf', age:14, gender:'Female',
+  position:'Trainee Idol — Lionheart Entertainment',
+  company:'Lionheart Entertainment',
+  skill:'Harmony Pulse', skillType:'Active',
+  skillDesc:'Her music enhances mana recovery and emotional calmness.',
+  personality:'Elegant, shy, perfectionist.',
+  role:'Idol trainee. Saint Lumina Noble Academy — Music Arts & Magical Performance.',
+  family:'Gen 2 — House Elyndra',
+  status:'3rd Child of Elyndra Lionheart'
+},
+{
+  id:'celestia', gen:'gen3', house:'Elyndra',
+  name:'Celestia Lionheart Valemor', emoji:'👸',
+  race:'Half High Elf/Half Human', age:6, gender:'Female',
+  position:'Royal Private Education',
+  company:'N/A (Student)',
+  skill:'Royal Aura', skillType:'Passive',
+  skillDesc:'Naturally attracts trust and admiration.',
+  personality:'Gentle and highly intelligent for her age.',
+  family:'Gen 3 — House Elyndra',
+  status:'1st Child of Aurelianne Lionheart'
+},
+{
+  id:'ardyn', gen:'gen3', house:'Elyndra',
+  name:'Ardyn Valemor', emoji:'☀️',
+  race:'Half High Elf/Half Human', age:3, gender:'Male',
+  position:'Royal Private Education',
+  company:'N/A (Infant)',
+  skill:'Light Resonance', skillType:'Passive',
+  skillDesc:'Strong affinity toward holy magic.',
+  personality:'Energetic and curious.',
+  family:'Gen 3 — House Elyndra',
+  status:'2nd Child of Aurelianne Lionheart'
+},
+/* ─── GEN 1 — HOUSE MARIANNE ─── */
+{
+  id:'marianne', gen:'gen1', house:'Marianne',
+  name:'Marianne Lionheart', emoji:'🤍',
+  race:'High Human', age:71, gender:'Female',
+  position:'Chief Operating Officer (COO) — Lionheart Holding Company · Supreme Director, Social Welfare & Humanitarian Affairs',
+  company:'Lionheart Foundation',
+  skill:'Blessing Touch', skillType:'Active',
+  skillDesc:'Accelerates healing and removes curses or illnesses temporarily.',
+  titles:['Saint of the Golden Kingdom','The White Lady of Asterra'],
+  personality:'Gentle, compassionate, wise, highly respected. Secretly politically intelligent.',
+  appearance:'Long silver-brown hair, warm emerald eyes, elegant white-gold noble attire.',
+  role:'Oversees humanitarian operations, disaster relief, orphanages, hospitals, and civilian reconstruction. Diplomatic charity between kingdoms.',
+  family:'Branch House Head — House Marianne',
+  spouse:'Duke Roland Evercrest — Former Minister of Internal Affairs, Founder of Evercrest Medical Consortium',
+  children:'Cedric, Helena, Orion',
+  status:'Head of House Marianne · Branch of Lionheart'
+},
+{
+  id:'cedric', gen:'gen2', house:'Marianne',
+  name:'Cedric Lionheart', emoji:'🏥',
+  race:'High Human', age:29, gender:'Male',
+  position:'Director — Lionheart Foundation · Government Humanitarian Advisor',
+  company:'Lionheart Foundation',
+  skill:'Healing Wave', skillType:'Active',
+  skillDesc:'Creates a healing aura that restores nearby allies.',
+  personality:'Responsible, kind, diplomatic.',
+  role:'Leads disaster recovery programs and refugee protection. Oversees public hospitals.',
+  family:'Gen 2 — House Marianne',
+  spouse:'Eleanor Valtoris — Senator of Central Human Kingdom, Chairwoman of Civil Welfare Committee',
+  children:'Aurelia Lionheart, Theodore Lionheart',
+  status:'1st Child of Marianne Lionheart'
+},
+{
+  id:'helena', gen:'gen2', house:'Marianne',
+  name:'Helena Lionheart', emoji:'🔬',
+  race:'High Human', age:23, gender:'Female',
+  position:'University Student — Medical Sciences & Regenerative Magic',
+  company:'N/A (Currently Enrolled at Imperial Medical Academy)',
+  skill:'Mana Scan', skillType:'Passive',
+  skillDesc:'Detects mana abnormalities and illnesses instantly.',
+  personality:'Intelligent, caring, perfectionist.',
+  role:'Currently pursuing studies in Medical Sciences and Regenerative Magic Medicine.',
+  family:'Gen 2 — House Marianne',
+  spouse:'Prof. Lucien Arkwell — Dean of Imperial Medical Academy, Chief Researcher at Arkwell Pharmaceuticals',
+  children:'Serenia Arkwell, Lucius Arkwell',
+  status:'2nd Child of Marianne Lionheart'
+},
+{
+  id:'orion', gen:'gen2', house:'Marianne',
+  name:'Orion Lionheart', emoji:'⭐',
+  race:'High Human', age:15, gender:'Male',
+  position:'Student Council Vice President — Royal Noble Academy',
+  company:'N/A (Student)',
+  skill:'Luck Surge', skillType:'Passive',
+  skillDesc:'Greatly increases fortunate outcomes around him.',
+  personality:'Cheerful and naturally charismatic.',
+  role:'Political Science student. Widely regarded as future government candidate due to extraordinary charisma.',
+  family:'Gen 2 — House Marianne',
+  status:'3rd Child of Marianne Lionheart'
+},
+{
+  id:'aurelia_m', gen:'gen3', house:'Marianne',
+  name:'Aurelia Lionheart', emoji:'💛',
+  race:'Human', age:8, gender:'Female',
+  position:'Royal Children Academy',
+  company:'N/A (Student)',
+  skill:'Holy Pulse', skillType:'Passive',
+  skillDesc:'Slightly improves healing effects nearby.',
+  personality:'Calm and mature for her age.',
+  family:'Gen 3 — House Marianne',
+  status:'1st Child of Cedric Lionheart'
+},
+{
+  id:'theodore', gen:'gen3', house:'Marianne',
+  name:'Theodore Lionheart', emoji:'🛡️',
+  race:'Human', age:5, gender:'Male',
+  position:'Royal Children Academy',
+  company:'N/A (Student)',
+  skill:'Guardian Heart', skillType:'Passive',
+  skillDesc:'Instinctively protects nearby allies from danger.',
+  personality:'Energetic and friendly.',
+  family:'Gen 3 — House Marianne',
+  status:'2nd Child of Cedric Lionheart'
+},
+{
+  id:'serenia', gen:'gen3', house:'Marianne',
+  name:'Serenia Arkwell', emoji:'🌿',
+  race:'Human', age:3, gender:'Female',
+  position:'Private Home Education',
+  company:'N/A (Infant)',
+  skill:'Mana Sense', skillType:'Passive',
+  skillDesc:'Detects magical energy instinctively.',
+  personality:'Quiet and observant.',
+  family:'Gen 3 — House Marianne',
+  status:'1st Child of Helena Lionheart'
+},
+{
+  id:'lucius_a', gen:'gen3', house:'Marianne',
+  name:'Lucius Arkwell', emoji:'✨',
+  race:'Human', age:1, gender:'Male',
+  position:'N/A (Infant)',
+  company:'N/A',
+  skill:'Unknown', skillType:'Unknown',
+  skillDesc:'Born with unusually high soul energy. Skill yet to manifest.',
+  personality:'Unknown — born with mysterious soul energy.',
+  family:'Gen 3 — House Marianne',
+  status:'2nd Child of Helena Lionheart'
+}
+];
+
+/* ═══════════════════════════════════════════════
+   STRUCTURAL TABLE DATA
+═══════════════════════════════════════════════ */
+const COMPANIES = [
+{
+  name:'Lionheart Holding Company', icon:'👑', focus:'Supreme Corporate Governance — C-Suite Executive Leadership',
+  rows:[
+    {name:'Aetherion Lionheart', pos:'Chief Executive Officer (CEO)', sub:'All Subsidiaries', age:312, race:'High Elf', duty:'Supreme command of all subsidiaries, strategic decisions, Tower expansion, international alliances', fam:'Head of House Aetherion', gen:'g1', type:'family', id:'aetherion'},
+    {name:'Aldric Voss Halvren', pos:'Chief Financial Officer (CFO)', sub:'Finance & Treasury', age:58, race:'Human', duty:'Financial reporting, treasury operations, investment strategy, capital allocation', fam:'—', gen:null, type:'staff', id:'cfo_holding'},
+    {name:'Baelzhar Lionheart', pos:'Chief Strategy Officer (CSO)', sub:'Strategic & Intelligence', age:295, race:'High Demon', duty:'Military strategy, shadow diplomacy, intelligence warfare, Tower expansion', fam:'Head of House Baelzhar', gen:'g1', type:'family', id:'baelzhar'},
+    {name:'Elyndra Lionheart', pos:'Chief Human Capital Officer (CHCO)', sub:'People & Culture', age:287, race:'High Elf', duty:'Human capital, talent management, cultural affairs, people strategy', fam:'Head of House Elyndra', gen:'g1', type:'family', id:'elyndra'},
+    {name:'Seraphene Mourne Delvais', pos:'Chief Legal Officer (CLO)', sub:'Legal & Compliance', age:211, race:'High Elf', duty:'Legal affairs, regulatory compliance, contract negotiations, litigation strategy', fam:'—', gen:null, type:'staff', id:'clo_holding'},
+    {name:'Marianne Lionheart', pos:'Chief Operating Officer (COO)', sub:'Operations & Humanitarian', age:71, race:'High Human', duty:'Day-to-day operations, humanitarian affairs, disaster relief, hospitals, civilian reconstruction', fam:'Head of House Marianne', gen:'g1', type:'family', id:'marianne'},
+    {name:'Corvain Axel Runes', pos:'Chief Information & Technology Officer (CIO/CTO)', sub:'Technology & Infrastructure', age:47, race:'Half Elf/Human', duty:'Digital infrastructure, AI rune networks, cybersecurity, technology innovation strategy', fam:'—', gen:null, type:'staff', id:'cto_holding'},
+  ]
+},
+{
+  name:'Lionheart Technologies', icon:'🔮', focus:'AI Rune Systems & Crystal Networks',
+  rows:[
+    {name:'Caelthas Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:42, race:'High Elf', duty:'Oversees AI Rune, Magic Networks, Advanced Technology', fam:'1st Child of Aetherion', gen:'g2', type:'family', id:'caelthas'},
+    {name:'Elaris Lionheart', pos:'University Student — Arcane Engineering (Enrolled)', sub:'On Leave', age:21, race:'High Elf', duty:'Currently pursuing academic studies; future Rune Systems role', fam:'1st Child of Caelthas', gen:'g3', type:'family', id:'elaris'},
+    {name:'Vaelric Lionheart', pos:'University Student — Finance & Mana Economics (Enrolled)', sub:'On Leave', age:19, race:'High Elf', duty:'Currently pursuing academic studies; future finance strategy role', fam:'2nd Child of Caelthas', gen:'g3', type:'family', id:'vaelric'},
+    {name:'Lady Elenoria Dawnveil', pos:'Chief Research Advisor', sub:'R&D', age:null, race:'High Elf', duty:'Rune programming & mana circuit research', fam:'Wife of Caelthas', gen:null, type:'spouse'},
+    {name:'Theriva Goldmane', pos:'VP of Engineering', sub:'Engineering', age:null, race:'High Elf', duty:'Oversees engineering & product dev', fam:'—', gen:null, type:'staff'},
+    {name:'Corvan Mireth', pos:'Senior Rune Architect', sub:'R&D', age:null, race:'Human', duty:'Crystal network architecture design', fam:'—', gen:null, type:'staff'},
+    {name:'Ysolde Vane', pos:'AI Crystal Operations Manager', sub:'Operations', age:null, race:'Goblin', duty:'AI crystal deployment & maintenance', fam:'—', gen:null, type:'staff'},
+    {name:'Pyrris Holt', pos:'Network Security Supervisor', sub:'Security', age:null, race:'High Elf', duty:'Protects rune network from intrusion', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Construction', icon:'🏗️', focus:'Cities, Fortresses & Dungeon Facilities',
+  rows:[
+    {name:'Darius Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:34, race:'High Human', duty:'Leads infrastructure, fortress cities, industrial zones', fam:'Child of Aetherion (by Evelyne)', gen:'g2', type:'family', id:'darius'},
+    {name:'Helena Ironforge', pos:'CEO Subsidiaries — Heavy Industries · Chief Structural Engineer', sub:'Engineering', age:null, race:'Dwarf', duty:'Fortress engineering & industrial golem machinery', fam:'Wife of Darius', gen:null, type:'spouse'},
+    {name:'Brakka Lionheart', pos:'Academy Student — Engineering (Enrolled)', sub:'On Leave', age:15, race:'Half Human/Dwarf', duty:'Currently pursuing studies at Ironforge Technical Academy', fam:'2nd Child of Darius', gen:'g3', type:'family', id:'brakka'},
+    {name:'Gramhold Ironvein', pos:'General Manager, Operations', sub:'Operations', age:null, race:'Dwarf', duty:'Day-to-day construction oversight', fam:'—', gen:null, type:'staff'},
+    {name:'Sira Blacktower', pos:'Project Development Manager', sub:'Development', age:null, race:'Orc', duty:'City planning & fortress design coordination', fam:'—', gen:null, type:'staff'},
+    {name:'Rolvak Dustmantle', pos:'Safety & Compliance Supervisor', sub:'Compliance', age:null, race:'Dwarf', duty:'Construction safety enforcement', fam:'—', gen:null, type:'staff'},
+    {name:'Lenna Ashford', pos:'Procurement Manager', sub:'Supply Chain', age:null, race:'Human', duty:'Material sourcing & vendor management', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Biotech', icon:'🧬', focus:'Monster Research, Regeneration & Biological Enhancement',
+  rows:[
+    {name:'Velisara Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:32, race:'High Demon', duty:'Oversees biological enhancement, monster research, regeneration technology', fam:'Child of Aetherion (by Evelyne)', gen:'g2', type:'family', id:'velisara'},
+    {name:'Prof. Malgrith Solaris', pos:'Chief Scientific Director', sub:'Research', age:null, race:'Dark Elf', duty:'Soul genetics and monster evolution research', fam:'Husband of Velisara', gen:null, type:'spouse'},
+    {name:'Helena Lionheart', pos:'University Student — Medical Sciences (Enrolled)', sub:'On Leave', age:23, race:'High Human', duty:'Currently pursuing studies; future Medical Specialist role', fam:'2nd Child of Marianne', gen:'g2', type:'family', id:'helena'},
+    {name:'Mirellia Lionheart', pos:'Academy Student — Biological Sciences (Enrolled)', sub:'On Leave', age:14, race:'Half Demon/Dark Elf', duty:'Currently pursuing studies; future research role', fam:'1st Child of Velisara', gen:'g3', type:'family', id:'mirellia'},
+    {name:'Seraphyne Lionheart', pos:'Academy Student — Advanced Biological Studies (Enrolled)', sub:'On Leave', age:17, race:'High Demon', duty:'Currently pursuing studies; independent research interests', fam:'2nd Child of Velisara', gen:'g3', type:'family', id:'seraphyne'},
+    {name:'Prof. Lucien Arkwell', pos:'Dean / Chief Researcher (Affiliate)', sub:'Medical Institute', age:null, race:'Human', duty:'Pharmaceutical research & academia partnership', fam:'Husband of Helena', gen:null, type:'spouse'},
+    {name:'Valdra Moonweave', pos:'VP of Research', sub:'Research', age:null, race:'Dark Elf', duty:'Oversees all research programs', fam:'—', gen:null, type:'staff'},
+    {name:'Orrex Bloodholm', pos:'Monster Containment Manager', sub:'Security/Containment', age:null, race:'Orc', duty:'Monster specimen containment & security', fam:'—', gen:null, type:'staff'},
+    {name:'Fenris Aurell', pos:'Regeneration Lab Supervisor', sub:'Lab', age:null, race:'High Elf', duty:'Regeneration experiment oversight', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Security Division', icon:'🗡️', focus:'Private Military, Intelligence & Tower Expeditions',
+  rows:[
+    {name:'Azrakar Lionheart', pos:'CEO Subsidiaries', sub:'All Dept.', age:33, race:'High Demon', duty:'Private military, elite hunters, intelligence operations', fam:'Child of Aetherion (by Seraphina)', gen:'g2', type:'family', id:'azrakar'},
+    {name:'Lady Nythera Vhol', pos:'Director of Intelligence Operations / Commander, Black Veil', sub:'Intelligence', age:null, race:'High Demon', duty:'Espionage, political assassination, infiltration', fam:'Wife of Azrakar', gen:null, type:'spouse'},
+    {name:'Mordreth Lionheart', pos:'Senior Manager / Commander, Abyss Guard Unit', sub:'Military Ops', age:27, race:'High Demon', duty:'Elite military response teams & Tower suppression', fam:'1st Child of Baelzhar', gen:'g2', type:'family', id:'mordreth'},
+    {name:'Nyxara Lionheart', pos:'Academy Student — Intelligence Studies (Enrolled)', sub:'On Leave', age:16, race:'High Demon', duty:'Currently pursuing studies at Black Veil Intelligence Academy', fam:'1st Child of Azrakar', gen:'g3', type:'family', id:'nyxara'},
+    {name:'Zephiron Lionheart', pos:'Military Academy Student (Enrolled)', sub:'On Leave', age:13, race:'High Demon', duty:'Currently enrolled at Abyss Military Preparatory Academy', fam:'2nd Child of Azrakar', gen:'g3', type:'family', id:'zephiron'},
+    {name:'Kaizer Lionheart', pos:'Military Academy Student (Enrolled)', sub:'On Leave', age:18, race:'Half Human/Dwarf', duty:'Currently enrolled at Abyss Military Preparatory Academy', fam:'1st Child of Darius', gen:'g3', type:'family', id:'kaizer'},
+    {name:'Lady Xyrella Draven', pos:'Vice Commander, Black Veil Intelligence Agency', sub:'Intelligence', age:null, race:'High Demon', duty:'Interrogation and covert warfare', fam:'Wife of Mordreth', gen:null, type:'spouse'},
+    {name:'Vexaron Nightblade', pos:'Special Operations Commander', sub:'Special Ops', age:null, race:'Dark Elf', duty:'High-risk infiltration and extraction missions', fam:'—', gen:null, type:'staff'},
+    {name:'Kross Ironmaw', pos:'Tower Expedition General Manager', sub:'Tower Ops', age:null, race:'Beastman', duty:'Coordinates Tower expedition logistics', fam:'—', gen:null, type:'staff'},
+    {name:'Sylmara Ashveil', pos:'Intelligence Analysis Supervisor', sub:'Intelligence', age:null, race:'High Elf', duty:'Data analysis and threat assessment', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Entertainment', icon:'🎭', focus:'Idols, Film, Broadcasting & Celebrity Management',
+  rows:[
+    {name:'Lord Altheris Moonfang', pos:'CEO Subsidiaries', sub:'All Dept.', age:null, race:'High Elf', duty:'Leads entertainment operations: music production, magical cinema, idol management, arena shows', fam:'Husband of Elyndra', gen:null, type:'spouse', id:'altheris'},
+    {name:'Elyndra Lionheart', pos:'Chief Human Capital Officer (CHCO) — Holding Company · Chairwoman', sub:'Arts & Cultural Affairs', age:287, race:'High Elf', duty:'Controls entertainment industries across Asterra; strategic cultural direction', fam:'Head of House Elyndra', gen:'g1', type:'family', id:'elyndra'},
+    {name:'Aurelianne Lionheart', pos:'Top Idol & Brand Ambassador', sub:'Talent', age:25, race:'High Elf', duty:'Brand ambassadorship & entertainment performance', fam:'1st Child of Elyndra', gen:'g2', type:'family', id:'aurelianne'},
+    {name:'Faelion Lionheart', pos:'Idol & Talent (Student — Entertainment Only)', sub:'Talent Dev.', age:17, race:'High Elf', duty:'Active as idol/model under Lionheart Entertainment while enrolled in studies', fam:'2nd Child of Elyndra', gen:'g2', type:'family', id:'faelion'},
+    {name:'Lysithea Lionheart', pos:'Trainee Idol (Student — Entertainment Only)', sub:'Talent Dev.', age:14, race:'High Elf', duty:'Idol training program — permitted as entertainment/idol activity', fam:'3rd Child of Elyndra', gen:'g2', type:'family', id:'lysithea'},
+    {name:'Varro Solenne', pos:'VP of Talent Management', sub:'Talent', age:null, race:'Human', duty:'Talent acquisition & artist development', fam:'—', gen:null, type:'staff'},
+    {name:'Mirel Goldwyn', pos:'Broadcasting Operations Manager', sub:'Broadcasting', age:null, race:'Human', duty:'Magical broadcast scheduling & distribution', fam:'—', gen:null, type:'staff'},
+    {name:'Sylara Moonbloom', pos:'Event Production Supervisor', sub:'Events', age:null, race:'High Elf', duty:'Arena shows and live event coordination', fam:'—', gen:null, type:'staff'},
+    {name:'Draxel Vorn', pos:'Arena Battle Director', sub:'Arena', age:null, race:'Orc', duty:'Manages arena battle events and fighters', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Finance & Retail', icon:'🏦', focus:'Banking, Investment, Luxury Retail & Commerce',
+  rows:[
+    {name:'Aerion Lionheart', pos:'CEO Subsidiaries', sub:'Finance & Retail', age:30, race:'High Elf', duty:'Leads Finance & Retail operations; oversees investment, banking, luxury retail', fam:'Child of Aetherion (by Lyrieth)', gen:'g2', type:'family', id:'aerion'},
+    {name:'Dan', pos:'Head of Investment', sub:'Investment Division', age:null, race:'Human', duty:'Leads all investment operations within the Finance & Retail division', fam:'—', gen:null, type:'staff', id:'dan_investment'},
+    {name:'Zerak', pos:'Investment Manager', sub:'Investment Division', age:null, race:'Demon', duty:'Manages investment portfolios and high-value asset placements', fam:'—', gen:null, type:'staff', id:'zerak_investment'},
+    {name:'Vito', pos:'Investment Analyst', sub:'Investment Division', age:null, race:'Human', duty:'Conducts investment research and market analysis', fam:'—', gen:null, type:'staff', id:'vito_investment'},
+    {name:'Laurela', pos:'Finance Analyst', sub:'Investment Division', age:null, race:'Human', duty:'Financial analysis, reporting, and budget monitoring', fam:'—', gen:null, type:'staff', id:'laurela_investment'},
+    {name:'Coco', pos:'Treasury Staff', sub:'Investment Division', age:null, race:'Beastman (Panda)', duty:'Treasury operations and fund custody management', fam:'—', gen:null, type:'staff', id:'coco_investment'},
+    {name:'Selene Lionheart', pos:'University Student — Commerce (Enrolled)', sub:'On Leave', age:20, race:'High Elf', duty:'Currently pursuing studies; future Brand Strategy role', fam:'1st Child of Sylvaria', gen:'g3', type:'family', id:'selene'},
+    {name:'Leonhart Lionheart', pos:'University Student — Business Administration (Enrolled)', sub:'On Leave', age:22, race:'High Elf', duty:'Currently pursuing studies; future executive role', fam:'2nd Child of Sylvaria', gen:'g3', type:'family', id:'leonhart'},
+    {name:'Vaelric Lionheart', pos:'University Student — Finance (Enrolled)', sub:'On Leave', age:19, race:'High Elf', duty:'Currently pursuing studies; future investment strategy role', fam:'2nd Child of Caelthas', gen:'g3', type:'family', id:'vaelric'},
+    {name:'Duke Valerius Evernight', pos:'Minister of International Trade (Affiliate)', sub:'Trade & Commerce', age:null, race:'High Elf', duty:'International trade & luxury goods strategy', fam:'Husband of Sylvaria', gen:null, type:'spouse'},
+    {name:'Aldric Thornvale', pos:'CFO — Lionheart Finance', sub:'Finance', age:null, race:'Human', duty:'Financial reporting, budget & investment strategy', fam:'—', gen:null, type:'staff'},
+    {name:'Melara Goldspire', pos:'Investment Operations Manager', sub:'Finance', age:null, race:'High Elf', duty:'Portfolio management & rune-asset trading', fam:'—', gen:null, type:'staff'},
+    {name:'Crix Noven', pos:'Retail General Manager', sub:'Retail', age:null, race:'Human', duty:'Department store chain operations', fam:'—', gen:null, type:'staff'},
+    {name:'Sylene Fairgold', pos:'Marketing Supervisor', sub:'Marketing', age:null, race:'Human', duty:'Brand campaigns and promotional events', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Strategic & Intelligence Operations', icon:'♟️', focus:'Military Strategy, Shadow Diplomacy & Intelligence Warfare',
+  rows:[
+    {name:'Duchess Seravelle Mordrith', pos:'CEO Subsidiaries', sub:'All', age:null, race:'High Demon', duty:'Leads Strategic & Intelligence operations; military strategy, shadow diplomacy, intelligence warfare', fam:'1st Wife of Baelzhar', gen:null, type:'spouse', id:'seravelle'},
+    {name:'Baelzhar Lionheart', pos:'Chief Strategy Officer (CSO) — Holding Company · Supreme Commander', sub:'Strategic Oversight', age:295, race:'High Demon', duty:'Military strategy, shadow diplomacy, intelligence warfare oversight at holding level', fam:'Head of House Baelzhar', gen:'g1', type:'family', id:'baelzhar'},
+    {name:'Lady Vireza Nocturne', pos:'Director, Black Market Trade Division', sub:'Underground', age:null, race:'Dark Elf', duty:'Illegal relic trade and information brokerage', fam:'2nd Wife of Baelzhar', gen:null, type:'spouse'},
+    {name:'Zareth Lionheart', pos:'University Student — Underground Economics (Enrolled)', sub:'On Leave', age:24, race:'Half Demon/Dark Elf', duty:'Currently pursuing studies; future underground operations role', fam:'4th Child of Baelzhar', gen:'g2', type:'family', id:'zareth'},
+    {name:'Lilithra Lionheart', pos:'University Student — Arcane Engineering (Enrolled)', sub:'On Leave', age:19, race:'High Demon', duty:'Currently pursuing studies at Arcane Technical Academy', fam:'2nd Child of Baelzhar', gen:'g2', type:'family', id:'lilithra'},
+    {name:'Navar Duskmantle', pos:'Senior Intelligence Analyst', sub:'Intelligence', age:null, race:'Dark Elf', duty:'Strategic intelligence analysis', fam:'—', gen:null, type:'staff'},
+    {name:'Hexra Valmoor', pos:'Shadow Diplomacy Manager', sub:'Diplomacy', age:null, race:'High Demon', duty:'Manages covert diplomatic contacts', fam:'—', gen:null, type:'staff'},
+    {name:'Cael Morthwyn', pos:'Military Strategy Supervisor', sub:'Military', age:null, race:'Orc', duty:'Battlefield planning and logistics', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Foundation & Medical', icon:'🤍', focus:'Humanitarian Affairs, Healthcare & Social Welfare',
+  rows:[
+    {name:'Duke Roland Evercrest', pos:'CEO Subsidiaries', sub:'Medical & Humanitarian', age:null, race:'High Human', duty:'Leads Foundation & Medical; hospital networks, research grants, humanitarian programs', fam:'Husband of Marianne', gen:null, type:'spouse', id:'roland'},
+    {name:'Marianne Lionheart', pos:'Chief Operating Officer (COO) — Holding Company · Supreme Director', sub:'Humanitarian Oversight', age:71, race:'High Human', duty:'Oversight of all humanitarian operations, disaster relief, civilian welfare at holding level', fam:'Head of House Marianne', gen:'g1', type:'family', id:'marianne'},
+    {name:'Cedric Lionheart', pos:'Director, Lionheart Foundation / Humanitarian Advisor', sub:'Humanitarian', age:29, race:'High Human', duty:'Disaster recovery, refugee protection, public hospitals', fam:'1st Child of Marianne', gen:'g2', type:'family', id:'cedric'},
+    {name:'Helena Lionheart', pos:'University Student — Medical Sciences (Enrolled)', sub:'On Leave', age:23, race:'High Human', duty:'Currently pursuing studies at Imperial Medical Academy', fam:'2nd Child of Marianne', gen:'g2', type:'family', id:'helena'},
+    {name:'Eleanor Valtoris', pos:'Senator / Chairwoman, Civil Welfare Committee (Affiliate)', sub:'Government', age:null, race:'Human', duty:'Government policy on civil welfare', fam:'Wife of Cedric', gen:null, type:'spouse'},
+    {name:'Prof. Lucien Arkwell', pos:'Dean / Chief Pharma Researcher (Affiliate)', sub:'Pharmaceutical', age:null, race:'Human', duty:'Medical academia & pharmaceutical development', fam:'Husband of Helena', gen:null, type:'spouse'},
+    {name:'Sorel Whiteveil', pos:'VP of Humanitarian Operations', sub:'Operations', age:null, race:'Human', duty:'Coordinates all disaster relief operations', fam:'—', gen:null, type:'staff'},
+    {name:'Mira Ashburn', pos:'Hospital Network General Manager', sub:'Medical', age:null, race:'Human', duty:'Manages hospital chain across kingdoms', fam:'—', gen:null, type:'staff'},
+    {name:'Arlen Godsend', pos:'Welfare Program Supervisor', sub:'Welfare', age:null, race:'Human', duty:'Orphanage and civilian aid programs', fam:'—', gen:null, type:'staff'},
+    {name:'Vesper Halcyon', pos:'Research Grants Manager', sub:'Research', age:null, race:'High Elf', duty:'Allocates research funding', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Heavy Industries, Motors & Shipyard', icon:'⚙️', focus:'Golem Manufacturing, Vehicles & Naval/Aerial Vessels',
+  rows:[
+    {name:'Helena Ironforge', pos:'CEO Subsidiaries', sub:'All', age:null, race:'Dwarf', duty:'Leads Heavy Industries, Motors, Shipyard; golem manufacturing, vehicles, naval/aerial vessels', fam:'Wife of Darius', gen:null, type:'spouse', id:'helena_ironforge'},
+    {name:'Brakka Lionheart', pos:'Academy Student — Mechanical Engineering (Enrolled)', sub:'On Leave', age:15, race:'Half Human/Dwarf', duty:'Currently pursuing studies at Ironforge Technical Academy', fam:'2nd Child of Darius', gen:'g3', type:'family', id:'brakka'},
+    {name:'Varrus Ironclad', pos:'General Manager, Heavy Industries', sub:'Heavy Ind.', age:null, race:'Orc', duty:'Oversees golem production lines', fam:'—', gen:null, type:'staff'},
+    {name:'Kel Deepstrike', pos:'Chief Motor Engineer', sub:'Motors', age:null, race:'Dwarf', duty:'Mana vehicle engine design', fam:'—', gen:null, type:'staff'},
+    {name:'Tura Galeborn', pos:'Naval Architecture Manager', sub:'Shipyard', age:null, race:'Human', duty:'Sea vessel & airship design', fam:'—', gen:null, type:'staff'},
+    {name:'Borvak Steelwright', pos:'Golem Systems Supervisor', sub:'Heavy Ind.', age:null, race:'Dwarf', duty:'Golem systems calibration & testing', fam:'—', gen:null, type:'staff'},
+    {name:'Nira Windspanner', pos:'Airship Production Supervisor', sub:'Shipyard', age:null, race:'Goblin', duty:'Airship manufacturing & quality control', fam:'—', gen:null, type:'staff'},
+    {name:'Crex Fuelbreaker', pos:'Motor Testing Supervisor', sub:'Motors', age:null, race:'Goblin', duty:'Vehicle stress testing & performance review', fam:'—', gen:null, type:'staff'},
+  ]
+},
+{
+  name:'Lionheart Agribusiness, Foods & Hotels', icon:'🌾', focus:'Monster Farming, Mana Crops, Food Production & Hospitality',
+  rows:[
+    {name:'Sylvaria Lionheart', pos:'CEO Subsidiaries', sub:'Agribusiness, Foods & Hotels', age:40, race:'High Elf', duty:'Leads Agribusiness, Foods & Hotels; monster farms, mana crops, food production, hospitality', fam:'Child of Aetherion (by Miradelle)', gen:'g2', type:'family', id:'sylvaria'},
+    {name:'Leonhart Lionheart', pos:'General Manager, Agribusiness (Student — On Leave)', sub:'Agribusiness Ops', age:22, race:'High Elf', duty:'Currently pursuing studies; designated General Manager of Agribusiness division', fam:'2nd Child of Sylvaria', gen:'g3', type:'family', id:'leonhart'},
+    {name:'Thorn Ashleaf', pos:'Head of Agri-Research', sub:'R&D Agri', age:null, race:'Human', duty:'Mana plant cultivation research', fam:'—', gen:null, type:'staff'},
+    {name:'Grix Boltkeg', pos:'Foods Production Manager', sub:'Foods', age:null, race:'Goblin', duty:'Energy food & potion cuisine production', fam:'—', gen:null, type:'staff'},
+    {name:'Selara Brightmeal', pos:'Foods Brand Manager', sub:'Foods', age:null, race:'Human', duty:'Product branding & adventurer market strategy', fam:'—', gen:null, type:'staff'},
+    {name:'Alderon Silkrest', pos:'Hotels General Manager', sub:'Hotels', age:null, race:'High Elf', duty:'Luxury hotel chain operations', fam:'—', gen:null, type:'staff'},
+    {name:'Mivra Dawnlace', pos:'Guest Services Manager', sub:'Hotels', age:null, race:'Human', duty:'VIP guest and adventurer hospitality', fam:'—', gen:null, type:'staff'},
+    {name:'Braxis Farrow', pos:'Farm Operations Supervisor', sub:'Agriculture', age:null, race:'Orc', duty:'Monster containment & farm logistics', fam:'—', gen:null, type:'staff'},
+    {name:'Celia Brightspoon', pos:'Head Chef, Lionheart Foods', sub:'Foods', age:null, race:'Human', duty:'Recipe development & potion-food creation', fam:'—', gen:null, type:'staff'},
+  ]
+}
+];
+
+/* ═══════════════════════════════════════════════
+   HOUSE DATA
+═══════════════════════════════════════════════ */
+const HOUSES = [
+  {id:'Aetherion', icon:'👑', banner:'h1', desc:'The Supreme House. Ruled by Lord Aetherion Lionheart, the immortal High Elf who commands the entire conglomerate from above all politics and thrones.', title:'The Supreme House', head:'aetherion'},
+  {id:'Baelzhar', icon:'♟️', banner:'h2', desc:'The Branch House of Strategy. Duke Baelzhar commands shadow warfare, intelligence, and the empire\'s most dangerous operations from the darkness.', title:'The Strategist House', head:'baelzhar'},
+  {id:'Elyndra', icon:'🌟', banner:'h3', desc:'The Entertainment House. Lady Elyndra rules culture, fame, and the hearts of Asterra through media, idol groups, and magical broadcasting.', title:'The Entertainment House', head:'elyndra'},
+  {id:'Marianne', icon:'🤍', banner:'h4', desc:'The Humanitarian House. Lady Marianne maintains the empire\'s image and moral standing through charity, medicine, and compassionate leadership.', title:'The Humanitarian House', head:'marianne'}
+];
+
+/* ═══════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════ */
+let currentPage = 'home';
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name)?.classList.add('active');
+  document.querySelectorAll('nav a, .mobile-nav a').forEach(a=>{
+    a.classList.toggle('active', a.dataset.page===name);
+  });
+  currentPage = name;
+  window.scrollTo(0,0);
+  document.getElementById('mobileNav').classList.remove('open');
+  if(name==='staff') renderStaff();
+  if(name==='structural') renderStructural();
+  if(name==='family') renderFamily();
+}
+
+document.querySelectorAll('[data-page]').forEach(a=>{
+  a.addEventListener('click', e=>{e.preventDefault(); showPage(a.dataset.page);});
+});
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+/* ═══════════════════════════════════════════════
+   STAFF RENDER
+═══════════════════════════════════════════════ */
+function renderStaff(filter='all', search=''){
+  const grid = document.getElementById('staffGrid');
+  let list = MEMBERS.filter(m=>{
+    if(filter !== 'all' && m.gen !== filter) return false;
+    if(search){
+      const q = search.toLowerCase();
+      return m.name.toLowerCase().includes(q)||m.race.toLowerCase().includes(q)||m.position.toLowerCase().includes(q)||m.house.toLowerCase().includes(q);
+    }
+    return true;
+  });
+  grid.innerHTML = list.map(m=>`
+    <div class="staff-card" onclick="openMember('${m.id}')">
+      <div class="staff-card-header">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <div class="staff-avatar">${m.emoji}</div>
+          <div>
+            <div class="staff-name">${m.name}</div>
+            <div class="staff-role">${m.position.split('·')[0].split('/')[0].trim()}</div>
+          </div>
+        </div>
+      </div>
+      <div class="staff-card-body">
+        <div class="staff-meta">
+          <span class="tag race">${m.race}</span>
+          ${m.age?`<span class="tag">Age ${m.age}</span>`:''}
+          <span class="tag gen ${m.gen}">${m.gen?.toUpperCase()||'AFFILIATE'}</span>
+          <span class="tag">${m.house} House</span>
+        </div>
+        <div class="staff-skill">Skill: <span>${m.skill}</span> <span style="color:var(--text-dim);font-size:0.75rem;">(${m.skillType})</span></div>
+        <div class="view-profile-btn">View Full Profile →</div>
+      </div>
+    </div>
+  `).join('');
+}
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderStaff(btn.dataset.filter, document.getElementById('staffSearch')?.value||'');
+  });
+});
+document.getElementById('staffSearch')?.addEventListener('input', e=>{
+  const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter||'all';
+  renderStaff(activeFilter, e.target.value);
+});
+
+/* ═══════════════════════════════════════════════
+   STRUCTURAL RENDER
+═══════════════════════════════════════════════ */
+function renderStructural(){
+  const el = document.getElementById('structuralContent');
+  el.innerHTML = COMPANIES.map(c=>`
+    <div class="company-section">
+      <div class="company-title"><span class="icon">${c.icon}</span>${c.name}</div>
+      <div class="company-subtitle">${c.focus}</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Name</th><th>Position</th><th>Division / Dept.</th>
+            <th>Age</th><th>Race</th><th>Duties</th><th>Family Status</th>
+          </tr></thead>
+          <tbody>
+            ${c.rows.map(r=>`<tr>
+              <td class="td-name ${r.id?'clickable':''}" ${r.id?`onclick="openMember('${r.id}')"`:''}>${r.name}${r.id?'<br><small style="color:var(--gold-dim);font-size:0.65rem;">↗ Profile</small>':''}</td>
+              <td class="td-pos">${r.pos}</td>
+              <td class="td-dim">${r.sub}</td>
+              <td>${r.age||'—'}</td>
+              <td class="td-dim">${r.race}</td>
+              <td style="font-size:0.75rem;max-width:200px;">${r.duty}</td>
+              <td>${r.gen?`<span class="badge-gen ${r.gen}">${r.gen.toUpperCase()}</span> `:''}${r.type==='staff'?`<span class="badge-random">Staff</span>`:''}<br><small class="td-dim">${r.fam}</small></td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   FAMILY RENDER
+═══════════════════════════════════════════════ */
+function renderFamily(){
+  const housesEl = document.getElementById('familyHouses');
+  housesEl.innerHTML = HOUSES.map(h=>`
+    <div class="house-card" onclick="showHouseTree('${h.id}')">
+      <div class="house-banner ${h.banner}">${h.icon}</div>
+      <div class="house-info">
+        <div class="house-name">House ${h.id}</div>
+        <div class="house-title">${h.title}</div>
+        <div class="house-desc">${h.desc}</div>
+        <div style="margin-top:1rem;font-family:var(--font-ui);font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;">VIEW FAMILY TREE →</div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('familyTreeContainer').innerHTML = '';
+}
+
+function showHouseTree(houseId){
+  const gens = {gen1:[], gen2:[], gen3:[]};
+  MEMBERS.filter(m=>m.house===houseId).forEach(m=>{ if(gens[m.gen]) gens[m.gen].push(m); });
+  const house = HOUSES.find(h=>h.id===houseId);
+  const container = document.getElementById('familyTreeContainer');
+  container.innerHTML = `
+    <div class="family-tree-section">
+      <div class="tree-title">${house.icon} House ${houseId} — Family Tree</div>
+      <div class="tree-subtitle">${house.title}</div>
+      ${['gen1','gen2','gen3'].map(g=>`
+        <div class="tree-gen">
+          <div class="tree-gen-label">Generation ${g.replace('gen','')}${g==='gen1'?' — Head':g==='gen2'?' — Children':' — Grandchildren'}</div>
+          <div class="tree-members">
+            ${gens[g].map(m=>`
+              <div class="tree-member" onclick="openMember('${m.id}')">
+                <div class="em">${m.emoji}</div>
+                <div>
+                  <span class="tree-member-name">${m.name}</span>
+                  <span class="tree-member-role">${m.race} · ${m.gen?.toUpperCase()}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  container.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ═══════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════ */
+function openMember(id){
+  const m = MEMBERS.find(x=>x.id===id);
+  if(!m) return;
+  const modal = document.getElementById('modalContent');
+  modal.innerHTML = `
+    <div class="modal-header">
+      <div class="modal-avatar">${m.emoji}</div>
+      <div>
+        <div class="modal-name">${m.name}</div>
+        <div class="modal-title">${m.position}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
+          <span class="tag race">${m.race}</span>
+          ${m.age?`<span class="tag">Age: ${m.age}</span>`:''}
+          <span class="tag gen ${m.gen}">${m.gen?.toUpperCase()||''}</span>
+          <span class="tag">${m.house} House</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      ${m.titles?.length?`<div class="modal-section"><h4>Titles & Epithets</h4><div style="display:flex;flex-wrap:wrap;gap:6px;">${m.titles.map(t=>`<span style="font-family:var(--font-ui);font-size:0.75rem;color:var(--gold-light);background:rgba(201,168,76,0.08);border:1px solid var(--gold-dim);padding:3px 10px;border-radius:2px;">${t}</span>`).join('')}</div></div>`:''}
+      <div class="modal-section">
+        <h4>Position & Company</h4>
+        <div class="modal-grid">
+          <div class="modal-row"><span class="lbl">Position</span><span class="val gold">${m.position}</span></div>
+          <div class="modal-row"><span class="lbl">Division / Company</span><span class="val">${m.company}</span></div>
+          ${m.gender?`<div class="modal-row"><span class="lbl">Gender</span><span class="val">${m.gender}</span></div>`:''}
+          <div class="modal-row"><span class="lbl">Family Status</span><span class="val">${m.status}</span></div>
+        </div>
+      </div>
+      <div class="modal-section">
+        <h4>Innate Skill</h4>
+        <div class="skill-badge">
+          <div class="skill-type">${m.skillType} Skill</div>
+          <div style="font-size:1rem;color:var(--gold-light);margin-bottom:4px;">${m.skill}</div>
+          <div style="font-size:0.8rem;color:var(--text-mid);">${m.skillDesc}</div>
+        </div>
+      </div>
+      ${m.personality?`<div class="modal-section"><h4>Personality</h4><div class="modal-desc">${m.personality}</div></div>`:''}
+      ${m.appearance?`<div class="modal-section"><h4>Appearance</h4><div class="modal-desc">${m.appearance}</div></div>`:''}
+      ${m.role?`<div class="modal-section"><h4>Role & Responsibilities</h4><div class="modal-desc">${m.role}</div></div>`:''}
+      ${m.spouse?`<div class="modal-section"><h4>Spouse / Partner</h4><div class="modal-desc">${m.spouse}</div></div>`:''}
+      ${m.children?`<div class="modal-section"><h4>Children</h4><div class="modal-desc">${m.children}</div></div>`:''}
+      ${m.secrets?`<div class="modal-section"><h4>⚠ Classified / Rumors</h4><div class="modal-desc" style="color:#c87070;">${m.secrets}</div></div>`:''}
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', e=>{
+  if(e.target === document.getElementById('modalOverlay')) closeModal();
+});
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+/* ═══════════════════════════════════════════════
+   PARTICLES
+═══════════════════════════════════════════════ */
+const particlesDiv = document.getElementById('particles');
+for(let i=0; i<30; i++){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random()*100+'%';
+  p.style.animationDuration = (8+Math.random()*20)+'s';
+  p.style.animationDelay = (Math.random()*20)+'s';
+  p.style.width = p.style.height = (1+Math.random()*2)+'px';
+  p.style.opacity = Math.random()*0.5;
+  particlesDiv.appendChild(p);
+}
+</script>
+</body>
+</html>
